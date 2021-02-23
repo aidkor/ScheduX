@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Schedule
 {
     /// <summary>
@@ -25,11 +26,6 @@ namespace Schedule
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Hide();
-            StartWindow test = new StartWindow();
-            test.Show();
-        }
+      
     }
 }

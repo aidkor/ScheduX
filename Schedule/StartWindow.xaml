@@ -3,21 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Schedule"
         mc:Ignorable="d"
-        Title="StartWindow" Foreground="{x:Null}" WindowStyle="None" AllowsTransparency="True">
-    <Window.Background>
-        <ImageBrush ImageSource="Images/appImg.jpg"/>
-    </Window.Background>
+        Title="StartWindow" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Content="ScheduX" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="90" FontFamily="Viner Hand ITC"  Foreground="AliceBlue"/>
-        </Grid>
-        <Grid VerticalAlignment="Bottom">
-            <Label Content="2021"  FontSize="20" FontFamily="Viner Hand ITC"  Foreground="White"  HorizontalAlignment="Right" Margin="0,0,25,15" FontWeight="Bold"/>
-        </Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images\appImg.jpg" />
+        </Grid.Background>
+
+        <TextBlock Text="ScheduX" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Viner Hand ITC"  Foreground="White" />
+        <TextBlock Text="2021" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15 " FontFamily="Viner Hand ITC"  Foreground="White" FontWeight="Bold" Margin="0,0,30,20" />
     </Grid>
-    
-
 </Window>
-

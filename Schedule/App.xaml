@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Schedule"
-             StartupUri="StartWindow.xaml">
-    <Application.Resources>
+             StartupUri="TemplateWindows/FirstTemplateWindow.xaml">
+     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/ColourfulLightTheme.xaml"/>

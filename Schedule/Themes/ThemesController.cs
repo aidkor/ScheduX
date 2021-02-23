@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace TheRThemes
+namespace Schedule
 {
     public static class ThemesController
     {

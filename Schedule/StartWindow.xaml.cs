@@ -1,6 +1,16 @@
-﻿using System.Threading;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace Schedule
 {
@@ -12,23 +22,10 @@ namespace Schedule
         public StartWindow()
         {
             InitializeComponent();
-            Width = SystemParameters.PrimaryScreenWidth / 4;
-            Height = SystemParameters.PrimaryScreenHeight / 4 + 40;            
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            CloseWindow();            
+            // HACK: Change this in XAML code with data binding
+            this.Height = SystemParameters.PrimaryScreenHeight / 3;
+            this.Width = SystemParameters.PrimaryScreenWidth / 3.5;
         }
-
-        private async void CloseWindow()
-        {
-            await ClosingTasks();
-        }
-
-        private async Task ClosingTasks()
-        {
-            await Task.Delay(2000);
-            Close();
-        }
-
     }
 }

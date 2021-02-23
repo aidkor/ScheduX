@@ -4,7 +4,7 @@
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <!-- Window Colours. Background, Border and TitleBar colours. -->
     <SolidColorBrush x:Key="BackgroundColour"  Color="#FFF8F8F8" />
-    <SolidColorBrush x:Key="WindowBorderColour"  Color="#FFE0E0E0" />
+    <SolidColorBrush x:Key="WindowBorderColour"  Color="White" />
     <SolidColorBrush x:Key="WindowTitleColour"  Color="WhiteSmoke" />
 
     <!-- Control colour themes. dont mess with em okay unless youre good at styles -->
@@ -4114,28 +4114,6 @@
                                 <Grid Height="Auto" x:Name="titlebar" Background="{TemplateBinding BorderBrush}" VerticalAlignment="Top" Margin="0">
                                     <DockPanel  Grid.Column="0">
                                         <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,4,0,0" Source="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}" Height="24"  />
-                                        <Menu WindowChrome.IsHitTestVisibleInChrome="True" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="12">
-                                            <MenuItem Header="File" Foreground="Black"  Margin="8,0,0,0" Height="20">
-                                                <MenuItem Header="Save"       Template="{DynamicResource SingleDropDownMenuItem}"/>
-                                                <MenuItem Header="Save as..." Template="{DynamicResource DropDownMenuItemStyle}"/>
-                                            </MenuItem>
-                                            <MenuItem Header="Edit" Foreground="Black" Margin="8,0,0,0">
-                                                <MenuItem Header="Save"       Template="{DynamicResource SingleDropDownMenuItem}"/>
-                                                <MenuItem Header="Save as..." Template="{DynamicResource DropDownMenuItemStyle}"/>
-                                            </MenuItem>
-                                            <MenuItem Header="View" Foreground="Black" Margin="8,0,0,0" >
-                                                <MenuItem Header="Save"       Template="{DynamicResource SingleDropDownMenuItem}"/>
-                                                <MenuItem Header="Save as..." Template="{DynamicResource DropDownMenuItemStyle}"/>
-                                            </MenuItem>
-                                            <MenuItem Header="Dictionary" Foreground="Black" Margin="8,0,0,0">
-                                                <MenuItem Header="Save"       Template="{DynamicResource SingleDropDownMenuItem}"/>
-                                                <MenuItem Header="Save as..." Template="{DynamicResource DropDownMenuItemStyle}"/>
-                                            </MenuItem>
-                                            <MenuItem Header="Help" Foreground="Black" Margin="8,0,0,0">
-                                                <MenuItem Header="Save"       Template="{DynamicResource SingleDropDownMenuItem}"/>
-                                                <MenuItem Header="Save as..." Template="{DynamicResource DropDownMenuItemStyle}"/>
-                                            </MenuItem>
-                                        </Menu>
                                         <StackPanel Orientation="Horizontal"
                                         Grid.Column="1" HorizontalAlignment="Right">
                                             <Button x:Name="btnMinimize"
@@ -4156,7 +4134,7 @@
                                                 BorderBrush="Transparent"
                                                 Width="45"
                                                 WindowChrome.IsHitTestVisibleInChrome="True" 
-                                                Click="AutoMinimize_Event">
+                                                Click="AutoMinimize_Event">    
                                                 <Grid Width="12" Height="12">
                                                     <Rectangle StrokeThickness="0.8" 
                                                            Stroke="{StaticResource ControlGlythColour}"
@@ -4246,7 +4224,8 @@
                                         <Button x:Name="btnMinimize"
                                                 Background="Transparent"
                                                 BorderBrush="Transparent"
-                                                Width="40"
+                                                Template="{DynamicResource MinimizeWindowButton}"
+                                                Width="45"
                                                 VerticalContentAlignment="Bottom"
                                                 WindowChrome.IsHitTestVisibleInChrome="True" 
                                                 Click="Minimize_Event">
@@ -4254,18 +4233,18 @@
                                                        VerticalAlignment="Center"
                                                        Margin="1 1 0 0" 
                                                        Stroke="{StaticResource ControlGlythColour}"
-                                                       StrokeThickness="2"/>
+                                                       StrokeThickness="1"/>
                                         </Button>
                                         <Button x:Name="btnClose"
                                                 Background="Transparent"
                                                 BorderBrush="Transparent"
                                                 Template="{DynamicResource CloseWindowButton}"
-                                                Width="40"
+                                                Width="45"
                                                 WindowChrome.IsHitTestVisibleInChrome="True" 
                                                 Click="CloseWindow_Event">
                                             <Grid Margin="0 1 0 0">
-                                                <Line X1="0" Y1="0" X2="11" Y2="11" Stroke="{StaticResource ControlGlythColour}" StrokeThickness="2" />
-                                                <Line X1="0" Y2="0" Y1="11" X2="11" Stroke="{StaticResource ControlGlythColour}" StrokeThickness="2" />
+                                                <Line X1="0" Y1="0" X2="11" Y2="11" Stroke="{StaticResource ControlGlythColour}" StrokeThickness="1" />
+                                                <Line X1="0" Y2="0" Y1="11" X2="11" Stroke="{StaticResource ControlGlythColour}" StrokeThickness="1" />
                                             </Grid>
                                         </Button>
                                     </StackPanel>
@@ -4286,6 +4265,41 @@
         </Style.Triggers>
     </Style>
 
+    <!-- Gives the button light orange colour properties when mouseover/clicked -->
+    <ControlTemplate x:Key="TemplateButton" TargetType="{x:Type Button}">
+        <Border x:Name="border" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                Background="{TemplateBinding Background}" 
+                SnapsToDevicePixels="true"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch">
+            <ContentPresenter x:Name="contentPresenter" 
+                              Focusable="False" 
+                              Margin="{TemplateBinding Padding}" 
+                              RecognizesAccessKey="True" 
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ControlMouseOverBorderBrush}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" TargetName="border" Value="#F4CA8D"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="#F4CA8D"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background" TargetName="border" Value="#D3AF7E"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="#D3AF7E"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Background" TargetName="border" Value="{StaticResource ControlBrightDefaultBackground}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ControlBrightDefaultBorderBrush}"/>
+                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource ControlDisabledGlythColour}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
     <!-- Gives the button red colour properties when mouseover/clicked -->
     <ControlTemplate x:Key="CloseWindowButton" TargetType="{x:Type Button}">
         <Border x:Name="border" 
