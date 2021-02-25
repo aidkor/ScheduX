@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Schedule.Resourses;
 
 namespace Schedule.TemplateWindows
 {
@@ -24,12 +25,22 @@ namespace Schedule.TemplateWindows
             InitializeComponent();
             // HACK: Change this in XAML code with data binding
             this.Height = SystemParameters.PrimaryScreenHeight / 2;
-            this.Width = SystemParameters.PrimaryScreenWidth / 5;
+            this.Width = SystemParameters.PrimaryScreenWidth / 5;           
         }
 
         private void SchoolTemplate_Click(object sender, RoutedEventArgs e)
         {
-            new StartWindow().Show();
+            new ThirdTemplateWindow().Show();
+            Close();
+        }
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            IconHelper.RemoveIcon(this);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            new FirstTemplateWindow().Show();
             Close();
         }
     }

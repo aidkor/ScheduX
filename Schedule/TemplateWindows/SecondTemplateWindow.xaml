@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:Schedule"
         mc:Ignorable="d"        
         Background="White" Width="583 " Height="806" WindowStartupLocation="CenterScreen" MinWidth="570" MinHeight="806" >
-    <!-- Hide icon -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="ScheduX" FontSize="38" FontFamily="Noto Sans Symbols2" Foreground="Black" Margin="0,40,0,0" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="1"  Margin="75,35,75,0"  Text="Choose a project template" FontSize="20" FontFamily="Noto Sans Symbols2" Foreground="Black" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="1"  Margin="75,30,75,0"  Text="Choose a project template" FontSize="20" FontFamily="Noto Sans Symbols2" Foreground="Black" HorizontalAlignment="Center"/>
 
         <Button x:Name="SchoolTemplate" Grid.Row="2" Margin="0,26,0,0" Background="#EEEBEB" Foreground="Black"  Template="{DynamicResource TemplateButton}" HorizontalAlignment="Center" Click="SchoolTemplate_Click">
             <Grid>
@@ -28,10 +28,12 @@
 
                 <StackPanel Grid.Column="1" Orientation="Vertical">
                     <TextBlock Padding="0,9,0,0" FontSize="18">School template</TextBlock>
-                    <TextBlock Padding="0,1,40,8" FontSize="12" Foreground="#676767">A project template that contains tools for creating, managing and <LineBreak/> displaying school schedule</TextBlock>
+                    <TextBlock Padding="0,1,40,12" FontSize="12" Foreground="#676767">A project template that contains tools for creating, managing and <LineBreak/> displaying school schedule</TextBlock>
                 </StackPanel>
             </Grid>
         </Button>
+
+        <Button Grid.Row="3" x:Name="BackButton" Foreground="Black" Background="#EEEBEB" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,31" Padding="25,4,25,4" FontSize="11" Click="BackButton_Click">Back</Button>
     </Grid>
 </Window>
  

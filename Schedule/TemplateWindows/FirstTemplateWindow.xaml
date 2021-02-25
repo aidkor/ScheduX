@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Schedule"
         mc:Ignorable="d"        
         Background="White"  Width="583 " Height="806" WindowStartupLocation="CenterScreen" MinWidth="570" MinHeight="806" >
-    <!-- Hide icon -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -15,7 +14,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="ScheduX" FontSize="38" FontFamily="Noto Sans Symbols2" Foreground="Black" Margin="0,40,0,0" HorizontalAlignment="Center"/>
@@ -26,29 +25,95 @@
                 <Image Source="..\Images\paper.png" Width="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,12,12,0"/>
                 <StackPanel>
                     <TextBlock Padding="0,9,0,0" FontSize="18">Create a new project</TextBlock>
-                    <TextBlock Padding="0,1,40,20" FontSize="12" Foreground="#676767">Choose a project template</TextBlock>
+                    <TextBlock Padding="0,1,40,28" FontSize="12" Foreground="#676767">Choose a project template</TextBlock>
                 </StackPanel>
             </StackPanel>
         </Button>
-        <Button Grid.Row="3" Margin="0,6,0,0" Width="455" HorizontalAlignment="Center" Background="#EEEBEB" Foreground="Black"  Template="{DynamicResource TemplateButton}" Click="CreateNewProject">
+        <Button Grid.Row="3" Margin="0,6,0,0" Width="455" HorizontalAlignment="Center" Background="#EEEBEB" Foreground="Black"  Template="{DynamicResource TemplateButton}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="..\Images\open-folder.png" Width="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,9,12,0"/>
                 <StackPanel>
                     <TextBlock Padding="0,9,0,0" FontSize="18">Open a project</TextBlock>
-                    <TextBlock Padding="0,1,24,20" FontSize="12" Foreground="#676767">Open a local ScheduX project</TextBlock>
+                    <TextBlock Padding="0,1,24,28" FontSize="12" Foreground="#676767">Open a local ScheduX project</TextBlock>
                 </StackPanel>
             </StackPanel>
         </Button>
 
-        <TextBlock Grid.Row="4" Text="Open recent" FontSize="20" FontFamily="Noto Sans Symbols2" Foreground="Black" Margin="0,21,0,0" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Text="Open recent" FontSize="20" FontFamily="Noto Sans Symbols2" Foreground="Black" Margin="0,30,0,0" HorizontalAlignment="Center"/>
 
-        <TextBox Grid.Row="5" x:Name="ProjectTextBox" Margin="0,26,0,0" Padding="0,5,0,5" Width="455" HorizontalAlignment="Center" Foreground="Black" Background="White" BorderThickness="2" CaretBrush="Black" TextChanged="ProjectTextBox_TextChanged"/>
-        <ListBox Grid.Row="6" x:Name="ProjectListBox" Margin="0,10,0,0" Width="455">
-            <ListBoxItem>
-                <Hyperlink Foreground="Black">Hello</Hyperlink>
+        <TextBox Grid.Row="5" x:Name="ProjectTextBox" Margin="0,26,0,0" Padding="5,5,0,5" Width="455" HorizontalAlignment="Center" Foreground="Black" Background="White" BorderThickness="2" CaretBrush="Black" TextChanged="ProjectTextBox_TextChanged"/>
+        <ListBox Grid.Row="6" x:Name="ProjectListBox" Margin="0,12,0,20" Width="455" BorderThickness="0">
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
             </ListBoxItem>
-            <ListBoxItem>
-                <Button Padding="100,20,0,0" ></Button>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0" Padding="10,10,0,10">
+                <Button Foreground="Black">FileTest.shx</Button>
             </ListBoxItem>
         </ListBox>
 

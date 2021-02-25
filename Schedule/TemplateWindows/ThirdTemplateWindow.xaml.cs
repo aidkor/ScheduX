@@ -16,35 +16,36 @@ using Schedule.Resourses;
 namespace Schedule.TemplateWindows
 {
     /// <summary>
-    /// Interaction logic for FirstTemplateWindow.xaml
+    /// Interaction logic for ThirdTemplateWindow.xaml
     /// </summary>
-    public partial class FirstTemplateWindow : Window
+    public partial class ThirdTemplateWindow : Window
     {
-        public FirstTemplateWindow()
+        public ThirdTemplateWindow()
         {
             InitializeComponent();
             // HACK: Change this in XAML code with data binding
             this.Height = SystemParameters.PrimaryScreenHeight / 2;
-            this.Width = SystemParameters.PrimaryScreenWidth / 5;
-        }
-        private void CreateNewProject(object sender, RoutedEventArgs e)
-        {
-            new SecondTemplateWindow().Show();
-            Close();
-        }
-
-        private void OpenProject(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void ProjectTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            this.Width = SystemParameters.PrimaryScreenWidth / 2.8;
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
             IconHelper.RemoveIcon(this);
         }
 
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            new SecondTemplateWindow().Show();
+            Close();
+        }
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FindLocationButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

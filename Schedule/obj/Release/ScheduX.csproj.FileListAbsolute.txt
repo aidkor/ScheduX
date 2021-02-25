@@ -30,3 +30,5 @@ C:\Users\Asus\source\repos\Schedule\Schedule\obj\Release\TemplateWindows\FirstTe
 C:\Users\Asus\source\repos\Schedule\Schedule\obj\Release\TemplateWindows\FirstTemplateWindow.baml
 C:\Users\Asus\source\repos\Schedule\Schedule\obj\Release\TemplateWindows\SecondTemplateWindow.g.cs
 C:\Users\Asus\source\repos\Schedule\Schedule\obj\Release\TemplateWindows\SecondTemplateWindow.baml
+C:\Users\Asus\source\repos\Schedule\Schedule\obj\Release\TemplateWindows\ThirdTemplateWindow.g.cs
+C:\Users\Asus\source\repos\Schedule\Schedule\obj\Release\TemplateWindows\ThirdTemplateWindow.baml

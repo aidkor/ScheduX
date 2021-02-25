@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 using Microsoft.Windows.Themes;
+using Schedule.TemplateWindows;
 using System;
 using System.Diagnostics;
 using System.Windows;
