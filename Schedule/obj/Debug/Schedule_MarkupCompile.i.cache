@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Asus\source\repos\Schedule\Schedule\App.xaml
-2-100771021
+6-1409138501
 
-7-1277530871
-13-1505183044
-MainWindow.xaml;StartWindow.xaml;
+13-1891309772
+21848981523
+EditorWindow.xaml;StartWindow.xaml;TemplateWindows\ConfigurateProjectWindow.xaml;TemplateWindows\CreateOpenProjectWindow.xaml;Themes\ColourfulDarkTheme.xaml;Themes\ColourfulLightTheme.xaml;
 
-False
+True
 

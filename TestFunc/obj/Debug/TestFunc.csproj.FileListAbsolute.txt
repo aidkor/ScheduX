@@ -1,0 +1,7 @@
+C:\Users\Asus\source\repos\Schedule\TestFunc\bin\Debug\TestFunc.exe.config
+C:\Users\Asus\source\repos\Schedule\TestFunc\bin\Debug\TestFunc.exe
+C:\Users\Asus\source\repos\Schedule\TestFunc\bin\Debug\TestFunc.pdb
+C:\Users\Asus\source\repos\Schedule\TestFunc\obj\Debug\TestFunc.csprojAssemblyReference.cache
+C:\Users\Asus\source\repos\Schedule\TestFunc\obj\Debug\TestFunc.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\Schedule\TestFunc\obj\Debug\TestFunc.exe
+C:\Users\Asus\source\repos\Schedule\TestFunc\obj\Debug\TestFunc.pdb

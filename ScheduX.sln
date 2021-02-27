@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduX", "Schedule\ScheduX.csproj", "{56B7C0C7-8D90-4087-BDC6-15504FDCF635}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFunc", "TestFunc\TestFunc.csproj", "{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{56B7C0C7-8D90-4087-BDC6-15504FDCF635}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56B7C0C7-8D90-4087-BDC6-15504FDCF635}.Release|x86.ActiveCfg = Release|Any CPU
 		{56B7C0C7-8D90-4087-BDC6-15504FDCF635}.Release|x86.Build.0 = Release|Any CPU
+		{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}.Debug|x86.Build.0 = Debug|Any CPU
+		{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}.Release|x86.ActiveCfg = Release|Any CPU
+		{CDDC5071-C93D-45CF-AC00-2C6EE1109ECB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
