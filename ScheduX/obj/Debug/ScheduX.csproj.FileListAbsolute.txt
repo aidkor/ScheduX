@@ -1,12 +1,6 @@
 C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\ScheduX.exe.config
 C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\ScheduX.exe
 C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\ScheduX.pdb
-C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\Xceed.Wpf.AvalonDock.dll
-C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
-C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Expression.dll
-C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
-C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
-C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.csprojAssemblyReference.cache
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\StartWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\Resourses\Styles\ColourfulLightTheme.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\EditorWindow.g.cs
@@ -25,6 +19,6 @@ C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.g.resources
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.Properties.Resources.resources
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.csproj.GenerateResource.cache
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.csproj.CoreCompileInputs.cache
-C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.csproj.CopyComplete
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.exe
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.pdb
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.csprojAssemblyReference.cache

@@ -20,7 +20,8 @@ namespace ScheduX.UI
 {
     public partial class CreateOpenProjectWindow : Window
     {
-        ArrayList shxFiles = new ArrayList();
+        private ArrayList shxFiles = new ArrayList();
+        private ConfigurateProjectWindow window;
         public CreateOpenProjectWindow()
         {
             InitializeComponent();
@@ -30,9 +31,11 @@ namespace ScheduX.UI
             this.Width = SystemParameters.PrimaryScreenWidth / 5;
         }
         private void CreateNewProject(object sender, RoutedEventArgs e)
-        {
-            new ConfigurateProjectWindow().Show();
-            Close();
+        {            
+            window = window ?? new ConfigurateProjectWindow();
+            window.Owner = this;
+            window.Show();
+            Hide();
         }
         private void OpenProject(object sender, RoutedEventArgs e)
         {

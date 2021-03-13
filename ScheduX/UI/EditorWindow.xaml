@@ -3,13 +3,399 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ScheduX" 
-        xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock" 
-        xmlns:winformsIntegration="http://schemas.microsoft.com/netfx/2007/xaml/presentation"        
-        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        mc:Ignorable="d">
+        xmlns:local="clr-namespace:ScheduX"     
+        xmlns:winformsIntegration="http://schemas.microsoft.com/netfx/2007/xaml/presentation"               
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" MinWidth="360" MinHeight="360" Width="1225" Height="707">
 
-    <Grid>
-        
-    </Grid>
+    <DockPanel LastChildFill="True">
+        <StackPanel x:Name="StatusBar" Orientation="Horizontal" DockPanel.Dock="Bottom" Background="#FF27A0F7">
+            <TextBlock Text="StatusBar">
+
+            </TextBlock>
+        </StackPanel>
+
+        <Grid x:Name="LeftSideBar" DockPanel.Dock="Left" Background="#354052">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Background="#354052" BorderThickness="0" Click="Button_Click">
+                    <Image x:Name="LeftSideBarOpenCloseButtonImg" Grid.Column="1" Source="..\Resourses\Images\EditorWindowImg\back.png" Width="25" Height="25"/>
+                </Button>
+            </Grid>
+
+            <Grid  Grid.Row="2">
+                <StackPanel x:Name="LeftSideBarContent" Orientation="Vertical" Visibility="Visible">
+                    <TextBlock Text="Main" FontSize="11" Margin="18,17,0,8" Foreground="#8A9EB7" FontWeight="Bold"></TextBlock>
+
+                    <Button Grid.Row="1" Height="36"  Width="230"  Content="HOME" Background="#354052" Foreground="#7DABE0" FontWeight="Bold" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="8.5*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Grid.Column="0"  Source="..\Resourses\Images\EditorWindowImg\home_blue.png"   Width="17" Height="17" HorizontalAlignment="Right"/>
+                                            <ContentPresenter  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Row="1" Height="36"  Width="230"  Content="FILE" Background="#354052" Foreground="#7DABE0" FontWeight="Bold" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="8.5*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Grid.Column="0"  Source="..\Resourses\Images\EditorWindowImg\document_blue.png"   Width="16" Height="16" HorizontalAlignment="Right"/>
+                                            <ContentPresenter  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Row="1" Height="36"  Width="230"  Content="SETTINGS" Background="#354052" Foreground="#7DABE0" FontWeight="Bold" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="8.5*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Grid.Column="0"  Source="..\Resourses\Images\EditorWindowImg\settings_blue.png"   Width="16" Height="16" HorizontalAlignment="Right"/>
+                                            <ContentPresenter  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Row="1" Height="36"  Width="230"  Content="HELP" Background="#354052" Foreground="#7DABE0" FontWeight="Bold" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="8.5*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Grid.Column="0"  Source="..\Resourses\Images\EditorWindowImg\information_blue.png"  Width="16" Height="16" HorizontalAlignment="Right"/>
+                                            <ContentPresenter  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <TextBlock Text="Tools" FontSize="11" Margin="18,7,0,8" Foreground="#8A9EB7" FontWeight="Bold"></TextBlock>
+
+                    <Button Grid.Row="1" Height="36"  Width="230"  Content="SCHEDULE" Background="#354052" Foreground="#7DABE0" FontWeight="Bold" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="8.5*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Grid.Column="0"  Source="..\Resourses\Images\EditorWindowImg\table-grid_blue.png"  Width="16" Height="16" HorizontalAlignment="Right"/>
+                                            <ContentPresenter  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Grid.Row="1" Height="36"  Width="230"  Content="PRINT" Background="#354052" Foreground="#7DABE0" FontWeight="Bold" BorderThickness="0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="8.5*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Grid.Column="0"  Source="..\Resourses\Images\EditorWindowImg\printing_blue.png"  Width="16" Height="16" HorizontalAlignment="Right"/>
+                                            <ContentPresenter  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+      
+        <Grid x:Name="WorkingSpace" DockPanel.Dock="Right" Background="#EEF2F5">
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <WrapPanel HorizontalAlignment="Center">
+
+                    <!-- CONFIGURATE -->
+                    <Grid Margin="20,40,32,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="..\Resourses\Images\EditorWindowImg\school.png" Width="150"/>
+                        <Button Grid.Row="1" Height="32"  Width="230"  Content="CONFIGURATE" Background="#354052" FontWeight="Bold" MouseEnter="ButtonMouseEnterHandler" MouseLeave="ButtonMouseLeaveHandler">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="8*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <ContentPresenter  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0"/>
+                                                <Image Grid.Column="1"  Width="11" Height="11" HorizontalAlignment="Center">
+                                                    <Image.Source>
+                                                        <TransformedBitmap Source="..\Resourses\Images\EditorWindowImg\back.png" >
+                                                            <TransformedBitmap.Transform >
+                                                                <RotateTransform x:Name="RotationImg" Angle="270"/>
+                                                            </TransformedBitmap.Transform>
+                                                        </TransformedBitmap>
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Menu Grid.Row="2" x:Name="ConfigurateButtonList" Visibility="Collapsed" Background="White" Width="230" >
+                            <MenuItem  Height="30" Width="230" AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">PERIOD OF STUDY</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">TIMETABLE CALLS</Label>
+                                </MenuItem.Header>
+                            </MenuItem>                           
+                        </Menu>
+                    </Grid>
+                    
+                    <!-- DICTIONARY -->
+                    <Grid Margin="20,40,32,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="..\Resourses\Images\EditorWindowImg\book-of-black-cover-closed.png" Width="90" Margin="0,30,0,30"/>
+                        <Button  Grid.Row="1" Height="32"  Width="230"  Content="DICTIONARY" Background="#354052" FontWeight="Bold" VerticalAlignment="Top"  MouseEnter="ButtonMouseEnterHandler" MouseLeave="ButtonMouseLeaveHandler">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="8*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <ContentPresenter  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,30,0"/>
+                                                <Image Grid.Column="1"  Width="11" Height="11" HorizontalAlignment="Center">
+                                                    <Image.Source>
+                                                        <TransformedBitmap Source="..\Resourses\Images\EditorWindowImg\back.png" >
+                                                            <TransformedBitmap.Transform >
+                                                                <RotateTransform Angle="270"/>
+                                                            </TransformedBitmap.Transform>
+                                                        </TransformedBitmap>
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Menu Grid.Row="2" x:Name="DictionaryButtonList" Visibility="Collapsed" Background="White" Width="230" >
+                            <MenuItem  Height="30" Width="230" AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">CLASSES</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">TEACHERS</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">AUIDENCES</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">SUBJECTS</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </Menu>
+                    </Grid>
+
+                    <!-- LOAD -->
+                    <Grid Margin="20,40,32,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="..\Resourses\Images\EditorWindowImg\hard-work.png" Width="140"  Margin="0,5,0,5"/>
+                        <Button  Grid.Row="1" Height="32"  Width="230"  Content="LOAD" Background="#354052" FontWeight="Bold" VerticalAlignment="Top"  MouseEnter="ButtonMouseEnterHandler" MouseLeave="ButtonMouseLeaveHandler">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="8*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <ContentPresenter  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,50,0"/>
+                                                <Image Grid.Column="1"  Width="11" Height="11" HorizontalAlignment="Center">
+                                                    <Image.Source>
+                                                        <TransformedBitmap Source="..\Resourses\Images\EditorWindowImg\back.png" >
+                                                            <TransformedBitmap.Transform >
+                                                                <RotateTransform Angle="270"/>
+                                                            </TransformedBitmap.Transform>
+                                                        </TransformedBitmap>
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Menu Grid.Row="2" x:Name="LoadButtonList" Visibility="Collapsed" Background="White" Width="230" >
+                            <MenuItem  Height="30" Width="230" AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">CLASSES</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">TEACHERS</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">AUIDENCES</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">SUBJECTS</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </Menu>
+                    </Grid>
+
+                    <!-- GENERATE SCHEDULE -->
+                    <Grid Margin="20,40,32,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="..\Resourses\Images\EditorWindowImg\work-time.png" Width="130"  Margin="0,10,0,10"/>
+                        <Button  Grid.Row="1" Height="32"  Width="230"  Content="GENERATE SCHEDULE" Background="#354052" FontWeight="Bold" VerticalAlignment="Top"  MouseEnter="ButtonMouseEnterHandler" MouseLeave="ButtonMouseLeaveHandler">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="8*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <ContentPresenter  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                                                <Image Grid.Column="1"  Width="11" Height="11" HorizontalAlignment="Center">
+                                                    <Image.Source>
+                                                        <TransformedBitmap Source="..\Resourses\Images\EditorWindowImg\back.png" >
+                                                            <TransformedBitmap.Transform >
+                                                                <RotateTransform Angle="270"/>
+                                                            </TransformedBitmap.Transform>
+                                                        </TransformedBitmap>
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Menu Grid.Row="2" x:Name="ScheduleButtonList" Visibility="Collapsed" Background="White" Width="230" >
+                            <MenuItem  Height="30" Width="230" AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">CLASSES</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">TEACHERS</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">AUIDENCES</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem  Height="30" Width="230"  AllowDrop="True">
+                                <MenuItem.Header>
+                                    <Label Foreground="#3A36F4" FontWeight="Bold">SUBJECTS</Label>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </Menu>
+                    </Grid>
+
+                </WrapPanel>
+            </ScrollViewer>
+        </Grid>
+    </DockPanel>
 </Window>

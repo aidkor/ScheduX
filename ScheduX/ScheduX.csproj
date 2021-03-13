@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,28 +59,15 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="Xceed.Wpf.AvalonDock">
-      <HintPath>AvalonDockDLLs\Xceed.Wpf.AvalonDock.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
-      <HintPath>AvalonDockDLLs\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Expression">
-      <HintPath>AvalonDockDLLs\Xceed.Wpf.AvalonDock.Themes.Expression.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
-      <HintPath>AvalonDockDLLs\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
-      <HintPath>AvalonDockDLLs\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Logic\IconHelper.cs" />
+    <Compile Include="Resourses\IconHelper.cs" />
+    <Compile Include="Resourses\AppLogic\ProjectTemplate.cs" />
+    <Compile Include="Resourses\AppLogic\ShxFile.cs" />
     <Compile Include="UI\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
@@ -138,6 +127,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -174,6 +164,41 @@
     <Resource Include="Resourses\Images\EditorWindowImg\home_white.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\settings_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\home_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\settings_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resourses\DBLogic\" />
+    <Folder Include="Resourses\Images\TemplateWindowImg\" />
+    <Folder Include="Resourses\UILogic\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\information_blue.png" />
+    <Resource Include="Resourses\Images\EditorWindowImg\information_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\printing_blue.png" />
+    <Resource Include="Resourses\Images\EditorWindowImg\printing_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\document_blue.png" />
+    <Resource Include="Resourses\Images\EditorWindowImg\document_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\table-grid_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resourses\Images\EditorWindowImg\school.png" />
   </ItemGroup>
   <ItemGroup>
@@ -185,27 +210,12 @@
   <ItemGroup>
     <Resource Include="Resourses\Images\EditorWindowImg\work-time.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\settings_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\document_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\document_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\home_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\settings_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resourses\Images\TemplateWindowImg\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\information_blue.png" />
-    <Resource Include="Resourses\Images\EditorWindowImg\information_white.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
 </Project>

@@ -15,42 +15,53 @@ using System.IO;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using ScheduX.Resourses;
-
+using ScheduX.Resourses.AppLogic;
 
 namespace ScheduX.UI
 {
-    enum ProjectTemplate : byte
-    {
-        Kindergarten = 0,
-        SchoolTemplate = 1,
-        UniversityTemplate = 2
-    }
-    /// <summary>
-    /// Interaction logic for FirstTemplateWindow.xaml
-    /// </summary>
     public partial class ConfigurateProjectWindow : Window
     {
         private ProjectTemplate template;
         public ConfigurateProjectWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
 
             // HACK: Change this in XAML code with data binding
-            this.Height = SystemParameters.PrimaryScreenHeight / 2;
-            this.Width = SystemParameters.PrimaryScreenWidth / 5;
+           /* this.Height = SystemParameters.PrimaryScreenHeight / 2;
+            this.Width = SystemParameters.PrimaryScreenWidth / 5;*/
         }
-
+        // UNDONE: Change default file location 
         protected override void OnSourceInitialized(EventArgs e)
         {
             IconHelper.RemoveIcon(this);
+            LocationTextBox.Text = @"C:\Users\Asus\Desktop\DataBase";
         }
-
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            new CreateOpenProjectWindow().Show();
-            Close();
+            Owner.Show();
+            Hide();
         }
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ProjectNameTextBox.Text != "" & template != 0 & Directory.Exists(LocationTextBox.Text))
+            {
+                try
+                {
+                    ShxFile file = new ShxFile(ProjectNameTextBox.Text, LocationTextBox.Text);
+                    new EditorWindow(file.Initialize()).Show();
+                    Owner.Close();
+                }
+                catch (Exception)
+                {
+                    InfoLabel.Content = "You already have file with this name. Try anouther one !";
+                }
 
+            }
+            else if (ProjectNameTextBox.Text == "")
+            {
+                
+            }
+        }
         private void SearchPathButton_Click(object sender, RoutedEventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
@@ -63,33 +74,9 @@ namespace ScheduX.UI
                 }
             }
         }
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (ProjectNameTextBox.Text != "" & Directory.Exists(LocationTextBox.Text) & IsTemplateSelected())
-            {
-                // TODO: Add logic for creating project folder/files
-
-                new EditorWindow().Show();
-                Close();
-            }            
-
-           
-        }
-
         private void SchoolTemplate_Selected(object sender, RoutedEventArgs e)
         {
             template = ProjectTemplate.SchoolTemplate;
-        }
-        private bool IsTemplateSelected()
-        {
-            for (int i = 0; i < TemplateListBox.Items.Count; i++)
-            {
-                if (((ListBoxItem)TemplateListBox.Items[i]).IsSelected)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        }       
     }
 }

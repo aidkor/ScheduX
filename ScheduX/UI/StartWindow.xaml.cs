@@ -18,14 +18,13 @@ namespace ScheduX.UI
     /// Interaction logic for StartWindow.xaml
     /// </summary>
     public partial class StartWindow : Window
-    {
+    {        
         public StartWindow()
         {
             InitializeComponent();
-
-            // HACK: Change this in XAML code with data binding
-            this.Height = SystemParameters.PrimaryScreenHeight / 3;
-            this.Width = SystemParameters.PrimaryScreenWidth / 3.5;
+            
+            Height = SystemParameters.PrimaryScreenHeight / 3;
+            Width = SystemParameters.PrimaryScreenWidth / 3.5;           
         }
     }
 }
