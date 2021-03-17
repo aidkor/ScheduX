@@ -3,6 +3,9 @@ C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\ScheduX.exe
 C:\Users\Asus\source\repos\ScheduX\ScheduX\bin\Debug\ScheduX.pdb
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\StartWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\Resourses\Styles\ColourfulLightTheme.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\PeriodOfStudy\NewPeriodWindow.g.cs
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\PeriodOfStudy\PeriodOfStudyContextMenu.g.cs
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\PeriodOfStudy\PeriodOfStudyWindow.g.cs
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\EditorWindow.g.cs
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\StartWindow.g.cs
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\ConfigurateProjectWindow.g.cs
@@ -12,6 +15,9 @@ C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\App.g.cs
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX_MarkupCompile.cache
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX_MarkupCompile.lref
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\App.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\PeriodOfStudy\NewPeriodWindow.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\PeriodOfStudy\PeriodOfStudyContextMenu.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\PeriodOfStudy\PeriodOfStudyWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\EditorWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\ConfigurateProjectWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\CreateOpenProjectWindow.baml

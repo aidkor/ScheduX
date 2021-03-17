@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Asus\source\repos\ScheduX\ScheduX\App.xaml
-5-708141143
+8-1389099810
 
-122058705507
+181976545077
 171957059853
-UI\EditorWindow.xaml;UI\StartWindow.xaml;UI\ConfigurateProjectWindow.xaml;UI\CreateOpenProjectWindow.xaml;Resourses\Styles\ColourfulLightTheme.xaml;
+UI\PeriodOfStudy\NewPeriodWindow.xaml;UI\PeriodOfStudy\PeriodOfStudyContextMenu.xaml;UI\PeriodOfStudy\PeriodOfStudyWindow.xaml;UI\EditorWindow.xaml;UI\StartWindow.xaml;UI\ConfigurateProjectWindow.xaml;UI\CreateOpenProjectWindow.xaml;Resourses\Styles\ColourfulLightTheme.xaml;
 
 False
 

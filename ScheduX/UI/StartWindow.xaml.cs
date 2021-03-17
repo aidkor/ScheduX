@@ -21,10 +21,16 @@ namespace ScheduX.UI
     {        
         public StartWindow()
         {
-            InitializeComponent();
-            
-            Height = SystemParameters.PrimaryScreenHeight / 3;
-            Width = SystemParameters.PrimaryScreenWidth / 3.5;           
+            InitializeComponent();            
+            Height = SystemParameters.PrimaryScreenHeight / 3;            
+            Width = SystemParameters.PrimaryScreenWidth / 3.5;
+            DelayVisualization();
+        }
+        public async void DelayVisualization()
+        {          
+            await Task.Delay(2500);
+            new CreateOpenProjectWindow().Show();
+            Close();
         }
     }
 }

@@ -25,17 +25,21 @@ namespace ScheduX.UI
         public CreateOpenProjectWindow()
         {
             InitializeComponent();
-            FillProjectListBox();
-            // HACK: Change this in XAML code with data binding
+            //FillProjectListBox();
+            // HACK: Rewrite in XAML code
             this.Height = SystemParameters.PrimaryScreenHeight / 2;
             this.Width = SystemParameters.PrimaryScreenWidth / 5;
+        }
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            IconHelper.RemoveIcon(this);
         }
         private void CreateNewProject(object sender, RoutedEventArgs e)
         {            
             window = window ?? new ConfigurateProjectWindow();
             window.Owner = this;
             window.Show();
-            Hide();
+            this.Hide();
         }
         private void OpenProject(object sender, RoutedEventArgs e)
         {
@@ -44,18 +48,26 @@ namespace ScheduX.UI
             if (openFileDialog.ShowDialog() == true)
             {
                 new EditorWindow(openFileDialog.FileName).Show();
-                Close();
+                this.Close();
             }
         }
+
+        // UNDONE: Handling System For Projects ListBox
+        /*   
         private void ProjectTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             // UNDONE: Make sorting system
         }
         // TODO: Make as new stream
+        private void OpenProjectFromProjectListBoxByClick(object sender, RoutedEventArgs e)
+        {
+            new EditorWindow(((Button)sender).Tag).Show();
+            this.Close();
+        }
         private void FillProjectListBox()
         {
             // UNDONE: Change project path for default
-            string scheduxProjectDir = @"C:\Users\Asus\Desktop\Proj";
+            string scheduxProjectDir = @"C:\Users\Asus\Desktop\DataBase";
             SHXfileSearchSystem(scheduxProjectDir, ref shxFiles);
 
             for (int i = 0; i < shxFiles.Count; i++)
@@ -104,11 +116,6 @@ namespace ScheduX.UI
                 ProjectListBox.Items.Add(button);
             }
         }
-        private void OpenProjectFromProjectListBoxByClick(object sender, RoutedEventArgs e)
-        {
-            new EditorWindow(((Button)sender).Tag).Show();
-            Close();
-        }
         private void SHXfileSearchSystem(string dirPath, ref ArrayList files)
         {
             try
@@ -144,11 +151,6 @@ namespace ScheduX.UI
             }
 
             return result;
-        }
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            IconHelper.RemoveIcon(this);
-        }
-
+        }*/
     }
 }

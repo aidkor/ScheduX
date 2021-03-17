@@ -65,6 +65,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resourses\AppLogic\Dictionary.cs" />
+    <Compile Include="Resourses\AppLogic\Element.cs" />
+    <Compile Include="Resourses\AppLogic\IDBHandable.cs" />
+    <Compile Include="UI\PeriodOfStudy\NewPeriodWindow.xaml.cs">
+      <DependentUpon>NewPeriodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PeriodOfStudy\PeriodOfStudyContextMenu.xaml.cs">
+      <DependentUpon>PeriodOfStudyContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PeriodOfStudy\PeriodOfStudyWindow.xaml.cs">
+      <DependentUpon>PeriodOfStudyWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resourses\IconHelper.cs" />
     <Compile Include="Resourses\AppLogic\ProjectTemplate.cs" />
     <Compile Include="Resourses\AppLogic\ShxFile.cs" />
@@ -80,6 +92,18 @@
     <Compile Include="Resourses\Styles\ColourfulLightTheme.xaml.cs">
       <DependentUpon>ColourfulLightTheme.xaml</DependentUpon>
     </Compile>
+    <Page Include="UI\PeriodOfStudy\NewPeriodWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PeriodOfStudy\PeriodOfStudyContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PeriodOfStudy\PeriodOfStudyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\EditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -174,7 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resourses\DBLogic\" />
-    <Folder Include="Resourses\Images\TemplateWindowImg\" />
     <Folder Include="Resourses\UILogic\" />
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +232,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Images\EditorWindowImg\work-time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\cross-sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\PeriodOfStudyImg\copy.png" />
+    <Resource Include="Resourses\Images\PeriodOfStudyImg\edit.png" />
+    <Resource Include="Resourses\Images\PeriodOfStudyImg\select.png" />
+    <Resource Include="Resourses\Images\PeriodOfStudyImg\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\PeriodOfStudyImg\paste_active.png" />
+    <Resource Include="Resourses\Images\PeriodOfStudyImg\paste_disable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

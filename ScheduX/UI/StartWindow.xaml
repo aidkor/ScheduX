@@ -11,6 +11,6 @@
         </Grid.Background>
 
         <TextBlock Text="ScheduX" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Viner Hand ITC"  Foreground="White" />
-        <TextBlock x:Name="T" Text="2021" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15 " FontFamily="Viner Hand ITC"  Foreground="White" FontWeight="Bold" Margin="0,0,30,20" />
+        <TextBlock Text="2021" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15 " FontFamily="Viner Hand ITC"  Foreground="White" FontWeight="Bold" Margin="0,0,30,20" />
     </Grid>
 </Window>

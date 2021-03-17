@@ -47,9 +47,7 @@ namespace ScheduX.UI
             {
                 try
                 {
-                    ShxFile file = new ShxFile(ProjectNameTextBox.Text, LocationTextBox.Text);
-                    new EditorWindow(file.Initialize()).Show();
-                    Owner.Close();
+                    DelayVisualization();   
                 }
                 catch (Exception)
                 {
@@ -77,6 +75,13 @@ namespace ScheduX.UI
         private void SchoolTemplate_Selected(object sender, RoutedEventArgs e)
         {
             template = ProjectTemplate.SchoolTemplate;
-        }       
+        }
+        public async void DelayVisualization()
+        {
+            await Task.Delay(2500);
+            ShxFile file = new ShxFile(ProjectNameTextBox.Text, LocationTextBox.Text);
+            new EditorWindow(file.Initialize()).Show();
+            Owner.Close();
+        }
     }
 }

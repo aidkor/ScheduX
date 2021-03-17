@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ScheduX.Resourses;
+using ScheduX.UI.PeriodOfStudy;
 
 namespace ScheduX.UI
 {
@@ -21,11 +22,11 @@ namespace ScheduX.UI
     /// </summary>
     public partial class EditorWindow : Window
     {
+        PeriodOfStudyWindow PeriodOfStudyWindow { get; set; }
         private object shxProjectFile { get; set; }
         public EditorWindow()
         {
-            InitializeComponent();
-            // HACK: Change this in XAML code with data binding
+            InitializeComponent();          
             Height = SystemParameters.PrimaryScreenHeight / 1.9;
             Width = SystemParameters.PrimaryScreenWidth / 2;
         }
@@ -36,15 +37,9 @@ namespace ScheduX.UI
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
-            LeftSideBarContent.Visibility = Visibility.Collapsed;
-            LeftSideBarOpenCloseButtonImg.Source = new BitmapImage(new Uri(@"..\Resourses\Images\EditorWindowImg\menu.png", UriKind.Relative));
-            LeftSideBarOpenCloseButtonImg.Margin = new Thickness(17, 0, 17, 0);
-            LeftSideBarOpenCloseButtonImg.Height = 24;
-            LeftSideBarOpenCloseButtonImg.Width = 24;
+            IconHelper.RemoveIcon(this);  
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenCloseLeftSideBarButton(object sender, RoutedEventArgs e)
         {
             if (LeftSideBarContent.IsVisible)
             {
@@ -62,16 +57,66 @@ namespace ScheduX.UI
                 LeftSideBarOpenCloseButtonImg.Width = 24;
             }
         }
+        private void PeriodOfStudyItemHandler(object sender, RoutedEventArgs e)
+        {
+            if (PeriodOfStudyWindow == null)
+            {
+                PeriodOfStudyWindow = new PeriodOfStudyWindow();
+                PeriodOfStudyWindow.Owner = this;
+                PeriodOfStudyWindow.Show();
+            }
+            else
+            {
+                PeriodOfStudyWindow.Show();
+            }
+        }
 
-
+        // HACK: Rewrite in XAML code
+        #region
         private void ButtonMouseEnterHandler(object sender, MouseEventArgs e)
         {
             ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
+            ConfigurateMenu.Visibility = Visibility.Visible;
         }
 
         private void ButtonMouseLeaveHandler(object sender, MouseEventArgs e)
         {
             ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
+            ConfigurateMenu.Visibility = Visibility.Collapsed;
+        }
+        private void ButtonMouseEnterHandler1(object sender, MouseEventArgs e)
+        {
+            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
+            DictionaryButtonList.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonMouseLeaveHandler1(object sender, MouseEventArgs e)
+        {
+            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
+            DictionaryButtonList.Visibility = Visibility.Collapsed;
+        }
+        private void ButtonMouseEnterHandler2(object sender, MouseEventArgs e)
+        {
+            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
+            LoadButtonList.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonMouseLeaveHandler2(object sender, MouseEventArgs e)
+        {
+            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
+            LoadButtonList.Visibility = Visibility.Collapsed;
+        }
+        #endregion
+        // =============================================================================================
+
+        private void MenuMouseEnterHandler(object sender, MouseEventArgs e)
+        {
+            ((Menu)sender).Visibility = Visibility.Visible;
+        }
+
+        private void MenuMouseLeaveHandler(object sender, MouseEventArgs e)
+        {
+            ((Menu)sender).Visibility = Visibility.Collapsed;
         }
     }
 }
