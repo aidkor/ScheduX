@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ScheduX.UI.PeriodOfStudy
+namespace ScheduX.UI.Pages
 {
     /// <summary>
-    /// Interaction logic for PeriodOfStudyContextMenu.xaml
+    /// Interaction logic for Help.xaml
     /// </summary>
-    public partial class PeriodOfStudyContextMenu : Window
+    public partial class Help : Page
     {
-        public PeriodOfStudyContextMenu()
+        public Help()
         {
             InitializeComponent();
-        
         }
     }
 }

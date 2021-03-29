@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:ScheduX"
         mc:Ignorable="d"
         Height="500" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="OnClosed">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -19,44 +20,61 @@
         
         <!-- Toolbar -->
         <StackPanel x:Name="Toolbar" Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="Select"  Width="81" Height="24" Margin="25,26,0,0" Content="SELECT" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="Select_Click" Style="{DynamicResource RoundedCorners}"/>
-            <Button x:Name="New" Width="81" Height="24" Margin="12,26,0,0" Content="NEW" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="New_Click" Style="{DynamicResource RoundedCorners}"/>
+            <Button x:Name="Select"  Width="90" Height="26" Margin="25,26,0,0" Content="SELECT" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="Select_Click" Style="{DynamicResource RoundedCorners}"/>
+            <Button x:Name="New" Width="90" Height="26"  Margin="12,26,0,0" Content="NEW" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="New_Click" Style="{DynamicResource RoundedCorners}"/>
         </StackPanel>
 
         <!-- List of periods-->
         <ListView  x:Name="PeriodsList" Grid.Row="2" Margin="25,12,25,15" BorderBrush="#595959" Height="350" Cursor="Arrow">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Command="Select">
+                    <MenuItem x:Name="ContextMenuSelectButton" Header="select" Foreground="#FF343434" Margin="0,1" Click="ContextMenuSelectButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/select.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="Copy">
+                    <MenuItem x:Name="EditMenuSelectButton" Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="EditMenuSelectButton_Click">
+                        <MenuItem.Icon>
+                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/edit.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="CopyMenuSelectButton" Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="CopyMenuSelectButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Command="Paste">
-                        <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/paste_disable.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Command="Delete">
+                    <MenuItem x:Name="DeleteMenuSelectButton" Header="delete" Foreground="#FF343434" Click="DeleteMenuSelectButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/trash.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
             </ListView.ContextMenu>
+            
             <ListView.View>
                 <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn Width="60" Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Width="60" Header="Starts" DisplayMemberBinding="{Binding StartYear}"/>
-                        <GridViewColumn Width="60" Header="Ends" DisplayMemberBinding="{Binding EndYear}"/>
-                        <GridViewColumn Width="100" Header="Working Weeks" DisplayMemberBinding="{Binding WorkingWeeks}"/>
-                    </GridView.Columns>
+                    <GridView.ColumnHeaderContextMenu>
+                        <ContextMenu>
+                            <ContextMenu.Template>
+                                <ControlTemplate>
+                                    <Border BorderBrush="Transparent" Background="Transparent" />
+                                </ControlTemplate>
+                            </ContextMenu.Template>
+                        </ContextMenu>
+                    </GridView.ColumnHeaderContextMenu>
+
+                    <GridViewColumn Width="140"  DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumnHeader Content="NAME" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding StartYear}">
+                        <GridViewColumnHeader Content="STARTS" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding EndYear}">
+                        <GridViewColumnHeader Content="ENDS" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding WorkingWeeks}">
+                        <GridViewColumnHeader Content="WORKING WEEKS" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

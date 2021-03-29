@@ -21,48 +21,52 @@ namespace ScheduX.UI.PeriodOfStudy
     /// </summary>
     public partial class NewPeriodWindow : Window
     {
-        private StudyPeriodDictionary periods;
         public NewPeriodWindow()
         {
             InitializeComponent();
-            periods = new StudyPeriodDictionary();
 
-        }
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            IconHelper.RemoveIcon(this);
-        }
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            ResetControls();
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (!CheckEmptyFields())
+            if (!IsWrongTextBoxValue())
             {
-                if (!uint.TryParse(WeeksTextBox.Text, out uint weeks))
+                PeriodElement period = new SchoolPeriodElement(NameTextBox.Text, uint.Parse(WeeksTextBox.Text), uint.Parse(YearTextBox_1.Text), uint.Parse(YearTextBox_2.Text));
+                (Owner as PeriodOfStudyWindow)?.SchoolStudyPeriodDictionary.dictionaryList.Add(period);
+                foreach (ListView item in FindVisualChildren<ListView>(this.Owner))
                 {
-                    WeeksTextBox.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                    item.Items.Add(period);
                 }
-                if (!uint.TryParse(YearTextBox_1.Text, out uint starts))
+                ResetControls();
+            }
+        }
+        private bool IsWrongTextBoxValue()
+        {
+            bool flag = false;
+            foreach (TextBox item in FindVisualChildren<TextBox>(this))
+            {
+                if (item.Name == "NameTextBox")
                 {
-                    YearTextBox_1.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
-                }
-                if (!uint.TryParse(YearTextBox_2.Text, out uint ends))
-                {
-                    YearTextBox_2.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
-                }
-                else
-                {
-                    SchoolPeriod period = new SchoolPeriod(NameTextBox.Text, weeks, starts, ends);
-                    periods.dictionaryList.Add(period);
-                    foreach (ListView item in FindVisualChildren<ListView>(this.Owner))
+                    if (item.Text == "")
                     {
-                        item.Items.Add(period);
+                        item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                        flag = true;
                     }
-                    ResetControls();
+                }
+                else if (item.Text == "" || !uint.TryParse(item.Text, out uint _))
+                {
+                    item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                    flag = true;
                 }
             }
+
+            uint.TryParse(YearTextBox_1.Text, out uint startYear);
+            uint.TryParse(YearTextBox_2.Text, out uint endYear);
+            if (startYear > endYear)
+            {
+                YearTextBox_1.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                flag = true;
+            }
+            return flag;
         }
         private void ResetControls()
         {
@@ -91,20 +95,18 @@ namespace ScheduX.UI.PeriodOfStudy
                 }
             }
         }
-        public bool CheckEmptyFields()
-        {
-            foreach (TextBox item in FindVisualChildren<TextBox>(this))
-            {
-                if (item.Text == "")
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             ((TextBox)sender).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#595959");
+        }
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            IconHelper.RemoveIcon(this);
+        }
+        private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            ResetControls();
         }
     }
 }

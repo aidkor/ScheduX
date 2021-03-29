@@ -47,7 +47,7 @@ namespace ScheduX.UI
             {
                 try
                 {
-                    DelayVisualization();   
+                    CreateWithDelay();   
                 }
                 catch (Exception)
                 {
@@ -76,11 +76,10 @@ namespace ScheduX.UI
         {
             template = ProjectTemplate.SchoolTemplate;
         }
-        public async void DelayVisualization()
+        public async void CreateWithDelay()
         {
-            await Task.Delay(2500);
-            ShxFile file = new ShxFile(ProjectNameTextBox.Text, LocationTextBox.Text);
-            new EditorWindow(file.Initialize()).Show();
+            await Task.Delay(2500);            
+            new EditorWindow(LocationTextBox.Text).Show();
             Owner.Close();
         }
     }

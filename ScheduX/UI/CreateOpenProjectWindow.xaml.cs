@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
 using ScheduX.Resourses;
+using ScheduX.Resourses.AppLogic;
 using System.Collections;
 
 namespace ScheduX.UI
@@ -30,10 +31,6 @@ namespace ScheduX.UI
             this.Height = SystemParameters.PrimaryScreenHeight / 2;
             this.Width = SystemParameters.PrimaryScreenWidth / 5;
         }
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            IconHelper.RemoveIcon(this);
-        }
         private void CreateNewProject(object sender, RoutedEventArgs e)
         {            
             window = window ?? new ConfigurateProjectWindow();
@@ -46,7 +43,7 @@ namespace ScheduX.UI
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "shx Files (*.shx)|*.shx";
             if (openFileDialog.ShowDialog() == true)
-            {
+            {                
                 new EditorWindow(openFileDialog.FileName).Show();
                 this.Close();
             }
@@ -152,5 +149,9 @@ namespace ScheduX.UI
 
             return result;
         }*/
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            IconHelper.RemoveIcon(this);
+        }
     }
 }

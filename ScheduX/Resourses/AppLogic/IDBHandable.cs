@@ -6,14 +6,25 @@ using System.Threading.Tasks;
 
 namespace ScheduX.Resourses.AppLogic
 {
-    interface IDBHandable
+    public interface IDBHandable
     {
         void Add();
         void Edit();
         void Remove();
     }
-    interface StudyPeriodDictionaryDBHandler : IDBHandable
+    public class StudyPeriodDictionaryDBHandler : IDBHandable
     {
+        public void Add()
+        {
 
+        }
+        public void Edit()
+        {
+
+        }
+        public void Remove()
+        {
+
+        }
     }
 }

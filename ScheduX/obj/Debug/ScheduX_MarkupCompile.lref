@@ -1,9 +1,18 @@
 ﻿
 FC:\Users\Asus\source\repos\ScheduX\ScheduX\App.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\Classes\ClassesWindow.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\Classes\NewClassWindow.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\Pages\Help.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\Pages\Home.xaml;;
 FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\PeriodOfStudy\NewPeriodWindow.xaml;;
-FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\PeriodOfStudy\PeriodOfStudyContextMenu.xaml;;
 FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\PeriodOfStudy\PeriodOfStudyWindow.xaml;;
 FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\EditorWindow.xaml;;
 FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\ConfigurateProjectWindow.xaml;;
 FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\CreateOpenProjectWindow.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\Teachers\NewTeacherWindow.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\Teachers\TeachersWindow.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\TimetableCalls\CallWindow.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\TimetableCalls\CallsWindow.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\TimetableCalls\NewTimetableCallsWindow.xaml;;
+FC:\Users\Asus\source\repos\ScheduX\ScheduX\UI\TimetableCalls\TimetableCallsWindow.xaml;;
 

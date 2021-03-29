@@ -68,18 +68,27 @@
     <Compile Include="Resourses\AppLogic\Dictionary.cs" />
     <Compile Include="Resourses\AppLogic\Element.cs" />
     <Compile Include="Resourses\AppLogic\IDBHandable.cs" />
+    <Compile Include="Resourses\AppLogic\ShxFileTools.cs" />
+    <Compile Include="UI\Classes\ClassesWindow.xaml.cs">
+      <DependentUpon>ClassesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Classes\NewClassWindow.xaml.cs">
+      <DependentUpon>NewClassWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\PeriodOfStudy\NewPeriodWindow.xaml.cs">
       <DependentUpon>NewPeriodWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\PeriodOfStudy\PeriodOfStudyContextMenu.xaml.cs">
-      <DependentUpon>PeriodOfStudyContextMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\PeriodOfStudy\PeriodOfStudyWindow.xaml.cs">
       <DependentUpon>PeriodOfStudyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resourses\IconHelper.cs" />
     <Compile Include="Resourses\AppLogic\ProjectTemplate.cs" />
-    <Compile Include="Resourses\AppLogic\ShxFile.cs" />
     <Compile Include="UI\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
@@ -92,11 +101,41 @@
     <Compile Include="Resourses\Styles\ColourfulLightTheme.xaml.cs">
       <DependentUpon>ColourfulLightTheme.xaml</DependentUpon>
     </Compile>
-    <Page Include="UI\PeriodOfStudy\NewPeriodWindow.xaml">
+    <Compile Include="UI\Teachers\NewTeacherWindow.xaml.cs">
+      <DependentUpon>NewTeacherWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Teachers\TeachersWindow.xaml.cs">
+      <DependentUpon>TeachersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TimetableCalls\CallWindow.xaml.cs">
+      <DependentUpon>CallWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TimetableCalls\CallsWindow.xaml.cs">
+      <DependentUpon>CallsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TimetableCalls\NewTimetableCallsWindow.xaml.cs">
+      <DependentUpon>NewTimetableCallsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TimetableCalls\TimetableCallsWindow.xaml.cs">
+      <DependentUpon>TimetableCallsWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="UI\Classes\ClassesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PeriodOfStudy\PeriodOfStudyContextMenu.xaml">
+    <Page Include="UI\Classes\NewClassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\Help.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PeriodOfStudy\NewPeriodWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +170,30 @@
     <Page Include="Resourses\Styles\ColourfulLightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Teachers\NewTeacherWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Teachers\TeachersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\TimetableCalls\CallWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\TimetableCalls\CallsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\TimetableCalls\NewTimetableCallsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\TimetableCalls\TimetableCallsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

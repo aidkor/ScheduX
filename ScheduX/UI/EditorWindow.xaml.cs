@@ -13,7 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ScheduX.Resourses;
+using ScheduX.UI.Pages;
 using ScheduX.UI.PeriodOfStudy;
+using ScheduX.UI.Classes;
+using ScheduX.Resourses.AppLogic;
 
 namespace ScheduX.UI
 {
@@ -22,22 +25,31 @@ namespace ScheduX.UI
     /// </summary>
     public partial class EditorWindow : Window
     {
-        PeriodOfStudyWindow PeriodOfStudyWindow { get; set; }
-        private object shxProjectFile { get; set; }
+        Home HomePage { get; set; } 
+       
+        private string shxFilePath { get; set; }
         public EditorWindow()
         {
-            InitializeComponent();          
-            Height = SystemParameters.PrimaryScreenHeight / 1.9;
-            Width = SystemParameters.PrimaryScreenWidth / 2;
+            InitializeComponent();
+            HomePage = new Home(this);
+            SetWindowSize();         
+            SetStartPage();
         }
-        public EditorWindow(object filePath)
+        public EditorWindow(string filePath)
         {
             InitializeComponent();
-            shxProjectFile = filePath;
+            SetWindowSize();
+            // Shx Parser Work
+            shxFilePath = filePath;            
         }
-        protected override void OnSourceInitialized(EventArgs e)
+        private void SetStartPage()
         {
-            IconHelper.RemoveIcon(this);  
+            WorkingSpace.Content = HomePage;
+        }
+        private void SetWindowSize()
+        {
+            Height = SystemParameters.PrimaryScreenHeight / 1.9;
+            Width = SystemParameters.PrimaryScreenWidth / 2;
         }
         private void OpenCloseLeftSideBarButton(object sender, RoutedEventArgs e)
         {
@@ -56,67 +68,30 @@ namespace ScheduX.UI
                 LeftSideBarOpenCloseButtonImg.Height = 24;
                 LeftSideBarOpenCloseButtonImg.Width = 24;
             }
-        }
-        private void PeriodOfStudyItemHandler(object sender, RoutedEventArgs e)
+        }      
+        protected override void OnSourceInitialized(EventArgs e)
         {
-            if (PeriodOfStudyWindow == null)
-            {
-                PeriodOfStudyWindow = new PeriodOfStudyWindow();
-                PeriodOfStudyWindow.Owner = this;
-                PeriodOfStudyWindow.Show();
-            }
-            else
-            {
-                PeriodOfStudyWindow.Show();
-            }
+            IconHelper.RemoveIcon(this);
         }
-
-        // HACK: Rewrite in XAML code
-        #region
-        private void ButtonMouseEnterHandler(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
-            ConfigurateMenu.Visibility = Visibility.Visible;
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {            
+            WorkingSpace.Content = HomePage;
         }
-
-        private void ButtonMouseLeaveHandler(object sender, MouseEventArgs e)
+        private void FileButton_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
-            ConfigurateMenu.Visibility = Visibility.Collapsed;
+            WorkingSpace.Content = null;
         }
-        private void ButtonMouseEnterHandler1(object sender, MouseEventArgs e)
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
-            DictionaryButtonList.Visibility = Visibility.Visible;
+            WorkingSpace.Content = null;
         }
-
-        private void ButtonMouseLeaveHandler1(object sender, MouseEventArgs e)
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
-            DictionaryButtonList.Visibility = Visibility.Collapsed;
+            WorkingSpace.Content = null;
         }
-        private void ButtonMouseEnterHandler2(object sender, MouseEventArgs e)
+        private void ScheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
-            LoadButtonList.Visibility = Visibility.Visible;
-        }
-
-        private void ButtonMouseLeaveHandler2(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
-            LoadButtonList.Visibility = Visibility.Collapsed;
-        }
-        #endregion
-        // =============================================================================================
-
-        private void MenuMouseEnterHandler(object sender, MouseEventArgs e)
-        {
-            ((Menu)sender).Visibility = Visibility.Visible;
-        }
-
-        private void MenuMouseLeaveHandler(object sender, MouseEventArgs e)
-        {
-            ((Menu)sender).Visibility = Visibility.Collapsed;
+            WorkingSpace.Content = null;
         }
     }
 }
