@@ -24,6 +24,7 @@ namespace ScheduX.UI.PeriodOfStudy
     public partial class PeriodOfStudyWindow : Window
     {
         public NewPeriodWindow NewPeriodWindowInstance { get; set; }
+        public NewPeriodWindowEdit NewPeriodWindowInstanceEdit { get; set; }
         public StudyPeriodDictionary SchoolStudyPeriodDictionary { get; set; }
         public PeriodOfStudyWindow()
         {
@@ -38,7 +39,14 @@ namespace ScheduX.UI.PeriodOfStudy
             }
             else
             {
-                this.Close();
+                if (PeriodsList.SelectedItems.Count > 1)
+                {
+                    MessageBox.Show("You have selected more than 1 period");
+                }
+                else
+                {
+                    this.Close();
+                }
             }
         }
         private void New_Click(object sender, RoutedEventArgs e)
@@ -68,64 +76,71 @@ namespace ScheduX.UI.PeriodOfStudy
                 ((GridViewColumnHeader)sender).Column.Width = 100;
             }
         }
-
         private void ContextMenuSelectButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PeriodsList.SelectedItem == null)
-            {
-                MessageBox.Show("Period is not selected");
-            }
-            else
+            if (PeriodsList.SelectedItem != null & PeriodsList.SelectedItems.Count == 1)
             {
                 this.Close();
             }
-        }
-
-        private void EditMenuSelectButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (PeriodsList.SelectedItem != null)
+            else
             {
-                
+                MessageBox.Show("Choose one period");
             }
-            
+        }
+        // UNDONE: ...
+        private void ContextMenuEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PeriodsList.SelectedItem != null & PeriodsList.SelectedItems.Count == 1)
+            {
+                NewPeriodWindowInstanceEdit = NewPeriodWindowInstanceEdit ?? new NewPeriodWindowEdit();
+                NewPeriodWindowInstanceEdit.Owner = this;
+
+                NewPeriodWindowInstanceEdit.NameTextBox.Text = ((SchoolPeriodElement)PeriodsList.SelectedItem).Name;
+                NewPeriodWindowInstanceEdit.WeeksTextBox.Text = ((SchoolPeriodElement)PeriodsList.SelectedItem).WorkingWeeks.ToString();
+                NewPeriodWindowInstanceEdit.YearTextBox_1.Text = ((SchoolPeriodElement)PeriodsList.SelectedItem).StartYear.ToString();
+                NewPeriodWindowInstanceEdit.YearTextBox_2.Text = ((SchoolPeriodElement)PeriodsList.SelectedItem).EndYear.ToString();
+
+                NewPeriodWindowInstanceEdit.Show();
+            }
+            else
+            {
+                MessageBox.Show("Choose one period");
+            }
         }
 
-        private void CopyMenuSelectButton_Click(object sender, RoutedEventArgs e)
+        private void ContextMenuCopyButton_Click(object sender, RoutedEventArgs e)
         {
             if (PeriodsList.SelectedItems != null)
             {
                 foreach (SchoolPeriodElement item in PeriodsList.SelectedItems)
                 {
-                    SchoolStudyPeriodDictionary.dictionaryList.Add(item);
-                    PeriodsList.Items.Add(item);
+                    var period = new SchoolPeriodElement(item.Name, item.WorkingWeeks, item.StartYear, item.EndYear);
+                    SchoolStudyPeriodDictionary.dictionaryList.Add(period);                    
+                    PeriodsList.Items.Add(period);
                 }
             }
-        }
-        private void DeleteMenuSelectButton_Click(object sender, RoutedEventArgs e)
+        }        
+        private void ContextMenuDeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            // UNDONE: Delete Error
             if (PeriodsList.SelectedItems != null)
             {
                 MessageBoxResult result = MessageBox.Show("Sure want to delete ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
-                    {                               
-                        foreach (SchoolPeriodElement item in PeriodsList.SelectedItems)
-                        {                
-                            
-                            MessageBox.Show(PeriodsList.SelectedItems.ToString());
-                            SchoolStudyPeriodDictionary.dictionaryList.Remove(item);
-                            PeriodsList.Items.Remove(item);
+                    {
+                        while (PeriodsList.SelectedItems.Count != 0)
+                        {
+                            SchoolStudyPeriodDictionary.dictionaryList.RemoveAll(period => period.GetHashCode() == PeriodsList.SelectedItems[0].GetHashCode());
+                            PeriodsList.Items.RemoveAt(PeriodsList.Items.IndexOf(PeriodsList.SelectedItems[0]));
                         }
                         break;
                     }
-                        
-                    case MessageBoxResult.No:                       
-                        break;                    
+
+                    case MessageBoxResult.No:
+                        break;
                 }
-                
-            }           
-        }
+            }
+        }      
     }
 }

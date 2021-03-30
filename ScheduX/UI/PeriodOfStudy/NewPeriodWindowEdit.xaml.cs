@@ -19,26 +19,13 @@ namespace ScheduX.UI.PeriodOfStudy
     /// <summary>
     /// Interaction logic for NewPeriodWindow.xaml
     /// </summary>
-    public partial class NewPeriodWindow : Window
+    public partial class NewPeriodWindowEdit : Window
     {
-        public NewPeriodWindow()
+        public NewPeriodWindowEdit()
         {
             InitializeComponent();
 
-        }
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            if (!IsWrongTextBoxValue())
-            {
-                PeriodElement period = new SchoolPeriodElement(NameTextBox.Text, uint.Parse(WeeksTextBox.Text), uint.Parse(YearTextBox_1.Text), uint.Parse(YearTextBox_2.Text));
-                ((PeriodOfStudyWindow)this.Owner).SchoolStudyPeriodDictionary.dictionaryList.Add(period);
-                foreach (ListView item in FindVisualChildren<ListView>(this.Owner))
-                {
-                    item.Items.Add(period);
-                }
-                ResetControls();
-            }
-        }
+        }      
         private bool IsWrongTextBoxValue()
         {
             bool flag = false;
@@ -107,6 +94,21 @@ namespace ScheduX.UI.PeriodOfStudy
         {
             e.Cancel = true;
             ResetControls();
+        }
+
+        private void Done_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsWrongTextBoxValue())
+            {
+                //((PeriodOfStudyWindow)Owner).SchoolStudyPeriodDictionary.dictionaryList.Find(item => item.)
+
+
+                /*((SchoolPeriodElement)((PeriodOfStudyWindow)Owner).PeriodsList.SelectedItem).Name = NameTextBox.Text;
+                ((SchoolPeriodElement)((PeriodOfStudyWindow)Owner).PeriodsList.SelectedItem).WorkingWeeks = uint.Parse(WeeksTextBox.Text);
+                ((SchoolPeriodElement)((PeriodOfStudyWindow)Owner).PeriodsList.SelectedItem).StartYear = uint.Parse(YearTextBox_1.Text);
+                ((SchoolPeriodElement)((PeriodOfStudyWindow)Owner).PeriodsList.SelectedItem).EndYear = uint.Parse(YearTextBox_2.Text);*/
+                ResetControls();
+            }          
         }
     }
 }

@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 namespace ScheduX.Resourses.AppLogic
 {
     public abstract class Element
-    {
+    {        
         public virtual string Name { get; set; }        
         // Add Shx Project Type Dependency 
     }
     public abstract class PeriodElement : Element
     {
-       
     }
     public abstract class CallScheduleElement : Element
     {
@@ -29,12 +28,12 @@ namespace ScheduX.Resourses.AppLogic
     //=============================================
     //=============================================
     public class SchoolPeriodElement : PeriodElement
-    {        
+    {                
         public uint WorkingWeeks { get; set; }
         public uint StartYear { get; set; }
         public uint EndYear { get; set; }
         public SchoolPeriodElement(string name, uint workingWeeks, uint startYear, uint endYear)
-        {
+        {            
             Name = name;
             WorkingWeeks = workingWeeks;
             StartYear = startYear;

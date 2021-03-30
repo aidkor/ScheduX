@@ -33,17 +33,17 @@
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/select.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="EditMenuSelectButton" Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="EditMenuSelectButton_Click">
+                    <MenuItem x:Name="ContextMenuEditButton" Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuEditButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/edit.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="CopyMenuSelectButton" Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="CopyMenuSelectButton_Click">
+                    <MenuItem x:Name="ContextMenuCopyButton" Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuCopyButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="DeleteMenuSelectButton" Header="delete" Foreground="#FF343434" Click="DeleteMenuSelectButton_Click">
+                    <MenuItem x:Name="ContextMenuDeleteButton" Header="delete" Foreground="#FF343434" Click="ContextMenuDeleteButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/trash.png" />
                         </MenuItem.Icon>

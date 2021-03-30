@@ -46,3 +46,5 @@ C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Teachers\NewTeacherWindo
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Teachers\TeachersWindow.g.cs
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Teachers\NewTeacherWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Teachers\TeachersWindow.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\PeriodOfStudy\NewPeriodWindowEdit.g.cs
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\PeriodOfStudy\NewPeriodWindowEdit.baml

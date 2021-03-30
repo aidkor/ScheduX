@@ -81,6 +81,9 @@
     <Compile Include="UI\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\PeriodOfStudy\NewPeriodWindowEdit.xaml.cs">
+      <DependentUpon>NewPeriodWindowEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\PeriodOfStudy\NewPeriodWindow.xaml.cs">
       <DependentUpon>NewPeriodWindow.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
     <Page Include="UI\Pages\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PeriodOfStudy\NewPeriodWindowEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\PeriodOfStudy\NewPeriodWindow.xaml">
       <SubType>Designer</SubType>
