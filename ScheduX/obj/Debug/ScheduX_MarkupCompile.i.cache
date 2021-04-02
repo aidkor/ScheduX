@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Asus\source\repos\ScheduX\ScheduX\App.xaml
-181883749064
+19130419686
 
-291784050612
+30-1300056107
 171957059853
-UI\Classes\ClassesWindow.xaml;UI\Classes\NewClassWindow.xaml;UI\Pages\Help.xaml;UI\Pages\Home.xaml;UI\PeriodOfStudy\NewPeriodWindowEdit.xaml;UI\PeriodOfStudy\NewPeriodWindow.xaml;UI\PeriodOfStudy\PeriodOfStudyWindow.xaml;UI\EditorWindow.xaml;UI\StartWindow.xaml;UI\ConfigurateProjectWindow.xaml;UI\CreateOpenProjectWindow.xaml;Resourses\Styles\ColourfulLightTheme.xaml;UI\Teachers\NewTeacherWindow.xaml;UI\Teachers\TeachersWindow.xaml;UI\TimetableCalls\CallWindow.xaml;UI\TimetableCalls\CallsWindow.xaml;UI\TimetableCalls\NewTimetableCallsWindow.xaml;UI\TimetableCalls\TimetableCallsWindow.xaml;
+UI\Audiences\AudiencesWindow.xaml;UI\Audiences\NewAudienceWindow.xaml;UI\Groups\GroupsWindow.xaml;UI\Groups\NewGroupsWindow.xaml;UI\Pages\Help.xaml;UI\Pages\Home.xaml;UI\PeriodOfStudy\NewPeriodWindow.xaml;UI\PeriodOfStudy\PeriodOfStudyWindow.xaml;UI\EditorWindow.xaml;UI\StartWindow.xaml;UI\ConfigurateProjectWindow.xaml;UI\CreateOpenProjectWindow.xaml;Resourses\Styles\ColourfulLightTheme.xaml;UI\Subjects\NewSubjectWindow.xaml;UI\Subjects\SubjectsWindow.xaml;UI\Teachers\NewTeacherWindow.xaml;UI\Teachers\TeachersWindow.xaml;UI\TimetableCalls\NewTimetableCallsWindow.xaml;UI\TimetableCalls\TimetableCallsWindow.xaml;
 
 True
 

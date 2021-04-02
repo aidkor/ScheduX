@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ScheduX.Resourses;
+using ScheduX.Resourses.UILogic;
 using ScheduX.Resourses.AppLogic;
 
 namespace ScheduX.UI.Teachers
@@ -70,16 +70,31 @@ namespace ScheduX.UI.Teachers
             }
             return flag;
         }
-        private void Add_Click(object sender, RoutedEventArgs e)
+        public void Add_Click(object sender, RoutedEventArgs e)
         {
             if (!IsWrongTextBoxValue())
             {
-                TeacherElement group = new SchoolTeacher(NameTextBox.Text, uint.Parse(MaxLessonsPerDayTextBox.Text));
-                (Owner as TeachersWindow).SchoolTeacherDictionary.dictionaryList?.Add(group);
-                foreach (ListView item in FindVisualChildren<ListView>(this.Owner))
-                {
-                    item.Items.Add(group);
-                }
+                var OwnerWindowInstance = (TeachersWindow)this.Owner;
+                TeacherElement teacher = new SchoolTeacher(NameTextBox.Text, int.Parse(MaxLessonsPerDayTextBox.Text));
+                OwnerWindowInstance.SchoolTeacherDictionary.dictionaryList.Add(teacher);
+                OwnerWindowInstance.TeachersList.Items.Add(teacher);
+                ResetControls();
+            }
+        }
+        public void Done_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsWrongTextBoxValue())
+            {
+                var ownerWindowInstance = (TeachersWindow)this.Owner;
+                var teacher = (SchoolTeacher)ownerWindowInstance.SchoolTeacherDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.TeachersList.SelectedItem.GetHashCode());
+
+                teacher.Name = NameTextBox.Text;                
+                teacher.MaxLessonsPerDay = int.Parse(MaxLessonsPerDayTextBox.Text);
+
+                int index = ownerWindowInstance.TeachersList.Items.IndexOf(ownerWindowInstance.TeachersList.SelectedItem);
+                ownerWindowInstance.TeachersList.Items.Remove(ownerWindowInstance.TeachersList.SelectedItem);
+                ownerWindowInstance.TeachersList.Items.Insert(index, teacher);
+
                 ResetControls();
             }
         }

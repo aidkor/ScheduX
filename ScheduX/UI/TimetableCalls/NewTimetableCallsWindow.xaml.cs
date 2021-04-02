@@ -11,58 +11,70 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ScheduX.Resourses;
 using ScheduX.Resourses.AppLogic;
+using ScheduX.Resourses.UILogic;
 
 namespace ScheduX.UI.TimetableCalls
 {
     /// <summary>
-    /// Interaction logic for NewTimetableCalls.xaml
+    /// Interaction logic for NewTimetableCallsWindow.xaml
     /// </summary>
     public partial class NewTimetableCallsWindow : Window
     {
-        public CallScheduleDictionary CallScheduleDictionary { get; protected set; }
         public NewTimetableCallsWindow()
         {
             InitializeComponent();
         }
-        private void Add_Click(object sender, RoutedEventArgs e)
+        public void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (!CheckFieldIncorrectness())
+            if (!IsWrongTextBoxValue())
             {
-                byte.TryParse(LessonsPerDayTextBox.Text, out byte lessonsPerDay);
-                byte.TryParse(WorkingDaysTextBox.Text, out byte workingDays);
-
-                SchoolCallScheduleElement callSchedule = new SchoolCallScheduleElement(lessonsPerDay,workingDays);
-                CallScheduleDictionary.dictionaryList.Add(callSchedule);
-                foreach (ListView item in FindVisualChildren<ListView>(this.Owner))
-                {
-                    item.Items.Add(callSchedule);
-                }
+                var OwnerWindowInstance = (TimetableCallsWindow)this.Owner;
+                TimetableCallsElement timetableCalls = new SchoolTimetableCalls(NameTextBox.Text, int.Parse(WorkingDaysTextBox.Text), int.Parse(LessonsPerDayTextBox.Text));
+                OwnerWindowInstance.SchoolTimetableCallsDictionary.dictionaryList.Add(timetableCalls);
+                OwnerWindowInstance.TimetableCallsList.Items.Add(timetableCalls);
                 ResetControls();
             }
         }
-        private bool CheckFieldIncorrectness()
+        public void Done_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsWrongTextBoxValue())
+            {
+                var ownerWindowInstance = (TimetableCallsWindow)this.Owner;
+                var timetableCalls = (SchoolTimetableCalls)ownerWindowInstance.SchoolTimetableCallsDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.TimetableCallsList.SelectedItem.GetHashCode());
+
+                timetableCalls.Name = NameTextBox.Text;
+                timetableCalls.WorkingDays = int.Parse(WorkingDaysTextBox.Text);
+                timetableCalls.LessonsPerDay = int.Parse(LessonsPerDayTextBox.Text);
+                
+
+                int index = ownerWindowInstance.TimetableCallsList.Items.IndexOf(ownerWindowInstance.TimetableCallsList.SelectedItem);
+                ownerWindowInstance.TimetableCallsList.Items.Remove(ownerWindowInstance.TimetableCallsList.SelectedItem);
+                ownerWindowInstance.TimetableCallsList.Items.Insert(index, timetableCalls);
+
+                ResetControls();
+            }
+        }
+        private bool IsWrongTextBoxValue()
         {
             bool flag = false;
             foreach (TextBox item in FindVisualChildren<TextBox>(this))
             {
-                if (item.Text == "" || !uint.TryParse(item.Text, out uint res))
+                if (item.Name == "NameTextBox")
+                {
+                    if (item.Text == "")
+                    {
+                        item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                        flag = true;
+                    }
+                }
+                else if (item.Text == "" || !uint.TryParse(item.Text, out uint _))
                 {
                     item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
                     flag = true;
                 }
-            }
+            }           
             return flag;
-        }
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            IconHelper.RemoveIcon(this);
-        }
-        private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-            ResetControls();
         }
         private void ResetControls()
         {
@@ -90,6 +102,19 @@ namespace ScheduX.UI.TimetableCalls
                     }
                 }
             }
+        }
+        private void TextBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            ((TextBox)sender).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#595959");
+        }
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            IconHelper.RemoveIcon(this);
+        }
+        private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            ResetControls();
         }
     }
 }

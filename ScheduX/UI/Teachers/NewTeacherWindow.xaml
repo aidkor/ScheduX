@@ -33,7 +33,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,10">
-            <Button x:Name="Add" Width="51" Height="24" Content="ADD" FontSize="10" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="Add_Click" Style="{DynamicResource RoundedCorners}"/>
+            <Button x:Name="Add" Width="51" Height="24" Content="ADD" FontSize="10" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Style="{DynamicResource RoundedCorners}"/>
         </StackPanel>
     </Grid>
 </Window>

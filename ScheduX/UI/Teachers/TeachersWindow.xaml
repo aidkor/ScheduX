@@ -22,25 +22,20 @@
         </StackPanel>
 
         <!-- List of periods-->
-        <ListView  x:Name="TeachersList" Grid.Row="2" Margin="25,12,25,15" BorderBrush="#595959" Height="350" SelectionMode="Single" Cursor="Arrow">
+        <ListView  x:Name="TeachersList" Grid.Row="2" Margin="25,12,25,15" BorderBrush="#595959" Height="350" Cursor="Arrow">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="edit" Foreground="#FF343434" Margin="0,0,0,1">
+                    <MenuItem Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuEditButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/edit.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="copy" Foreground="#FF343434" Margin="0,0,0,1">
+                    <MenuItem Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuCopyButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="paste" Foreground="#FF343434" IsEnabled="False" Margin="0,0,0,1">
-                        <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/paste_disable.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="delete" Foreground="#FF343434">
+                    <MenuItem Header="delete" Foreground="#FF343434" Click="ContextMenuDeleteButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/trash.png" />
                         </MenuItem.Icon>

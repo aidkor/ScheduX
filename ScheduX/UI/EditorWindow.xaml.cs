@@ -12,11 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ScheduX.Resourses;
 using ScheduX.UI.Pages;
 using ScheduX.UI.PeriodOfStudy;
 using ScheduX.UI.Classes;
 using ScheduX.Resourses.AppLogic;
+using ScheduX.Resourses.UILogic;
 
 namespace ScheduX.UI
 {

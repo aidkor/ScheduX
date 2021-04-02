@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ScheduX.Resourses;
+using ScheduX.Resourses.UILogic;
 using ScheduX.Resourses.AppLogic;
 using ScheduX.UI.PeriodOfStudy;
 
@@ -24,7 +24,6 @@ namespace ScheduX.UI.PeriodOfStudy
     public partial class PeriodOfStudyWindow : Window
     {
         public NewPeriodWindow NewPeriodWindowInstance { get; set; }
-        public NewPeriodWindowEdit NewPeriodWindowInstanceEdit { get; set; }
         public StudyPeriodDictionary SchoolStudyPeriodDictionary { get; set; }
         public PeriodOfStudyWindow()
         {
@@ -33,26 +32,22 @@ namespace ScheduX.UI.PeriodOfStudy
         }
         private void Select_Click(object sender, RoutedEventArgs e)
         {
-            if (PeriodsList.SelectedItem == null)
+            if (PeriodsList.SelectedItem != null & PeriodsList.SelectedItems.Count == 1)
             {
-                MessageBox.Show("Period is not selected");
+                this.Close();
             }
             else
             {
-                if (PeriodsList.SelectedItems.Count > 1)
-                {
-                    MessageBox.Show("You have selected more than 1 period");
-                }
-                else
-                {
-                    this.Close();
-                }
+                MessageBox.Show("Choose a period");
             }
         }
         private void New_Click(object sender, RoutedEventArgs e)
         {
             NewPeriodWindowInstance = NewPeriodWindowInstance ?? new NewPeriodWindow();
             NewPeriodWindowInstance.Owner = this;
+            NewPeriodWindowInstance.Add.Click -= NewPeriodWindowInstance.Done_Click;
+            NewPeriodWindowInstance.Add.Click += NewPeriodWindowInstance.Add_Click;
+            NewPeriodWindowInstance.Add.Content = "ADD";
             NewPeriodWindowInstance.Show();
         }
         protected override void OnSourceInitialized(EventArgs e)
@@ -84,42 +79,42 @@ namespace ScheduX.UI.PeriodOfStudy
             }
             else
             {
-                MessageBox.Show("Choose one period");
+                MessageBox.Show("Choose a period");
             }
         }
-        // UNDONE: ...
         private void ContextMenuEditButton_Click(object sender, RoutedEventArgs e)
         {
             if (PeriodsList.SelectedItem != null & PeriodsList.SelectedItems.Count == 1)
             {
-                NewPeriodWindowInstanceEdit = NewPeriodWindowInstanceEdit ?? new NewPeriodWindowEdit();
-                NewPeriodWindowInstanceEdit.Owner = this;
+                NewPeriodWindowInstance.Add.Click -= NewPeriodWindowInstance.Add_Click;
+                NewPeriodWindowInstance.Add.Click += NewPeriodWindowInstance.Done_Click;
+                NewPeriodWindowInstance.Add.Content = "DONE";
 
-                NewPeriodWindowInstanceEdit.NameTextBox.Text = ((SchoolPeriodElement)PeriodsList.SelectedItem).Name;
-                NewPeriodWindowInstanceEdit.WeeksTextBox.Text = ((SchoolPeriodElement)PeriodsList.SelectedItem).WorkingWeeks.ToString();
-                NewPeriodWindowInstanceEdit.YearTextBox_1.Text = ((SchoolPeriodElement)PeriodsList.SelectedItem).StartYear.ToString();
-                NewPeriodWindowInstanceEdit.YearTextBox_2.Text = ((SchoolPeriodElement)PeriodsList.SelectedItem).EndYear.ToString();
+                var currentElement = (SchoolPeriod)PeriodsList.SelectedItem;
+                NewPeriodWindowInstance.NameTextBox.Text = currentElement.Name;
+                NewPeriodWindowInstance.WeeksTextBox.Text = currentElement.WorkingWeeks.ToString();
+                NewPeriodWindowInstance.YearTextBox_1.Text = currentElement.StartYear.ToString();
+                NewPeriodWindowInstance.YearTextBox_2.Text = currentElement.EndYear.ToString();
 
-                NewPeriodWindowInstanceEdit.Show();
+                NewPeriodWindowInstance.Show();
             }
             else
             {
                 MessageBox.Show("Choose one period");
             }
         }
-
         private void ContextMenuCopyButton_Click(object sender, RoutedEventArgs e)
         {
             if (PeriodsList.SelectedItems != null)
             {
-                foreach (SchoolPeriodElement item in PeriodsList.SelectedItems)
+                foreach (SchoolPeriod item in PeriodsList.SelectedItems)
                 {
-                    var period = new SchoolPeriodElement(item.Name, item.WorkingWeeks, item.StartYear, item.EndYear);
-                    SchoolStudyPeriodDictionary.dictionaryList.Add(period);                    
+                    var period = new SchoolPeriod(item.Name, item.WorkingWeeks, item.StartYear, item.EndYear);
+                    SchoolStudyPeriodDictionary.dictionaryList.Add(period);
                     PeriodsList.Items.Add(period);
                 }
             }
-        }        
+        }
         private void ContextMenuDeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (PeriodsList.SelectedItems != null)
@@ -141,6 +136,6 @@ namespace ScheduX.UI.PeriodOfStudy
                         break;
                 }
             }
-        }      
+        }
     }
 }

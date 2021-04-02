@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ScheduX.Resourses;
+using ScheduX.Resourses.UILogic;
 using ScheduX.Resourses.AppLogic;
 
 namespace ScheduX.UI.PeriodOfStudy
@@ -26,16 +26,33 @@ namespace ScheduX.UI.PeriodOfStudy
             InitializeComponent();
 
         }
-        private void Add_Click(object sender, RoutedEventArgs e)
+        public void Add_Click(object sender, RoutedEventArgs e)
         {
             if (!IsWrongTextBoxValue())
             {
-                PeriodElement period = new SchoolPeriodElement(NameTextBox.Text, uint.Parse(WeeksTextBox.Text), uint.Parse(YearTextBox_1.Text), uint.Parse(YearTextBox_2.Text));
-                ((PeriodOfStudyWindow)this.Owner).SchoolStudyPeriodDictionary.dictionaryList.Add(period);
-                foreach (ListView item in FindVisualChildren<ListView>(this.Owner))
-                {
-                    item.Items.Add(period);
-                }
+                var OwnerWindowInstance = (PeriodOfStudyWindow)this.Owner;
+                PeriodElement period = new SchoolPeriod(NameTextBox.Text, int.Parse(WeeksTextBox.Text), int.Parse(YearTextBox_1.Text), int.Parse(YearTextBox_2.Text));
+                OwnerWindowInstance.SchoolStudyPeriodDictionary.dictionaryList.Add(period);
+                OwnerWindowInstance.PeriodsList.Items.Add(period);                
+                ResetControls();
+            }
+        }
+        public void Done_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsWrongTextBoxValue())
+            {
+                var ownerWindowInstance = (PeriodOfStudyWindow)Owner;
+                var period = (SchoolPeriod)ownerWindowInstance.SchoolStudyPeriodDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.PeriodsList.SelectedItem.GetHashCode());
+
+                period.Name = NameTextBox.Text;
+                period.WorkingWeeks = int.Parse(WeeksTextBox.Text);
+                period.StartYear = int.Parse(YearTextBox_1.Text);
+                period.EndYear = int.Parse(YearTextBox_2.Text);
+
+                int index = ownerWindowInstance.PeriodsList.Items.IndexOf(ownerWindowInstance.PeriodsList.SelectedItem);
+                ownerWindowInstance.PeriodsList.Items.Remove(ownerWindowInstance.PeriodsList.SelectedItem);
+                ownerWindowInstance.PeriodsList.Items.Insert(index, period);
+
                 ResetControls();
             }
         }

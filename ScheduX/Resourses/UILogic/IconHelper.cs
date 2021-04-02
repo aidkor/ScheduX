@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace ScheduX.Resourses
+namespace ScheduX.Resourses.UILogic
 {
     public static class IconHelper
     {

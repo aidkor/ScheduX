@@ -8,94 +8,139 @@ namespace ScheduX.Resourses.AppLogic
 {
     public abstract class Element
     {        
-        public virtual string Name { get; set; }        
+        public virtual string Name { get; set; }
+        public Element(string name)
+        {
+            Name = name;
+        }
         // Add Shx Project Type Dependency 
     }
     public abstract class PeriodElement : Element
     {
-    }
-    public abstract class CallScheduleElement : Element
-    {
-    }
-    public abstract class GroupElement : Element
-    {
-        public abstract uint StudentQuantity { get; set; }
-    }
-    public abstract class TeacherElement : Element
-    {        
-    }
-
-    //=============================================
-    //=============================================
-    public class SchoolPeriodElement : PeriodElement
-    {                
-        public uint WorkingWeeks { get; set; }
-        public uint StartYear { get; set; }
-        public uint EndYear { get; set; }
-        public SchoolPeriodElement(string name, uint workingWeeks, uint startYear, uint endYear)
-        {            
-            Name = name;
-            WorkingWeeks = workingWeeks;
+        public virtual int StartYear { get; set; }
+        public virtual int EndYear { get; set; }
+        public PeriodElement(string name, int startYear, int endYear)
+            : base(name)
+        {
             StartYear = startYear;
             EndYear = endYear;
         }
-    }    
-    public class SchoolCallScheduleElement : CallScheduleElement
+    }
+    public abstract class GroupElement : Element
     {
-        public Call[] Calls { get; set; }
-        public byte LessonsPerDay { get; set; }
-        public byte WorkingDays { get; set; }
-        public SchoolCallScheduleElement(byte lessonsPerDay, byte workingDays)
+        public virtual int StudentQuantity { get; set; }
+        public GroupElement(string name,int studentQuantity)
+            : base(name)
         {
-            LessonsPerDay = lessonsPerDay;
-            WorkingDays = workingDays;
+            StudentQuantity = studentQuantity;
+        }
+    }
+    public abstract class TeacherElement : Element
+    {
+        public TeacherElement(string name)
+            : base(name)
+        {
 
         }
-       /* private void DefaultCallsArrayInitialization()
-        {
-            Calls = new Call[LessonsPerDay];
-            byte duration = 45, start = 9;
-            for (int i = 0; i < LessonsPerDay; i++)
-            {
-                Calls[i] = new Call(duration, (i.ToString(), i.ToString()), (9,0), ());
-            }
-        }*/
     }
-    public class Call
+    public abstract class AudienceElement : Element
     {
-        public (string,string) Name { get; set; }
-        public uint Duration { get; set; }
-        public uint Break { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-       /* public Call((string, string) name, uint duration, (byte,byte) start, (byte, byte) end)
+        public virtual string AudienceType { get; set; }
+        public virtual int Capacity { get; set; }
+        public AudienceElement(string name, string audienceType, int capacity)
+            : base(name)
         {
-            Duration = duration;
-            Name = name;
-            Start = start;
-            End = end;
-        }*/
+            AudienceType = audienceType;
+            Capacity = capacity;
+        }
     }
-    public class SchoolClass : GroupElement
+    public abstract class SubjectElement : Element
     {
-        public override uint StudentQuantity { get; set; }
-        public uint MaxDayLoad { get; set; }
-        public uint MaxLessonsPerDay { get; set; }
-        public SchoolClass(string name, uint studentQuantity, uint maxDayLoad, uint maxLessonsPerDay)
+        public virtual int Complexity { get; set; }
+        public SubjectElement(string name, int complexity)
+            : base(name)
         {
-            Name = name;
-            StudentQuantity = studentQuantity;
+            Complexity = complexity;
+        }
+    }
+    public abstract class TimetableCallsElement : Element
+    {
+        public virtual Call[] Calls { get; set; }
+        public virtual int WorkingDays { get; set; }
+        public virtual int LessonsPerDay { get; set; }
+        public TimetableCallsElement(string name, int workingDays, int lessonsPerDay)
+            : base(name)
+        {
+            WorkingDays = workingDays;
+            LessonsPerDay = lessonsPerDay;            
+        }
+    }
+    public abstract class Call
+    {        
+        public virtual string FullName { get; set; }
+        public virtual string Shortening { get; set; }
+        public virtual int Duration { get; set; }       
+        public virtual int Break { get; set; }
+        public virtual string Starts { get; set; }
+        public virtual string Ends { get; set; }
+        public Call(string fullName,string shortening, int duration, int @break)
+        {
+
+        }
+
+    }
+
+    //=============================================
+    //=============================================
+    public class SchoolPeriod : PeriodElement
+    {                
+        public int WorkingWeeks { get; set; }   
+        public SchoolPeriod(string name, int workingWeeks, int startYear, int endYear)
+            : base(name,startYear,endYear)
+        {            
+            WorkingWeeks = workingWeeks;
+        }
+    }    
+    public class SchoolTimetableCalls : TimetableCallsElement
+    {
+        public SchoolTimetableCalls(string name, int workingDays, int lessonsPerDay)
+            : base(name,workingDays,lessonsPerDay)
+        {
+        }
+    }
+    public class SchoolGroup : GroupElement
+    {        
+        public int MaxDayLoad { get; set; }
+        public int MaxLessonsPerDay { get; set; }
+        public SchoolGroup(string name, int studentQuantity, int maxDayLoad, int maxLessonsPerDay)
+            : base(name, studentQuantity)
+        {            
             MaxDayLoad = maxDayLoad;
             MaxLessonsPerDay = maxLessonsPerDay;
         }
     }
     public class SchoolTeacher : TeacherElement
     {        
-        public uint MaxLessonsPerDay { get; set; }
-        public SchoolTeacher(string name,uint maxLessonsPerDay)
+        public int MaxLessonsPerDay { get; set; }
+        public SchoolTeacher(string name,int maxLessonsPerDay)
+            : base(name)
         {
-            Name = name;
             MaxLessonsPerDay = maxLessonsPerDay;
+        }
+    }
+    public class SchoolAudience : AudienceElement
+    {
+        public SchoolAudience(string name, string audienceType,int capacity)
+            : base(name,audienceType,capacity)
+        {
+        }
+    }
+    public class SchoolSubject : SubjectElement
+    {
+        public SchoolSubject(string name, int complexity)
+            : base(name, complexity)
+        {
+
         }
     }
 

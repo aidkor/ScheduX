@@ -14,8 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ScheduX.UI.Pages;
 using ScheduX.UI.PeriodOfStudy;
+using ScheduX.UI.TimetableCalls;
 using ScheduX.UI.Classes;
 using ScheduX.UI.Teachers;
+using ScheduX.UI.Audiences;
+using ScheduX.UI.Subjects;
 using ScheduX.Resourses.AppLogic;
 
 namespace ScheduX.UI.Pages
@@ -26,8 +29,11 @@ namespace ScheduX.UI.Pages
     public partial class Home : Page
     {
         public PeriodOfStudyWindow PeriodOfStudyWindowInstance { get; set; }
-        public ClassesWindow ClassesWindowInstance { get; set; }
+        public TimetableCallsWindow TimetableCallsWindowInstance { get; set; }
+        public GroupsWindow ClassesWindowInstance { get; set; }
         public TeachersWindow TeachersWindowInstance { get; set; }
+        public AudiencesWindow AudiencesWindowInstance { get; set; }
+        public SubjectsWindow SubjectsWindowInstance { get; set; }
         public EditorWindow EditorWindowInstance { get; set; }
         public Home(EditorWindow instance)
         {
@@ -83,28 +89,35 @@ namespace ScheduX.UI.Pages
             PeriodOfStudyWindowInstance.Owner = EditorWindowInstance;
             PeriodOfStudyWindowInstance.Show();
         }
+        private void TimetableCallsItemHandler(object sender, RoutedEventArgs e)
+        {
+            TimetableCallsWindowInstance = TimetableCallsWindowInstance ?? new TimetableCallsWindow();
+            TimetableCallsWindowInstance.Owner = EditorWindowInstance;
+            TimetableCallsWindowInstance.Show();
+        }        
         private void ClassesItemHandler(object sender, RoutedEventArgs e)
         {
-            ClassesWindowInstance = ClassesWindowInstance ?? new ClassesWindow();
+            ClassesWindowInstance = ClassesWindowInstance ?? new GroupsWindow();
             ClassesWindowInstance.Owner = EditorWindowInstance;
             ClassesWindowInstance.Show();
         }
-
         private void TeachersItemHandler(object sender, RoutedEventArgs e)
         {
             TeachersWindowInstance = TeachersWindowInstance ?? new TeachersWindow();
             TeachersWindowInstance.Owner = EditorWindowInstance;
             TeachersWindowInstance.Show();
         }
-
         private void AudiencesItemHandler(object sender, RoutedEventArgs e)
         {
-
+            AudiencesWindowInstance = AudiencesWindowInstance ?? new AudiencesWindow();
+            AudiencesWindowInstance.Owner = EditorWindowInstance;
+            AudiencesWindowInstance.Show();
         }
-
         private void SubjectsItemHandler(object sender, RoutedEventArgs e)
         {
-
+            SubjectsWindowInstance = SubjectsWindowInstance ?? new SubjectsWindow();
+            SubjectsWindowInstance.Owner = EditorWindowInstance;
+            SubjectsWindowInstance.Show();
         }
     }
 }

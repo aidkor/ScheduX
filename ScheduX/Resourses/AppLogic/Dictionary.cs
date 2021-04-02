@@ -8,8 +8,8 @@ namespace ScheduX.Resourses.AppLogic
 {
     public abstract class Dictionary<Element>
     {
-        public abstract IDBHandable DataHandler { get; set; }
-        public abstract List<Element> dictionaryList { get; set; }
+        public virtual IDBHandable DataHandler { get; set; }
+        public virtual List<Element> dictionaryList { get; set; }
         // Add Shx Project Type Dependency 
     }
     public abstract class StudyPeriodDictionary : Dictionary<PeriodElement>
@@ -24,38 +24,64 @@ namespace ScheduX.Resourses.AppLogic
     {
 
     }
-    
+    public abstract class AudienceDictionary : Dictionary<AudienceElement>
+    {
+
+    }
+    public abstract class SubjectDictionary : Dictionary<SubjectElement>
+    {
+
+    }
+    public abstract class TimetableCallsDictionary : Dictionary<TimetableCallsElement>
+    {
+
+    }
     //=============================================
     //=============================================
-    
+
     public class SchoolStudyPeriodDictionary : StudyPeriodDictionary
     {
-        public override IDBHandable DataHandler { get; set; }
-        public override List<PeriodElement> dictionaryList { get; set; }
+      
         public SchoolStudyPeriodDictionary()
         {
             dictionaryList = new List<PeriodElement>();
         }
     }
+    public class SchoolTimetableCallsDictionary : TimetableCallsDictionary
+    {
+        public SchoolTimetableCallsDictionary()
+        {
+            dictionaryList = new List<TimetableCallsElement>();
+        }
+    }
     public class SchoolGroupDictionary : GroupDictionary
     {
-        public override IDBHandable DataHandler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override List<GroupElement> dictionaryList { get; set; }
+        public SchoolGroupDictionary()
+        {
+            dictionaryList = new List<GroupElement>();
+        }
     }
     public class SchoolTeacherDictionary : TeacherDictionary
     {
-        public override IDBHandable DataHandler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override List<TeacherElement> dictionaryList { get; set; }
-
+        public SchoolTeacherDictionary()
+        {
+            dictionaryList = new List<TeacherElement>();
+        }
     }
-    public class CallScheduleDictionary : Dictionary<CallScheduleElement>
+    public class SchoolAudienceDictionary : AudienceDictionary
     {
-        public override IDBHandable DataHandler { get; set; }
-        public override List<CallScheduleElement> dictionaryList { get; set; }
-        public CallScheduleElement CurrentSelected { get; set; }
-        public CallScheduleDictionary()
-        {            
-            dictionaryList = new List<CallScheduleElement>();
-        }    
+        public SchoolAudienceDictionary()
+        {
+            dictionaryList = new List<AudienceElement>();
+        }
     }
+    public class SchoolSubjectDictionary : SubjectDictionary
+    {
+        public SchoolSubjectDictionary()
+        {
+            dictionaryList = new List<SubjectElement>();
+        }
+    }
+
+
 }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
-using ScheduX.Resourses;
+using ScheduX.Resourses.UILogic;
 using ScheduX.Resourses.AppLogic;
 using System.Collections;
 

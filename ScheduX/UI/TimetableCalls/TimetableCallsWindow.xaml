@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ScheduX.UI.TimetableCalls"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:local="clr-namespace:ScheduX"
         mc:Ignorable="d"
-         Height="500" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="OnClosed">
+        Height="500" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="OnClosed">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -18,51 +20,58 @@
 
         <!-- Toolbar -->
         <StackPanel x:Name="Toolbar" Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="Select"   Width="90" Height="26" Margin="25,26,0,0" Content="SELECT" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4"  Style="{DynamicResource RoundedCorners}"/>
-            <Button x:Name="New"  Width="90" Height="26" Margin="12,26,0,0" Content="NEW" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="New_Click" Style="{DynamicResource RoundedCorners}"/>
-            <Button x:Name="RingBell" Width="25" Height="24 " Margin="12,26,0,0" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Visibility="Hidden" Style="{DynamicResource RoundedCorners}">
-                
-            </Button>
+            <Button x:Name="Select"  Width="90" Height="26" Margin="25,26,0,0" Content="SELECT" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="Select_Click" Style="{DynamicResource RoundedCorners}"/>
+            <Button x:Name="New" Width="90" Height="26"  Margin="12,26,0,0" Content="NEW" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="New_Click" Style="{DynamicResource RoundedCorners}"/>
         </StackPanel>
 
         <!-- List of periods-->
-        <ListView  x:Name="PeriodsList" Grid.Row="2" Margin="25,12,25,15" BorderBrush="#595959" Height="350" SelectionMode="Single" Cursor="Arrow">
+        <ListView  x:Name="TimetableCallsList" Grid.Row="2" Margin="25,12,25,15" BorderBrush="#595959" Height="350" Cursor="Arrow">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="select" Foreground="#FF343434" Margin="0,1">
+                    <MenuItem x:Name="ContextMenuSelectButton" Header="select" Foreground="#FF343434" Margin="0,1" Click="ContextMenuSelectButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/select.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="edit" Foreground="#FF343434" Margin="0,0,0,1">
+                    <MenuItem x:Name="ContextMenuEditButton" Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuEditButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/edit.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="copy" Foreground="#FF343434" Margin="0,0,0,1">
+                    <MenuItem x:Name="ContextMenuCopyButton" Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuCopyButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="paste" Foreground="#FF343434" IsEnabled="False" Margin="0,0,0,1">
-                        <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/paste_disable.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="delete" Foreground="#FF343434">
+                    <MenuItem x:Name="ContextMenuDeleteButton" Header="delete" Foreground="#FF343434" Click="ContextMenuDeleteButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/PeriodOfStudyImg/trash.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
             </ListView.ContextMenu>
+
             <ListView.View>
                 <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn Width="60" Header="NAME" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Width="130" Header="LESSONS PER DAY" DisplayMemberBinding="{Binding StartYear}"/>
-                        <GridViewColumn Width="120" Header="WORKING DAYS" DisplayMemberBinding="{Binding EndYear}"/>
-                    </GridView.Columns>
+                    <GridView.ColumnHeaderContextMenu>
+                        <ContextMenu>
+                            <ContextMenu.Template>
+                                <ControlTemplate>
+                                    <Border BorderBrush="Transparent" Background="Transparent" />
+                                </ControlTemplate>
+                            </ContextMenu.Template>
+                        </ContextMenu>
+                    </GridView.ColumnHeaderContextMenu>
+
+                    <GridViewColumn Width="140"  DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumnHeader Content="NAME" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="140" DisplayMemberBinding="{Binding WorkingDays}">
+                        <GridViewColumnHeader Content="WORKING DAYS" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="140" DisplayMemberBinding="{Binding LessonsPerDay}">
+                        <GridViewColumnHeader Content="LESSONS PER DAY" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

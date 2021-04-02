@@ -11,48 +11,65 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ScheduX.Resourses;
 using ScheduX.Resourses.AppLogic;
+using ScheduX.Resourses.UILogic;
 
-namespace ScheduX.UI.PeriodOfStudy
+namespace ScheduX.UI.Subjects
 {
     /// <summary>
-    /// Interaction logic for NewPeriodWindow.xaml
+    /// Interaction logic for NewSubjectWindow.xaml
     /// </summary>
-    public partial class NewPeriodWindowEdit : Window
+    public partial class NewSubjectWindow : Window
     {
-        public NewPeriodWindowEdit()
+        public NewSubjectWindow()
         {
             InitializeComponent();
+        }
+        public void Add_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsWrongTextBoxValue())
+            {
+                var OwnerWindowInstance = (SubjectsWindow)this.Owner;
+                SubjectElement subject = new SchoolSubject(NameTextBox.Text, int.Parse(ComplexityTextBox.Text));
+                OwnerWindowInstance.SchoolSubjectDictionary.dictionaryList.Add(subject);
+                OwnerWindowInstance.SubjectsList.Items.Add(subject);
+                ResetControls();
+            }
+        }
+        public void Done_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsWrongTextBoxValue())
+            {
+                var ownerWindowInstance = (SubjectsWindow)this.Owner;
+                var subject = (SchoolSubject)ownerWindowInstance.SchoolSubjectDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.SubjectsList.SelectedItem.GetHashCode());
 
-        }      
+                subject.Name = NameTextBox.Text;
+                subject.Complexity = int.Parse(ComplexityTextBox.Text);                
+
+                int index = ownerWindowInstance.SubjectsList.Items.IndexOf(ownerWindowInstance.SubjectsList.SelectedItem);
+                ownerWindowInstance.SubjectsList.Items.Remove(ownerWindowInstance.SubjectsList.SelectedItem);
+                ownerWindowInstance.SubjectsList.Items.Insert(index, subject);
+
+                ResetControls();
+            }
+        }
         private bool IsWrongTextBoxValue()
         {
             bool flag = false;
             foreach (TextBox item in FindVisualChildren<TextBox>(this))
             {
-                if (item.Name == "NameTextBox")
+                if (item.Text == "")
                 {
-                    if (item.Text == "")
-                    {
-                        item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
-                        flag = true;
-                    }
+                    item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                    flag = true;
                 }
-                else if (item.Text == "" || !uint.TryParse(item.Text, out uint _))
+                if (!uint.TryParse(item.Text, out uint _) & item.Name != "NameTextBox")
                 {
                     item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
                     flag = true;
                 }
             }
-
-            uint.TryParse(YearTextBox_1.Text, out uint startYear);
-            uint.TryParse(YearTextBox_2.Text, out uint endYear);
-            if (startYear > endYear)
-            {
-                YearTextBox_1.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
-                flag = true;
-            }
+          
             return flag;
         }
         private void ResetControls()
@@ -94,21 +111,6 @@ namespace ScheduX.UI.PeriodOfStudy
         {
             e.Cancel = true;
             ResetControls();
-        }
-
-        private void Done_Click(object sender, RoutedEventArgs e)
-        {
-            if (!IsWrongTextBoxValue())
-            {
-                //((PeriodOfStudyWindow)Owner).SchoolStudyPeriodDictionary.dictionaryList.Find(item => item.)
-
-
-                /*((SchoolPeriodElement)((PeriodOfStudyWindow)Owner).PeriodsList.SelectedItem).Name = NameTextBox.Text;
-                ((SchoolPeriodElement)((PeriodOfStudyWindow)Owner).PeriodsList.SelectedItem).WorkingWeeks = uint.Parse(WeeksTextBox.Text);
-                ((SchoolPeriodElement)((PeriodOfStudyWindow)Owner).PeriodsList.SelectedItem).StartYear = uint.Parse(YearTextBox_1.Text);
-                ((SchoolPeriodElement)((PeriodOfStudyWindow)Owner).PeriodsList.SelectedItem).EndYear = uint.Parse(YearTextBox_2.Text);*/
-                ResetControls();
-            }          
         }
     }
 }

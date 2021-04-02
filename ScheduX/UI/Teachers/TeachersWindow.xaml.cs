@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ScheduX.Resourses.AppLogic;
-using ScheduX.Resourses;
+using ScheduX.Resourses.UILogic;
 
 
 namespace ScheduX.UI.Teachers
@@ -46,7 +46,63 @@ namespace ScheduX.UI.Teachers
         {
             NewTeacherWindowInstance = NewTeacherWindowInstance ?? new NewTeacherWindow();
             NewTeacherWindowInstance.Owner = this;
+            NewTeacherWindowInstance.Add.Click -= NewTeacherWindowInstance.Done_Click;
+            NewTeacherWindowInstance.Add.Click += NewTeacherWindowInstance.Add_Click;
             NewTeacherWindowInstance.Show();
+        }
+        private void ContextMenuEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (TeachersList.SelectedItem != null & TeachersList.SelectedItems.Count == 1)
+            {
+                NewTeacherWindowInstance.Add.Click -= NewTeacherWindowInstance.Add_Click;
+                NewTeacherWindowInstance.Add.Click += NewTeacherWindowInstance.Done_Click;
+                NewTeacherWindowInstance.Add.Content = "DONE";
+
+                var currentElement = (SchoolTeacher)TeachersList.SelectedItem;
+                NewTeacherWindowInstance.NameTextBox.Text = currentElement.Name;
+                NewTeacherWindowInstance.MaxLessonsPerDayTextBox.Text = currentElement.MaxLessonsPerDay.ToString();               
+
+                NewTeacherWindowInstance.Show();
+            }
+            else
+            {
+                MessageBox.Show("Choose a teacher");
+            }
+        }
+        private void ContextMenuCopyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (TeachersList.SelectedItems != null)
+            {
+                foreach (SchoolTeacher item in TeachersList.SelectedItems)
+                {
+                    var teacher = new SchoolTeacher(item.Name, item.MaxLessonsPerDay);
+                    SchoolTeacherDictionary.dictionaryList.Add(teacher);
+                    TeachersList.Items.Add(teacher);
+                }
+            }
+        }
+        private void ContextMenuDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (TeachersList.SelectedItems != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Sure want to delete ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                    {
+                        while (TeachersList.SelectedItems.Count != 0)
+                        {
+                            SchoolTeacherDictionary.dictionaryList.RemoveAll(teacher => teacher.GetHashCode() == TeachersList.SelectedItems[0].GetHashCode());
+                            TeachersList.Items.RemoveAt(TeachersList.Items.IndexOf(TeachersList.SelectedItems[0]));
+                        }
+                        break;
+                    }
+
+                    case MessageBoxResult.No:
+                        break;
+                }
+            }
         }
     }
 }
+

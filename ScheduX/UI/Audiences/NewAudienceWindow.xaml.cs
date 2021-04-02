@@ -11,17 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ScheduX.Resourses;
+using ScheduX.Resourses.UILogic;
 using ScheduX.Resourses.AppLogic;
 
-namespace ScheduX.UI.Classes
+namespace ScheduX.UI.Audiences
 {
     /// <summary>
-    /// Interaction logic for NewClassWindow.xaml
+    /// Interaction logic for NewAudienceWindow.xaml
     /// </summary>
-    public partial class NewClassWindow : Window
+    public partial class NewAudienceWindow : Window
     {
-        public NewClassWindow()
+        public NewAudienceWindow()
         {
             InitializeComponent();
         }
@@ -60,27 +60,18 @@ namespace ScheduX.UI.Classes
         {
             bool flag = false;
             foreach (TextBox item in FindVisualChildren<TextBox>(this))
-            {
-                if (item.Name == "MaxDayLoadTextBox")
-                {
-                    uint.TryParse(item.Text, out uint value);
-                    if (value < 1 || value > 10)
-                    {
-                        item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
-                        flag = true;
-                    }
-                }
+            {               
                 if (item.Text == "")
                 {
                     item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
                     flag = true;
                 }
-                if (!uint.TryParse(item.Text, out uint _) & item.Name != "NameTextBox")
+                if (!uint.TryParse(item.Text, out uint _) & item.Name != "NameTextBox" & item.Name != "AudienceTypeTextBox")
                 {
                     item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
                     flag = true;
                 }
-            }           
+            }
             return flag;
         }
         protected override void OnSourceInitialized(EventArgs e)
@@ -92,16 +83,32 @@ namespace ScheduX.UI.Classes
             e.Cancel = true;
             ResetControls();
         }
-        private void Add_Click(object sender, RoutedEventArgs e)
+        public void Add_Click(object sender, RoutedEventArgs e)
         {
             if (!IsWrongTextBoxValue())
             {
-                GroupElement group = new SchoolClass(NameTextBox.Text, uint.Parse(StudentsQuantityTextBox.Text), uint.Parse(MaxDayLoadTextBox.Text), uint.Parse(MaxLessonsPerDayTextBox.Text));
-                (Owner as ClassesWindow).SchoolClassDictionary.dictionaryList?.Add(group);  
-                foreach (ListView item in FindVisualChildren<ListView>(this.Owner))
-                {
-                    item.Items.Add(group);
-                }
+                var OwnerWindowInstance = (AudiencesWindow)this.Owner;
+                AudienceElement audience = new SchoolAudience(NameTextBox.Text, AudienceTypeTextBox.Text, int.Parse(CapacityTextBox.Text));
+                OwnerWindowInstance.SchoolAudienceDictionary.dictionaryList.Add(audience);
+                OwnerWindowInstance.AudiencesList.Items.Add(audience);               
+                ResetControls();
+            }
+        }
+        public void Done_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsWrongTextBoxValue())
+            {
+                var ownerWindowInstance = (AudiencesWindow)this.Owner;
+                var audience = (SchoolAudience)ownerWindowInstance.SchoolAudienceDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.AudiencesList.SelectedItem.GetHashCode());
+
+                audience.Name = NameTextBox.Text;
+                audience.AudienceType = AudienceTypeTextBox.Text;
+                audience.Capacity = int.Parse(CapacityTextBox.Text);                
+
+                int index = ownerWindowInstance.AudiencesList.Items.IndexOf(ownerWindowInstance.AudiencesList.SelectedItem);
+                ownerWindowInstance.AudiencesList.Items.Remove(ownerWindowInstance.AudiencesList.SelectedItem);
+                ownerWindowInstance.AudiencesList.Items.Insert(index, audience);
+
                 ResetControls();
             }
         }
