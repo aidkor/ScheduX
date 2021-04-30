@@ -5,69 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScheduX"
         mc:Ignorable="d"        
-        Background="White" Width="583 " Height="806" WindowStartupLocation="CenterScreen" MinWidth="570" MinHeight="806">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="1.2*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+        Background="White" Width="583 " Height="806" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="OnClosed"
+        >
+    <Window.Resources>
+        <Style x:Key="_ListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="_Border"                                
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="_Border" Property="Background" Value="#E5F8FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <ScrollViewer x:Name="scroller" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="1.2*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="ScheduX" FontSize="38" FontFamily="Noto Sans Symbols2" Foreground="Black" Margin="0,40,0,0" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="1"  Margin="75,30,75,0"  Text="Choose a project template" FontSize="20" FontFamily="Noto Sans Symbols2" Foreground="Black" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Text="ScheduX" FontSize="38" FontFamily="Noto Sans Symbols2" Foreground="Black" Margin="0,40,0,0" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1"  Margin="75,30,75,0"  Text="Choose a project template" FontSize="20" FontFamily="Noto Sans Symbols2" Foreground="Black" HorizontalAlignment="Center"/>
 
-        <Grid Grid.Row="2" Margin="0,26,0,0" HorizontalAlignment="Center">
-            <ListBox x:Name="TemplateListBox"  Background="#EEEBEB" Foreground="Black" Height="180" VerticalAlignment="Top">
-                <ListBoxItem x:Name="SchoolTemplate" Selected="SchoolTemplate_Selected" >
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+            <Grid Grid.Row="2" Margin="50,26,50,0" HorizontalAlignment="Stretch">
+                <ListBox x:Name="TemplateListBox"  Background="#EEEBEB" Foreground="Black" VerticalAlignment="Top" ItemContainerStyle="{DynamicResource _ListBoxItemStyle}">
+                    <ListBoxItem x:Name="SchoolTemplate" Selected="SchoolTemplate_Selected">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0" Source="..\Resourses\Images\school.png" Width="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,9,12,0" />
+                            <Image Grid.Column="0" Source="..\Resourses\Images\school.png" Width="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,9,12,0" />
 
-                        <StackPanel Grid.Column="1" Orientation="Vertical">
-                            <TextBlock Padding="0,9,0,0" FontSize="18">School template</TextBlock>
-                            <TextBlock Padding="0,1,40,12" FontSize="12" Foreground="#676767">A project template that contains tools for creating, managing and <LineBreak/> displaying school schedule</TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </ListBoxItem>
-            </ListBox>
+                            <StackPanel Grid.Column="1" Orientation="Vertical">
+                                <TextBlock Padding="0,9,0,0" FontSize="18">School template</TextBlock>
+                                <TextBlock Padding="0,1,40,15" FontSize="12" Foreground="#676767">A project template that contains tools for creating, managing and <LineBreak/> displaying school schedule</TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </ListBoxItem>
+                </ListBox>
+            </Grid>
 
-            <Label  x:Name="InfoLabel2" Margin="0,112,0,0"  Height="28" Width="455" Foreground="#FFC44949" VerticalAlignment="Bottom"/>
-        </Grid>
+            <Grid Grid.Row="3" Background="#EEEBEB"  Margin="50,0,50,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Border BorderBrush="#FFAFAFAF" BorderThickness="1 ">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="3" Background="#EEEBEB"  Margin="0,46,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="458" Height="84">
-            <Border BorderBrush="#FFAFAFAF" BorderThickness="1 ">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="..\Resourses\Images\save.png" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,12,12,0" />
 
-                    <Image Grid.Column="0" Source="..\Resourses\Images\save.png" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,12,12,0" />
+                            <TextBlock Grid.Column="1" FontSize="12" Margin="4,13,0,0">Project name:</TextBlock>
+                            <TextBlock Grid.Column="1" FontSize="12" Margin="4,40,0,20">Location:</TextBlock>
 
-                    <TextBlock Grid.Column="1" FontSize="12" Margin="4,13,0,0">Project name:</TextBlock>
-                    <TextBlock Grid.Column="1" FontSize="12" Margin="4,40,0,0">Location:</TextBlock>
+                            <TextBox Grid.Column="2" x:Name="ProjectNameTextBox" Height="20" Width="290" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,13 ,0,0" Foreground="Black" Background="White" CaretBrush="Black" Padding="1,1,0,1"  TextChanged="ProjectNameTextBox_TextChanged"/>
+                            <TextBox Grid.Column="2" x:Name="LocationTextBox" Height="20" Width="264 " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,40,0,0" Foreground="Black" Background="White" CaretBrush="Black" Padding="1,1,0,1" TextChanged="LocationTextBox_TextChanged"/>
 
-                    <TextBox Grid.Column="2" x:Name="ProjectNameTextBox" Height="20" Width="290" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,13 ,0,0" Foreground="Black" Background="White" CaretBrush="Black" Padding="1,1,0,1"/>
-                    <TextBox Grid.Column="2" x:Name="LocationTextBox" Height="20" Width="264 " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,40,0,0" Foreground="Black" Background="White" CaretBrush="Black" Padding="1,1,0,1"/>
+                            <Button Grid.Column="2" x:Name="SearchPathButton"  Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="284.4,40,20,0" Content="..." Foreground="#FF797979" Background="White" Click="SearchPathButton_Click"/>
+                        </Grid>
+                    </Border>
+                </ScrollViewer>
+            </Grid>
 
-                    <Button Grid.Column="2" x:Name="SearchPathButton"  Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="284.4,40,0,0" Content="..." Foreground="#FF797979" Background="White" Click="SearchPathButton_Click"/>
-                </Grid>
-            </Border>
+            <Label Grid.Row="3" x:Name="InfoLabel" HorizontalAlignment="Center" Margin="0,85,0,0" Padding="237,14,237,14" Foreground="#FFC44949" VerticalAlignment="Top" />
             
-            <Label Grid.Row="3" x:Name="InfoLabel"  Margin="0,95,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="458" Height="28" Foreground="#FFC44949"/>
-        </Grid>
-       
+            <Button Grid.Row="5" x:Name="BackButton" Content="Back" Foreground="Black" Background="#EEEBEB" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,133,31" Padding="25,4,25,4" FontSize="11" Click="BackButton_Click"/>
+            <Button Grid.Row="5" x:Name="CreateButton" Content="Create" Foreground="Black" Background="#EEEBEB" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,31" Padding="22,4,22,4" FontSize="11" Click="CreateButton_Click"/>
 
-        <Button Grid.Row="4" x:Name="BackButton" Content="Back" Foreground="Black" Background="#EEEBEB" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,133,31" Padding="25,4,25,4" FontSize="11" Click="BackButton_Click"/>
-        <Button Grid.Row="4" x:Name="CreateButton" Content="Create" Foreground="Black" Background="#EEEBEB" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,31" Padding="22,4,22,4" FontSize="11" Click="CreateButton_Click"/>
-        
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </Window>
  

@@ -46,7 +46,7 @@ C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Subjects\NewSubjectWindo
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Subjects\SubjectsWindow.g.cs
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Subjects\NewSubjectWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Subjects\SubjectsWindow.baml
-C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\TimetableCalls\TimetableCallsWindow.g.cs
-C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\TimetableCalls\NewTimetableCallsWindow.g.cs
-C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\TimetableCalls\TimetableCallsWindow.baml
-C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\TimetableCalls\NewTimetableCallsWindow.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Lessons\LessonsWindow.g.cs
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Lessons\NewLessonWindow.g.cs
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Lessons\LessonsWindow.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Lessons\NewLessonWindow.baml

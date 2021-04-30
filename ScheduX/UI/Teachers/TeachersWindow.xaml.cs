@@ -60,8 +60,10 @@ namespace ScheduX.UI.Teachers
 
                 var currentElement = (SchoolTeacher)TeachersList.SelectedItem;
                 NewTeacherWindowInstance.NameTextBox.Text = currentElement.Name;
-                NewTeacherWindowInstance.MaxLessonsPerDayTextBox.Text = currentElement.MaxLessonsPerDay.ToString();               
-
+                NewTeacherWindowInstance.PostTextBox.Text = currentElement.Post;
+                NewTeacherWindowInstance.ExperienceTextBox.Text = currentElement.Experience.ToString();
+                NewTeacherWindowInstance.AddressTextBox.Text = currentElement.Address;
+                NewTeacherWindowInstance.TelephoneTextBox.Text = currentElement.Telephone;
                 NewTeacherWindowInstance.Show();
             }
             else
@@ -75,7 +77,7 @@ namespace ScheduX.UI.Teachers
             {
                 foreach (SchoolTeacher item in TeachersList.SelectedItems)
                 {
-                    var teacher = new SchoolTeacher(item.Name, item.MaxLessonsPerDay);
+                    var teacher = new SchoolTeacher(item.Name, item.Post, item.Experience, item.Address, item.Telephone);
                     SchoolTeacherDictionary.dictionaryList.Add(teacher);
                     TeachersList.Items.Add(teacher);
                 }
@@ -101,6 +103,14 @@ namespace ScheduX.UI.Teachers
                     case MessageBoxResult.No:
                         break;
                 }
+            }
+        }
+        private void ColumnSizeHandler(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width <= 100)
+            {
+                e.Handled = true;
+                ((GridViewColumnHeader)sender).Column.Width = 100;
             }
         }
     }

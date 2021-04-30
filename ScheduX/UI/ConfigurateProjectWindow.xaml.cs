@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.IO;
 using System.Windows.Forms;
-using Microsoft.Win32;
 using ScheduX.Resourses.UILogic;
 using ScheduX.Resourses.AppLogic;
+using System.Windows.Controls;
+using System.Windows.Media;
+using inputCursor = System.Windows.Input;
 
 namespace ScheduX.UI
 {
@@ -24,17 +16,7 @@ namespace ScheduX.UI
         private ProjectTemplate template;
         public ConfigurateProjectWindow()
         {
-            InitializeComponent();
-
-            // HACK: Change this in XAML code with data binding
-           /* this.Height = SystemParameters.PrimaryScreenHeight / 2;
-            this.Width = SystemParameters.PrimaryScreenWidth / 5;*/
-        }
-        // UNDONE: Change default file location 
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            IconHelper.RemoveIcon(this);
-            LocationTextBox.Text = @"C:\Users\Asus\Desktop\DataBase";
+            InitializeComponent();            
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -45,20 +27,28 @@ namespace ScheduX.UI
         {
             if (ProjectNameTextBox.Text != "" & template != 0 & Directory.Exists(LocationTextBox.Text))
             {
-                try
-                {
-                    CreateWithDelay();   
-                }
-                catch (Exception)
-                {
-                    InfoLabel.Content = "You already have file with this name. Try anouther one !";
-                }
-
+                CreateWithDelay();
             }
-            else if (ProjectNameTextBox.Text == "")
+            if (!Directory.Exists(LocationTextBox.Text))
             {
-                
+                LocationTextBox.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
             }
+            if (ProjectNameTextBox.Text == "")
+            {
+                ProjectNameTextBox.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+            }
+            if (template == 0)
+            {
+                TemplateListBox.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+            }
+        }
+        public async void CreateWithDelay()
+        {
+            this.Cursor = inputCursor.Cursors.Wait;
+            await Task.Delay(2000);
+            ShxFileTools.CreateShxFile(LocationTextBox.Text, ProjectNameTextBox.Text);
+            new EditorWindow(LocationTextBox.Text).Show();
+            Owner.Close();
         }
         private void SearchPathButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,15 +61,28 @@ namespace ScheduX.UI
                     LocationTextBox.Text = fbd.SelectedPath;
                 }
             }
-        }
+        }     
         private void SchoolTemplate_Selected(object sender, RoutedEventArgs e)
         {
+            TemplateListBox.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#ABADB3");
+            SchoolTemplate.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFFFFF");
             template = ProjectTemplate.SchoolTemplate;
         }
-        public async void CreateWithDelay()
+        protected override void OnSourceInitialized(EventArgs e)
         {
-            await Task.Delay(2500);            
-            new EditorWindow(LocationTextBox.Text).Show();
+            IconHelper.RemoveIcon(this);            
+            LocationTextBox.Text = @"C:\";
+        }
+        private void ProjectNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ProjectNameTextBox.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#ABADB3");
+        }
+        private void LocationTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LocationTextBox.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#ABADB3");
+        }
+        private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
+        {
             Owner.Close();
         }
     }

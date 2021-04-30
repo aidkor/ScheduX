@@ -27,17 +27,17 @@
                 <ContextMenu>
                     <MenuItem Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuEditButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/edit.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/edit.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuCopyButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/copy.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="delete" Foreground="#FF343434" Click="ContextMenuDeleteButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/trash.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/trash.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -53,10 +53,13 @@
                             </ContextMenu.Template>
                         </ContextMenu>
                     </GridView.ColumnHeaderContextMenu>
-                    <GridView.Columns>
-                        <GridViewColumn Width="150" Header="NAME" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Width="150" Header="COMPLEXITY" DisplayMemberBinding="{Binding Complexity}"/>
-                    </GridView.Columns>
+
+                    <GridViewColumn Width="150"  DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumnHeader Content="NAME" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="150"  DisplayMemberBinding="{Binding Complexity}">
+                        <GridViewColumnHeader Content="COMPLEXITY" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

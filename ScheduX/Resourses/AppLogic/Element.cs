@@ -17,13 +17,13 @@ namespace ScheduX.Resourses.AppLogic
     }
     public abstract class PeriodElement : Element
     {
-        public virtual int StartYear { get; set; }
-        public virtual int EndYear { get; set; }
-        public PeriodElement(string name, int startYear, int endYear)
+        public virtual DateTime Start { get; set; }
+        public virtual DateTime End { get; set; }
+        public PeriodElement(string name, DateTime startYear, DateTime endYear)
             : base(name)
         {
-            StartYear = startYear;
-            EndYear = endYear;
+            Start = startYear;
+            End = endYear;
         }
     }
     public abstract class GroupElement : Element
@@ -37,10 +37,17 @@ namespace ScheduX.Resourses.AppLogic
     }
     public abstract class TeacherElement : Element
     {
-        public TeacherElement(string name)
+        public virtual string Post { get; set; }
+        public virtual int Experience { get; set; }
+        public virtual string Address { get; set; }
+        public virtual string Telephone { get; set; }
+        public TeacherElement(string name, string post, int experience, string address, string telephone)
             : base(name)
         {
-
+            Post = post;
+            Experience = experience;
+            Address = address;
+            Telephone = telephone;
         }
     }
     public abstract class AudienceElement : Element
@@ -63,69 +70,50 @@ namespace ScheduX.Resourses.AppLogic
             Complexity = complexity;
         }
     }
-    public abstract class TimetableCallsElement : Element
+    public abstract class Lesson : Element
     {
-        public virtual Call[] Calls { get; set; }
-        public virtual int WorkingDays { get; set; }
-        public virtual int LessonsPerDay { get; set; }
-        public TimetableCallsElement(string name, int workingDays, int lessonsPerDay)
+        public virtual int LessonsPerWeek { get; set; }
+        public virtual int LessonsInGeneral { get; set; }
+        public virtual SubjectElement Subject { get; set; }
+        public virtual TeacherElement Teacher { get; set; }
+        public virtual GroupElement[] Groups { get; set; }
+        public virtual AudienceElement[] PermissibleAudiences { get; set; }
+        public virtual Lesson[] ParallelLessons { get; set; }
+        public virtual PeriodElement Period { get; set; }
+        public Lesson(string name, int lessonsPerWeek, int lessonsInGeneral, SubjectElement subject, TeacherElement teacher)
             : base(name)
         {
-            WorkingDays = workingDays;
-            LessonsPerDay = lessonsPerDay;            
+            LessonsPerWeek = lessonsPerWeek;
+            LessonsInGeneral = lessonsInGeneral;
+            Subject = subject;
+            Teacher = teacher;
         }
-    }
-    public abstract class Call
-    {        
-        public virtual string FullName { get; set; }
-        public virtual string Shortening { get; set; }
-        public virtual int Duration { get; set; }       
-        public virtual int Break { get; set; }
-        public virtual string Starts { get; set; }
-        public virtual string Ends { get; set; }
-        public Call(string fullName,string shortening, int duration, int @break)
-        {
-
-        }
-
     }
 
     //=============================================
     //=============================================
     public class SchoolPeriod : PeriodElement
-    {                
-        public int WorkingWeeks { get; set; }   
-        public SchoolPeriod(string name, int workingWeeks, int startYear, int endYear)
+    {                        
+        public SchoolPeriod(string name, DateTime startYear, DateTime endYear)
             : base(name,startYear,endYear)
         {            
-            WorkingWeeks = workingWeeks;
+           
         }
-    }    
-    public class SchoolTimetableCalls : TimetableCallsElement
-    {
-        public SchoolTimetableCalls(string name, int workingDays, int lessonsPerDay)
-            : base(name,workingDays,lessonsPerDay)
-        {
-        }
-    }
+    }        
     public class SchoolGroup : GroupElement
-    {        
-        public int MaxDayLoad { get; set; }
-        public int MaxLessonsPerDay { get; set; }
-        public SchoolGroup(string name, int studentQuantity, int maxDayLoad, int maxLessonsPerDay)
+    {              
+        public SchoolGroup(string name, int studentQuantity)
             : base(name, studentQuantity)
         {            
-            MaxDayLoad = maxDayLoad;
-            MaxLessonsPerDay = maxLessonsPerDay;
+
         }
     }
     public class SchoolTeacher : TeacherElement
-    {        
-        public int MaxLessonsPerDay { get; set; }
-        public SchoolTeacher(string name,int maxLessonsPerDay)
-            : base(name)
+    {                
+        public SchoolTeacher(string name, string post, int expirience, string address, string telephone)
+            : base(name,post,expirience,address,telephone)
         {
-            MaxLessonsPerDay = maxLessonsPerDay;
+           
         }
     }
     public class SchoolAudience : AudienceElement
@@ -139,6 +127,14 @@ namespace ScheduX.Resourses.AppLogic
     {
         public SchoolSubject(string name, int complexity)
             : base(name, complexity)
+        {
+
+        }
+    }
+    public class SchoolLesson : Lesson
+    {
+        public SchoolLesson(string name, int lessonsPerWeek, int lessonsInGeneral, SubjectElement subject, TeacherElement teacher, PeriodElement studyPeriod)
+            : base(name, lessonsPerWeek, lessonsInGeneral, subject, teacher)
         {
 
         }

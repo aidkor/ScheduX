@@ -27,17 +27,17 @@
                 <ContextMenu>
                     <MenuItem Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuEditButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/edit.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/edit.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuCopyButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/copy.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="delete" Foreground="#FF343434" Click="ContextMenuDeleteButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/trash.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/trash.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -53,11 +53,16 @@
                             </ContextMenu.Template>
                         </ContextMenu>
                     </GridView.ColumnHeaderContextMenu>
-                    <GridView.Columns>
-                        <GridViewColumn Width="140" Header="NAME" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Width="140" Header="TYPE" DisplayMemberBinding="{Binding AudienceType}"/>
-                        <GridViewColumn Width="100" Header="CAPACITY" DisplayMemberBinding="{Binding Capacity}"/>
-                    </GridView.Columns>
+
+                    <GridViewColumn Width="140"  DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumnHeader Content="NAME" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="140"  DisplayMemberBinding="{Binding AudienceType}">
+                        <GridViewColumnHeader Content="TYPE" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="140"  DisplayMemberBinding="{Binding Capacity}">
+                        <GridViewColumnHeader Content="CAPACITY" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

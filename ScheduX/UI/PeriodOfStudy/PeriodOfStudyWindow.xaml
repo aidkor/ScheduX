@@ -30,22 +30,22 @@
                 <ContextMenu>
                     <MenuItem x:Name="ContextMenuSelectButton" Header="select" Foreground="#FF343434" Margin="0,1" Click="ContextMenuSelectButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/select.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/select.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem x:Name="ContextMenuEditButton" Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuEditButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/edit.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/edit.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem x:Name="ContextMenuCopyButton" Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuCopyButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/copy.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem x:Name="ContextMenuDeleteButton" Header="delete" Foreground="#FF343434" Click="ContextMenuDeleteButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/trash.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/trash.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -66,14 +66,11 @@
                     <GridViewColumn Width="140"  DisplayMemberBinding="{Binding Name}">
                         <GridViewColumnHeader Content="NAME" SizeChanged="ColumnSizeHandler"/>
                     </GridViewColumn>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding StartYear}">
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Start}">
                         <GridViewColumnHeader Content="STARTS" SizeChanged="ColumnSizeHandler"/>
                     </GridViewColumn>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding EndYear}">
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding End}">
                         <GridViewColumnHeader Content="ENDS" SizeChanged="ColumnSizeHandler"/>
-                    </GridViewColumn>
-                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding WorkingWeeks}">
-                        <GridViewColumnHeader Content="WORKING WEEKS" SizeChanged="ColumnSizeHandler"/>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

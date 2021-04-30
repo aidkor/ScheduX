@@ -32,7 +32,7 @@ namespace ScheduX.Resourses.AppLogic
     {
 
     }
-    public abstract class TimetableCallsDictionary : Dictionary<TimetableCallsElement>
+    public abstract class LessonDictionary : Dictionary<Lesson>
     {
 
     }
@@ -45,13 +45,6 @@ namespace ScheduX.Resourses.AppLogic
         public SchoolStudyPeriodDictionary()
         {
             dictionaryList = new List<PeriodElement>();
-        }
-    }
-    public class SchoolTimetableCallsDictionary : TimetableCallsDictionary
-    {
-        public SchoolTimetableCallsDictionary()
-        {
-            dictionaryList = new List<TimetableCallsElement>();
         }
     }
     public class SchoolGroupDictionary : GroupDictionary
@@ -80,6 +73,13 @@ namespace ScheduX.Resourses.AppLogic
         public SchoolSubjectDictionary()
         {
             dictionaryList = new List<SubjectElement>();
+        }
+    }
+    public class SchoolLessonDictionary : LessonDictionary
+    {
+        public SchoolLessonDictionary()
+        {
+            dictionaryList = new List<Lesson>();
         }
     }
 

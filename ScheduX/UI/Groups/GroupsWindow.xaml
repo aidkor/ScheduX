@@ -27,17 +27,17 @@
                 <ContextMenu>
                     <MenuItem Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuEditButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/edit.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/edit.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuCopyButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/copy.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="delete" Foreground="#FF343434" Click="ContextMenuDeleteButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/PeriodOfStudyImg/trash.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/trash.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -53,12 +53,13 @@
                             </ContextMenu.Template>
                         </ContextMenu>
                     </GridView.ColumnHeaderContextMenu>
-                    <GridView.Columns>
-                        <GridViewColumn Width="90" Header="NAME" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Width="90" Header="STUDENTS" DisplayMemberBinding="{Binding StudentQuantity}"/>
-                        <GridViewColumn Width="120" Header="MAX DAY LOAD" DisplayMemberBinding="{Binding MaxDayLoad}"/>
-                        <GridViewColumn Width="150" Header="MAX LESSONS PER DAY" DisplayMemberBinding="{Binding MaxLessonsPerDay}"/>
-                    </GridView.Columns>
+
+                    <GridViewColumn Width="140"  DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumnHeader Content="NAME" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding StudentQuantity}">
+                        <GridViewColumnHeader Content="STUDENTS" SizeChanged="ColumnSizeHandler"/>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

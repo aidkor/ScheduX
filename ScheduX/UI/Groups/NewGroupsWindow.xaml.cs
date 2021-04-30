@@ -61,16 +61,7 @@ namespace ScheduX.UI.Classes
         {
             bool flag = false;
             foreach (TextBox item in FindVisualChildren<TextBox>(this))
-            {
-                if (item.Name == "MaxDayLoadTextBox")
-                {
-                    uint.TryParse(item.Text, out uint value);
-                    if (value < 1 || value > 10)
-                    {
-                        item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
-                        flag = true;
-                    }
-                }
+            {                
                 if (item.Text == "")
                 {
                     item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
@@ -98,7 +89,7 @@ namespace ScheduX.UI.Classes
             if (!IsWrongTextBoxValue())
             {
                 var OwnerWindowInstance = (GroupsWindow)this.Owner;
-                GroupElement group = new SchoolGroup(NameTextBox.Text, int.Parse(StudentsQuantityTextBox.Text), int.Parse(MaxDayLoadTextBox.Text), int.Parse(MaxLessonsPerDayTextBox.Text));
+                GroupElement group = new SchoolGroup(NameTextBox.Text, int.Parse(StudentsQuantityTextBox.Text));
                 OwnerWindowInstance.SchoolGroupDictionary.dictionaryList.Add(group);
                 OwnerWindowInstance.GroupsList.Items.Add(group);
                 ResetControls();
@@ -112,10 +103,7 @@ namespace ScheduX.UI.Classes
                 var group = (SchoolGroup)ownerWindowInstance.SchoolGroupDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.GroupsList.SelectedItem.GetHashCode());
 
                 group.Name = NameTextBox.Text;
-                group.StudentQuantity = int.Parse(StudentsQuantityTextBox.Text);
-                group.MaxDayLoad = int.Parse(MaxDayLoadTextBox.Text);
-                group.MaxLessonsPerDay = int.Parse(MaxLessonsPerDayTextBox.Text);
-
+                group.StudentQuantity = int.Parse(StudentsQuantityTextBox.Text);               
 
                 int index = ownerWindowInstance.GroupsList.Items.IndexOf(ownerWindowInstance.GroupsList.SelectedItem);
                 ownerWindowInstance.GroupsList.Items.Remove(ownerWindowInstance.GroupsList.SelectedItem);

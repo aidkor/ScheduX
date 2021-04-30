@@ -102,5 +102,13 @@ namespace ScheduX.UI.Subjects
                 }
             }
         }
+        private void ColumnSizeHandler(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width <= 100)
+            {
+                e.Handled = true;
+                ((GridViewColumnHeader)sender).Column.Width = 100;
+            }
+        }
     }
 }

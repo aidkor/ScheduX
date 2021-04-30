@@ -59,10 +59,7 @@ namespace ScheduX.UI.Classes
 
                 var currentElement = (SchoolGroup)GroupsList.SelectedItem;
                 NewGroupWindowInstance.NameTextBox.Text = currentElement.Name;
-                NewGroupWindowInstance.StudentsQuantityTextBox.Text = currentElement.StudentQuantity.ToString();
-                NewGroupWindowInstance.MaxDayLoadTextBox.Text = currentElement.MaxDayLoad.ToString();
-                NewGroupWindowInstance.MaxLessonsPerDayTextBox.Text = currentElement.MaxLessonsPerDay.ToString();
-
+                NewGroupWindowInstance.StudentsQuantityTextBox.Text = currentElement.StudentQuantity.ToString();        
                 NewGroupWindowInstance.Show();
             }
             else
@@ -76,7 +73,7 @@ namespace ScheduX.UI.Classes
             {
                 foreach (SchoolGroup item in GroupsList.SelectedItems)
                 {
-                    var group = new SchoolGroup(item.Name, item.StudentQuantity, item.MaxDayLoad, item.MaxLessonsPerDay);
+                    var group = new SchoolGroup(item.Name, item.StudentQuantity);
                     SchoolGroupDictionary.dictionaryList.Add(group);
                     GroupsList.Items.Add(group);
                 }
@@ -102,6 +99,14 @@ namespace ScheduX.UI.Classes
                     case MessageBoxResult.No:
                         break;
                 }
+            }
+        }
+        private void ColumnSizeHandler(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width <= 100)
+            {
+                e.Handled = true;
+                ((GridViewColumnHeader)sender).Column.Width = 100;
             }
         }
     }

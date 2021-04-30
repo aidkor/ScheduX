@@ -62,7 +62,7 @@ namespace ScheduX.UI.Teachers
                     item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
                     flag = true;
                 }
-                if (!uint.TryParse(item.Text, out uint _) & item.Name != "NameTextBox")
+                if (!uint.TryParse(item.Text, out uint _) & item.Name == "ExperienceTextBox")
                 {
                     item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
                     flag = true;
@@ -75,7 +75,7 @@ namespace ScheduX.UI.Teachers
             if (!IsWrongTextBoxValue())
             {
                 var OwnerWindowInstance = (TeachersWindow)this.Owner;
-                TeacherElement teacher = new SchoolTeacher(NameTextBox.Text, int.Parse(MaxLessonsPerDayTextBox.Text));
+                TeacherElement teacher = new SchoolTeacher(NameTextBox.Text,PostTextBox.Text,int.Parse(ExperienceTextBox.Text),AddressTextBox.Text,TelephoneTextBox.Text);
                 OwnerWindowInstance.SchoolTeacherDictionary.dictionaryList.Add(teacher);
                 OwnerWindowInstance.TeachersList.Items.Add(teacher);
                 ResetControls();
@@ -88,8 +88,11 @@ namespace ScheduX.UI.Teachers
                 var ownerWindowInstance = (TeachersWindow)this.Owner;
                 var teacher = (SchoolTeacher)ownerWindowInstance.SchoolTeacherDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.TeachersList.SelectedItem.GetHashCode());
 
-                teacher.Name = NameTextBox.Text;                
-                teacher.MaxLessonsPerDay = int.Parse(MaxLessonsPerDayTextBox.Text);
+                teacher.Name = NameTextBox.Text;
+                teacher.Post = PostTextBox.Text;
+                teacher.Experience = int.Parse(ExperienceTextBox.Text);
+                teacher.Address = AddressTextBox.Text;
+                teacher.Telephone = TelephoneTextBox.Text;
 
                 int index = ownerWindowInstance.TeachersList.Items.IndexOf(ownerWindowInstance.TeachersList.SelectedItem);
                 ownerWindowInstance.TeachersList.Items.Remove(ownerWindowInstance.TeachersList.SelectedItem);

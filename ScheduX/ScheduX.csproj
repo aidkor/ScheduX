@@ -81,6 +81,12 @@
     <Compile Include="UI\Groups\NewGroupsWindow.xaml.cs">
       <DependentUpon>NewGroupsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Lessons\LessonsWindow.xaml.cs">
+      <DependentUpon>LessonsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Lessons\NewLessonWindow.xaml.cs">
+      <DependentUpon>NewLessonWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Pages\Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
@@ -119,12 +125,6 @@
     <Compile Include="UI\Teachers\TeachersWindow.xaml.cs">
       <DependentUpon>TeachersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\TimetableCalls\NewTimetableCallsWindow.xaml.cs">
-      <DependentUpon>NewTimetableCallsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\TimetableCalls\TimetableCallsWindow.xaml.cs">
-      <DependentUpon>TimetableCallsWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="UI\Audiences\AudiencesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +138,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Groups\NewGroupsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Lessons\LessonsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Lessons\NewLessonWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,14 +206,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Teachers\TeachersWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\TimetableCalls\NewTimetableCallsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\TimetableCalls\TimetableCallsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -292,7 +292,7 @@
     <Resource Include="Resourses\Images\EditorWindowImg\back.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\table-grid_blue.png" />
+    <Resource Include="Resourses\Images\EditorWindowImg\tablegrid_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Images\EditorWindowImg\menu.png" />
@@ -313,14 +313,26 @@
     <Resource Include="Resourses\Images\EditorWindowImg\cross-sign.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\Images\PeriodOfStudyImg\copy.png" />
-    <Resource Include="Resourses\Images\PeriodOfStudyImg\edit.png" />
-    <Resource Include="Resourses\Images\PeriodOfStudyImg\select.png" />
-    <Resource Include="Resourses\Images\PeriodOfStudyImg\trash.png" />
+    <Resource Include="Resourses\Images\ContextMenuImg\copy.png" />
+    <Resource Include="Resourses\Images\ContextMenuImg\edit.png" />
+    <Resource Include="Resourses\Images\ContextMenuImg\select.png" />
+    <Resource Include="Resourses\Images\ContextMenuImg\trash.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\Images\PeriodOfStudyImg\paste_active.png" />
-    <Resource Include="Resourses\Images\PeriodOfStudyImg\paste_disable.png" />
+    <Resource Include="Resourses\Images\ContextMenuImg\paste_active.png" />
+    <Resource Include="Resourses\Images\ContextMenuImg\paste_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\bell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\purple_bell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\bell_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\EditorWindowImg\tablegrid_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

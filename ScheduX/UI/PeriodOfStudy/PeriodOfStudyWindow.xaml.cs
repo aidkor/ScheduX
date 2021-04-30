@@ -91,10 +91,9 @@ namespace ScheduX.UI.PeriodOfStudy
                 NewPeriodWindowInstance.Add.Content = "DONE";
 
                 var currentElement = (SchoolPeriod)PeriodsList.SelectedItem;
-                NewPeriodWindowInstance.NameTextBox.Text = currentElement.Name;
-                NewPeriodWindowInstance.WeeksTextBox.Text = currentElement.WorkingWeeks.ToString();
-                NewPeriodWindowInstance.YearTextBox_1.Text = currentElement.StartYear.ToString();
-                NewPeriodWindowInstance.YearTextBox_2.Text = currentElement.EndYear.ToString();
+                NewPeriodWindowInstance.NameTextBox.Text = currentElement.Name;                
+                NewPeriodWindowInstance.DatePicker_1.Text = currentElement.Start.ToString();
+                NewPeriodWindowInstance.DatePicker_2.Text = currentElement.End.ToString();
 
                 NewPeriodWindowInstance.Show();
             }
@@ -109,7 +108,7 @@ namespace ScheduX.UI.PeriodOfStudy
             {
                 foreach (SchoolPeriod item in PeriodsList.SelectedItems)
                 {
-                    var period = new SchoolPeriod(item.Name, item.WorkingWeeks, item.StartYear, item.EndYear);
+                    var period = new SchoolPeriod(item.Name, item.Start, item.End);
                     SchoolStudyPeriodDictionary.dictionaryList.Add(period);
                     PeriodsList.Items.Add(period);
                 }

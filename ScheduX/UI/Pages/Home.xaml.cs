@@ -14,11 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ScheduX.UI.Pages;
 using ScheduX.UI.PeriodOfStudy;
-using ScheduX.UI.TimetableCalls;
 using ScheduX.UI.Classes;
 using ScheduX.UI.Teachers;
 using ScheduX.UI.Audiences;
 using ScheduX.UI.Subjects;
+using ScheduX.UI.Lessons;
 using ScheduX.Resourses.AppLogic;
 
 namespace ScheduX.UI.Pages
@@ -28,12 +28,12 @@ namespace ScheduX.UI.Pages
     /// </summary>
     public partial class Home : Page
     {
-        public PeriodOfStudyWindow PeriodOfStudyWindowInstance { get; set; }
-        public TimetableCallsWindow TimetableCallsWindowInstance { get; set; }
+        public PeriodOfStudyWindow PeriodOfStudyWindowInstance { get; set; }    
         public GroupsWindow ClassesWindowInstance { get; set; }
         public TeachersWindow TeachersWindowInstance { get; set; }
         public AudiencesWindow AudiencesWindowInstance { get; set; }
         public SubjectsWindow SubjectsWindowInstance { get; set; }
+        public LessonsWindow LessonsWindowInstance { get; set; }
         public EditorWindow EditorWindowInstance { get; set; }
         public Home(EditorWindow instance)
         {
@@ -42,36 +42,30 @@ namespace ScheduX.UI.Pages
         }
         #region
         private void ButtonMouseEnterHandler(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
+        {            
             ConfigurateMenu.Visibility = Visibility.Visible;
         }
 
         private void ButtonMouseLeaveHandler(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
+        {            
             ConfigurateMenu.Visibility = Visibility.Collapsed;
         }
         private void ButtonMouseEnterHandler1(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
+        {            
             DictionaryButtonList.Visibility = Visibility.Visible;
         }
 
         private void ButtonMouseLeaveHandler1(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
+        {            
             DictionaryButtonList.Visibility = Visibility.Collapsed;
         }
         private void ButtonMouseEnterHandler2(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#5092FF");
+        {            
             LoadButtonList.Visibility = Visibility.Visible;
         }
 
         private void ButtonMouseLeaveHandler2(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background = (Brush)new BrushConverter().ConvertFrom("#354052");
+        {            
             LoadButtonList.Visibility = Visibility.Collapsed;
         }
         private void MenuMouseEnterHandler(object sender, MouseEventArgs e)
@@ -88,13 +82,7 @@ namespace ScheduX.UI.Pages
             PeriodOfStudyWindowInstance = PeriodOfStudyWindowInstance ?? new PeriodOfStudyWindow();
             PeriodOfStudyWindowInstance.Owner = EditorWindowInstance;
             PeriodOfStudyWindowInstance.Show();
-        }
-        private void TimetableCallsItemHandler(object sender, RoutedEventArgs e)
-        {
-            TimetableCallsWindowInstance = TimetableCallsWindowInstance ?? new TimetableCallsWindow();
-            TimetableCallsWindowInstance.Owner = EditorWindowInstance;
-            TimetableCallsWindowInstance.Show();
-        }        
+        }    
         private void ClassesItemHandler(object sender, RoutedEventArgs e)
         {
             ClassesWindowInstance = ClassesWindowInstance ?? new GroupsWindow();
@@ -118,6 +106,12 @@ namespace ScheduX.UI.Pages
             SubjectsWindowInstance = SubjectsWindowInstance ?? new SubjectsWindow();
             SubjectsWindowInstance.Owner = EditorWindowInstance;
             SubjectsWindowInstance.Show();
+        }
+        private void LessonsItemHandler(object sender, RoutedEventArgs e)
+        {
+            LessonsWindowInstance = LessonsWindowInstance ?? new LessonsWindow();
+            LessonsWindowInstance.Owner = EditorWindowInstance;
+            LessonsWindowInstance.Show();
         }
     }
 }
