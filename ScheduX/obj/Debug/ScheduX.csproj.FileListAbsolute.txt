@@ -50,3 +50,6 @@ C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Lessons\LessonsWindow.g.
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Lessons\NewLessonWindow.g.cs
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Lessons\LessonsWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Lessons\NewLessonWindow.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Pages\Schedule.g.cs
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\UI\Pages\Schedule.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Debug\ScheduX.csproj.ResolveComReference.cache

@@ -120,11 +120,27 @@ namespace ScheduX.UI.Lessons
         {
             var ownerEditorWindowInstance = (EditorWindow)((LessonsWindow)this.Owner).Owner;
             var subjects = ownerEditorWindowInstance.HomePage.SubjectsWindowInstance?.SubjectsList.Items;
-            foreach (var item in subjects)
+            if (subjects != null)
             {
-                SubjectTextBox.Items.Add(((SchoolSubject)item).Name);               
+                foreach (var item in subjects)
+                {
+                    if (!AlreadyIn(SubjectTextBox.Items,item))
+                    {
+                        SubjectTextBox.Items.Add(item);                        
+                    }
+                }
             }
-
+        }
+        private bool AlreadyIn(ItemCollection collection, object element)
+        {           
+            foreach (var item in collection)
+            {       
+                if (element.Equals(item))
+                {
+                    return true;
+                }                
+            }
+            return false;
         }
     }
 }

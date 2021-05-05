@@ -92,6 +92,7 @@ namespace ScheduX.UI.Classes
                 GroupElement group = new SchoolGroup(NameTextBox.Text, int.Parse(StudentsQuantityTextBox.Text));
                 OwnerWindowInstance.SchoolGroupDictionary.dictionaryList.Add(group);
                 OwnerWindowInstance.GroupsList.Items.Add(group);
+                ((Owner as GroupsWindow).Owner as EditorWindow).HomePage.GroupsIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
                 ResetControls();
             }
         }

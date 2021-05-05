@@ -90,7 +90,8 @@ namespace ScheduX.UI.Audiences
                 var OwnerWindowInstance = (AudiencesWindow)this.Owner;
                 AudienceElement audience = new SchoolAudience(NameTextBox.Text, AudienceTypeTextBox.Text, int.Parse(CapacityTextBox.Text));
                 OwnerWindowInstance.SchoolAudienceDictionary.dictionaryList.Add(audience);
-                OwnerWindowInstance.AudiencesList.Items.Add(audience);               
+                OwnerWindowInstance.AudiencesList.Items.Add(audience);
+                ((Owner as AudiencesWindow).Owner as EditorWindow).HomePage.AudiencesIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
                 ResetControls();
             }
         }

@@ -78,6 +78,7 @@ namespace ScheduX.UI.Teachers
                 TeacherElement teacher = new SchoolTeacher(NameTextBox.Text,PostTextBox.Text,int.Parse(ExperienceTextBox.Text),AddressTextBox.Text,TelephoneTextBox.Text);
                 OwnerWindowInstance.SchoolTeacherDictionary.dictionaryList.Add(teacher);
                 OwnerWindowInstance.TeachersList.Items.Add(teacher);
+                ((Owner as TeachersWindow).Owner as EditorWindow).HomePage.TeachersIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
                 ResetControls();
             }
         }
@@ -103,7 +104,7 @@ namespace ScheduX.UI.Teachers
         }
         private void TextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
-            ((TextBox)sender).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#595959");
+            (sender as TextBox).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#595959");
         }
         protected override void OnSourceInitialized(EventArgs e)
         {

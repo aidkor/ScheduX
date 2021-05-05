@@ -15,6 +15,10 @@ using System.Windows.Shapes;
 using ScheduX.Resourses.UILogic;
 using ScheduX.Resourses.AppLogic;
 using ScheduX.UI.PeriodOfStudy;
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Win32;
+using System.Collections;
+using ScheduX.UI.Pages;
 
 namespace ScheduX.UI.PeriodOfStudy
 {
@@ -34,6 +38,7 @@ namespace ScheduX.UI.PeriodOfStudy
         {
             if (PeriodsList.SelectedItem != null & PeriodsList.SelectedItems.Count == 1)
             {
+                MakeIndicatorGreen();
                 this.Close();
             }
             else
@@ -75,6 +80,7 @@ namespace ScheduX.UI.PeriodOfStudy
         {
             if (PeriodsList.SelectedItem != null & PeriodsList.SelectedItems.Count == 1)
             {
+                (Owner as EditorWindow).HomePage.PeriodIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
                 this.Close();
             }
             else
@@ -128,6 +134,7 @@ namespace ScheduX.UI.PeriodOfStudy
                             SchoolStudyPeriodDictionary.dictionaryList.RemoveAll(period => period.GetHashCode() == PeriodsList.SelectedItems[0].GetHashCode());
                             PeriodsList.Items.RemoveAt(PeriodsList.Items.IndexOf(PeriodsList.SelectedItems[0]));
                         }
+                        EmptyDictionaryChecker();
                         break;
                     }
 
@@ -135,6 +142,84 @@ namespace ScheduX.UI.PeriodOfStudy
                         break;
                 }
             }
+        }
+        private void ImportExcel_Click(object sender, RoutedEventArgs e)
+        {
+            string[,] data = UploadExcelData();  
+            // HACK: Change Length Checker
+            if (data?.GetLength(1) >= FindVisualChildren<GridViewColumnHeader>(this).Count() - 2)
+            {
+                for (int i = 0; i < data.GetLength(0); i++)
+                {
+                    DateTime.TryParse(data[i, 1], out DateTime start);
+                    DateTime.TryParse(data[i, 2], out DateTime end);
+
+                    var period = new SchoolPeriod(data[i,0], start, end);
+                    SchoolStudyPeriodDictionary.dictionaryList.Add(period);
+                    PeriodsList.Items.Add(period);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wrong Column Data");
+            }
+        } 
+        private string[,] UploadExcelData()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel File (*.xlsx)|*.xlsx";
+            if (ofd.ShowDialog() == true)
+            {
+                Excel.Application ObjWorkExcel = new Excel.Application();
+                Excel.Workbook ObjWorkBook = ObjWorkExcel.Workbooks.Open(ofd.FileName);
+                Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)ObjWorkBook.Sheets[1]; //получить 1-й лист
+                var lastCell = ObjWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);//последнюю ячейку
+
+                string[,] data = new string[lastCell.Row, lastCell.Column];
+                for (int i = 0; i < lastCell.Column; i++)
+                {
+                    for (int j = 0; j < lastCell.Row; j++)
+                    {
+                        data[i, j] = ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString();
+                    }
+                }
+
+                ObjWorkBook.Close(false, Type.Missing, Type.Missing);
+                ObjWorkExcel.Quit(); 
+                GC.Collect(); 
+                return data;
+            }
+            return null;
+        }
+        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+        private void EmptyDictionaryChecker()
+        {
+            if (SchoolStudyPeriodDictionary.dictionaryList.Count == 0)
+            {
+                (Owner as EditorWindow).HomePage.PeriodIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#B5C1D3");
+            }
+        }
+        private void MakeIndicatorGreen()
+        {
+            (Owner as EditorWindow).HomePage.PeriodIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
         }
     }
 }

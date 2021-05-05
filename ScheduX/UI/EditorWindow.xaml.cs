@@ -25,8 +25,9 @@ namespace ScheduX.UI
     /// </summary>
     public partial class EditorWindow : Window
     {
-        public Home HomePage { get; set; }       
-        private string shxFilePath { get; set; }
+        public Home HomePage { get; set; }      
+        public Schedule SchedulePage { get; set; }
+        private string shxFilePath { get; set; }    
         public EditorWindow()
         {
             InitializeComponent();
@@ -75,7 +76,7 @@ namespace ScheduX.UI
             IconHelper.RemoveIcon(this);
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
-        {              
+        {         
             WorkingSpace.Content = HomePage;
         }
         private void FileButton_Click(object sender, RoutedEventArgs e)
@@ -83,36 +84,38 @@ namespace ScheduX.UI
             WorkingSpace.Content = null;
         }
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
+        {           
             WorkingSpace.Content = null;
         }
         private void HelpButton_Click(object sender, RoutedEventArgs e)
-        {
+        {           
             WorkingSpace.Content = null;
         }
         private void ScheduleButton_Click(object sender, RoutedEventArgs e)
-        {
-            WorkingSpace.Content = null;
+        {          
+            WorkingSpace.Content = SchedulePage;
         }
         private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {             
+        {
             Button button = sender as Button;
             Grid content = button.Content as Grid;
-            string imgName = (content.Children[1] as Image).Source.ToString().Split('/').Last().Split('_').First();            
+            string imgName = (content.Children[1] as Image).Source.ToString().Split('/').Last().Split('_').First();
             
             button.Foreground = Brushes.White;
             (content.Children[0] as Grid).Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#7DABE0");
-            (content.Children[1] as Image).Source = new BitmapImage(new Uri($@"..\Resourses\Images\EditorWindowImg\{imgName}_white.png", UriKind.Relative));
+            (content.Children[1] as Image).Source = new BitmapImage(new Uri($@"..\Resourses\Images\EditorWindowImg\{imgName}_white.png", UriKind.Relative));            
         }
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
             Button button = sender as Button;
-            Grid content = (button.Content as Grid);
+            Grid content = button.Content as Grid;
             string imgName = (content.Children[1] as Image).Source.ToString().Split('/').Last().Split('_').First();
-            
+
             button.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#7DABE0");
             (content.Children[0] as Grid).Background = Brushes.Transparent;
-            (content.Children[1] as Image).Source = new BitmapImage(new Uri($@"..\Resourses\Images\EditorWindowImg\{imgName}_blue.png", UriKind.Relative));           
-        }
+            (content.Children[1] as Image).Source = new BitmapImage(new Uri($@"..\Resourses\Images\EditorWindowImg\{imgName}_blue.png", UriKind.Relative));
+
+        }     
+    
     }
 }

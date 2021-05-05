@@ -182,6 +182,7 @@
         </Setter>
     </Style>
 
+
     <Style x:Key="EditorButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{StaticResource ControlDefaultBackground}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ControlDefaultBorderBrush}"/>
@@ -226,6 +227,7 @@
         </Setter>
     </Style>
     
+
     <Style x:Key="GenerateButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource ControlDefaultBackground}"/>

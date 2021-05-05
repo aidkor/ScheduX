@@ -19,6 +19,9 @@
         <!-- Toolbar -->
         <StackPanel x:Name="Toolbar" Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="New"  Width="90" Height="26" Margin="25,26,0,0" Content="NEW" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="New_Click" Style="{DynamicResource RoundedCorners}"/>
+            <Button x:Name="ImportExcel" Width="29" Height="26"  Margin="12,26,0,0" FontWeight="Bold" Background="White" BorderBrush="#3A36F4" Style="{DynamicResource RoundedCorners}">
+                <Image Source="../../Resourses/Images/down-arrow.png" Width="14"/>
+            </Button>
         </StackPanel>
 
         <!-- List of periods-->

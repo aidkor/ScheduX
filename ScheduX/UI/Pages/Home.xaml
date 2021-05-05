@@ -31,9 +31,17 @@
                         </Grid>
                     </Button>
                     <Menu x:Name="ConfigurateMenu" Grid.Row="2" Visibility="Collapsed" Background="White" Width="230" VerticalAlignment="Top" MouseEnter="MenuMouseEnterHandler" MouseLeave="MenuMouseLeaveHandler">
-                        <MenuItem  Height="30" Width="230" AllowDrop="True" Click="PeriodOfStudyItemHandler">
+                        <MenuItem   Height="30" Width="230" Foreground="#3A36F4" FontWeight="Bold" AllowDrop="True" Click="PeriodOfStudyItemHandler">
                             <MenuItem.Header>
-                                <Label Foreground="#3A36F4" FontWeight="Bold">PERIOD OF STUDY</Label>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="PERIOD OF STUDY" Margin="5,0"/>
+                                    <Ellipse x:Name="PeriodIndicator" Grid.Column="1" Width="16" Fill="#B5C1D3" Margin="80,0"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
                     </Menu>
@@ -58,24 +66,56 @@
                         </Grid>
                     </Button>
                     <Menu Grid.Row="2" x:Name="DictionaryButtonList" Visibility="Collapsed" Background="White" Width="230" VerticalAlignment="Top"  MouseEnter="MenuMouseEnterHandler" MouseLeave="MenuMouseLeaveHandler">
-                        <MenuItem  Height="30" Width="230" AllowDrop="True" Click="ClassesItemHandler">
+                        <MenuItem  Height="30" Width="230" Foreground="#3A36F4" FontWeight="Bold" AllowDrop="True" Click="ClassesItemHandler">
                             <MenuItem.Header>
-                                <Label Foreground="#3A36F4" FontWeight="Bold">GROUPS</Label>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="GROUPS" Margin="5,0"/>
+                                    <Ellipse x:Name="GroupsIndicator" Grid.Column="1" Width="16" Fill="#B5C1D3" Margin="135,0"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
-                        <MenuItem  Height="30" Width="230"  AllowDrop="True" Click="TeachersItemHandler">
+                        <MenuItem  Height="30" Width="230" Foreground="#3A36F4" FontWeight="Bold" AllowDrop="True" Click="TeachersItemHandler">
                             <MenuItem.Header>
-                                <Label Foreground="#3A36F4" FontWeight="Bold">TEACHERS</Label>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="TEACHERS" Margin="5,0"/>
+                                    <Ellipse x:Name="TeachersIndicator" Grid.Column="1" Width="16" Fill="#B5C1D3" Margin="124,0"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
-                        <MenuItem  Height="30" Width="230"  AllowDrop="True" Click="AudiencesItemHandler">
+                        <MenuItem  Height="30" Width="230" Foreground="#3A36F4" FontWeight="Bold" AllowDrop="True" Click="AudiencesItemHandler">
                             <MenuItem.Header>
-                                <Label Foreground="#3A36F4" FontWeight="Bold">AUDIENCES</Label>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="AUDIENCES" Margin="5,0"/>
+                                    <Ellipse x:Name="AudiencesIndicator" Grid.Column="1" Width="16" Fill="#B5C1D3" Margin="117,0"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
-                        <MenuItem  Height="30" Width="230"  AllowDrop="True" Click="SubjectsItemHandler">
+                        <MenuItem  Height="30" Width="230" Foreground="#3A36F4" FontWeight="Bold" AllowDrop="True" Click="SubjectsItemHandler">
                             <MenuItem.Header>
-                                <Label Foreground="#3A36F4" FontWeight="Bold">SUBJECTS</Label>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="SUBJECTS" Margin="5,0"/>
+                                    <Ellipse x:Name="SubjectsIndicator" Grid.Column="1" Width="16" Fill="#B5C1D3" Margin="127,0"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
                     </Menu>

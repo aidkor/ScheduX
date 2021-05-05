@@ -57,7 +57,6 @@
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <!-- Add Binding to change image and resize mode -->
                 <Button Grid.Column="1" Background="#354052" BorderThickness="0" Click="OpenCloseLeftSideBarButton">
                     <Image x:Name="LeftSideBarOpenCloseButtonImg" Grid.Column="1" Source="..\Resourses\Images\EditorWindowImg\menu.png" Width="24" Height="24" Margin="17 0"/>
                 </Button>

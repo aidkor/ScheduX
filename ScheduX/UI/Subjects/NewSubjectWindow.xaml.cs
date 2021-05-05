@@ -33,6 +33,7 @@ namespace ScheduX.UI.Subjects
                 SubjectElement subject = new SchoolSubject(NameTextBox.Text, int.Parse(ComplexityTextBox.Text));
                 OwnerWindowInstance.SchoolSubjectDictionary.dictionaryList.Add(subject);
                 OwnerWindowInstance.SubjectsList.Items.Add(subject);
+                ((Owner as SubjectsWindow).Owner as EditorWindow).HomePage.SubjectsIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
                 ResetControls();
             }
         }
