@@ -24,7 +24,7 @@ namespace ScheduX.UI.Teachers
     public partial class TeachersWindow : Window
     {
         public NewTeacherWindow NewTeacherWindowInstance { get; set; }
-        public TeacherDictionary SchoolTeacherDictionary { get; set; }
+        public SchoolTeacherDictionary SchoolTeacherDictionary { get; set; }
         public TeachersWindow()
         {
             InitializeComponent();
@@ -147,9 +147,9 @@ namespace ScheduX.UI.Teachers
                 var lastCell = ObjWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);//последнюю ячейку
 
                 string[,] data = new string[lastCell.Row, lastCell.Column];
-                for (int i = 0; i < lastCell.Column; i++)
+                for (int i = 0; i < lastCell.Row; i++)
                 {
-                    for (int j = 0; j < lastCell.Row; j++)
+                    for (int j = 0; j < lastCell.Column; j++)
                     {
                         data[i, j] = ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString();
                     }

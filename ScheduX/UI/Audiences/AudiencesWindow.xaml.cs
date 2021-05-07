@@ -26,11 +26,11 @@ namespace ScheduX.UI.Audiences
     public partial class AudiencesWindow : Window
     {
         public NewAudienceWindow NewAudienceWindowInstance { get; set; }
-        public AudienceDictionary SchoolAudienceDictionary { get; set; }
+        public SchoolAudienceDictionary Dict { get; set; }
         public AudiencesWindow()
         {
             InitializeComponent();
-            SchoolAudienceDictionary = new SchoolAudienceDictionary();
+            Dict = new SchoolAudienceDictionary();
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
@@ -80,7 +80,7 @@ namespace ScheduX.UI.Audiences
                 foreach (SchoolAudience item in AudiencesList.SelectedItems)
                 {
                     var audience = new SchoolAudience(item.Name, item.AudienceType, item.Capacity);
-                    SchoolAudienceDictionary.dictionaryList.Add(audience);
+                    Dict.dictionaryList.Add(audience);
                     AudiencesList.Items.Add(audience);
                 }
             }
@@ -96,7 +96,7 @@ namespace ScheduX.UI.Audiences
                     {
                         while (AudiencesList.SelectedItems.Count != 0)
                         {
-                            SchoolAudienceDictionary.dictionaryList.RemoveAll(period => period.GetHashCode() == AudiencesList.SelectedItems[0].GetHashCode());
+                            Dict.dictionaryList.RemoveAll(period => period.GetHashCode() == AudiencesList.SelectedItems[0].GetHashCode());
                             AudiencesList.Items.RemoveAt(AudiencesList.Items.IndexOf(AudiencesList.SelectedItems[0]));
                         }
                         EmptyDictionaryChecker();
@@ -127,7 +127,7 @@ namespace ScheduX.UI.Audiences
                     int.TryParse(data[i, 2], out int capacity);
 
                     var audience = new SchoolAudience(data[i, 0], data[i, 1], capacity);
-                    SchoolAudienceDictionary.dictionaryList.Add(audience);
+                    Dict.dictionaryList.Add(audience);
                     AudiencesList.Items.Add(audience);
                 }
             }
@@ -148,9 +148,9 @@ namespace ScheduX.UI.Audiences
                 var lastCell = ObjWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);//последнюю ячейку
 
                 string[,] data = new string[lastCell.Row, lastCell.Column];
-                for (int i = 0; i < lastCell.Column; i++)
+                for (int i = 0; i < lastCell.Row; i++)
                 {
-                    for (int j = 0; j < lastCell.Row; j++)
+                    for (int j = 0; j < lastCell.Column; j++)
                     {
                         data[i, j] = ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString();
                     }
@@ -185,7 +185,7 @@ namespace ScheduX.UI.Audiences
         }
         private void EmptyDictionaryChecker()
         {
-            if (SchoolAudienceDictionary.dictionaryList.Count == 0)
+            if (Dict.dictionaryList.Count == 0)
             {
                 (Owner as EditorWindow).HomePage.AudiencesIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#B5C1D3");
             }

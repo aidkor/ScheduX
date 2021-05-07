@@ -28,11 +28,11 @@ namespace ScheduX.UI.PeriodOfStudy
     public partial class PeriodOfStudyWindow : Window
     {
         public NewPeriodWindow NewPeriodWindowInstance { get; set; }
-        public StudyPeriodDictionary SchoolStudyPeriodDictionary { get; set; }
+        public SchoolStudyPeriodDictionary Dict { get; set; }
         public PeriodOfStudyWindow()
         {
             InitializeComponent();
-            SchoolStudyPeriodDictionary = new SchoolStudyPeriodDictionary();
+            Dict = new SchoolStudyPeriodDictionary();
         }
         private void Select_Click(object sender, RoutedEventArgs e)
         {
@@ -115,7 +115,7 @@ namespace ScheduX.UI.PeriodOfStudy
                 foreach (SchoolPeriod item in PeriodsList.SelectedItems)
                 {
                     var period = new SchoolPeriod(item.Name, item.Start, item.End);
-                    SchoolStudyPeriodDictionary.dictionaryList.Add(period);
+                    Dict.dictionaryList.Add(period);
                     PeriodsList.Items.Add(period);
                 }
             }
@@ -131,7 +131,7 @@ namespace ScheduX.UI.PeriodOfStudy
                     {
                         while (PeriodsList.SelectedItems.Count != 0)
                         {
-                            SchoolStudyPeriodDictionary.dictionaryList.RemoveAll(period => period.GetHashCode() == PeriodsList.SelectedItems[0].GetHashCode());
+                            Dict.dictionaryList.RemoveAll(period => period.GetHashCode() == PeriodsList.SelectedItems[0].GetHashCode());
                             PeriodsList.Items.RemoveAt(PeriodsList.Items.IndexOf(PeriodsList.SelectedItems[0]));
                         }
                         EmptyDictionaryChecker();
@@ -155,7 +155,7 @@ namespace ScheduX.UI.PeriodOfStudy
                     DateTime.TryParse(data[i, 2], out DateTime end);
 
                     var period = new SchoolPeriod(data[i,0], start, end);
-                    SchoolStudyPeriodDictionary.dictionaryList.Add(period);
+                    Dict.dictionaryList.Add(period);
                     PeriodsList.Items.Add(period);
                 }
             }
@@ -212,9 +212,11 @@ namespace ScheduX.UI.PeriodOfStudy
         }
         private void EmptyDictionaryChecker()
         {
-            if (SchoolStudyPeriodDictionary.dictionaryList.Count == 0)
+            if (Dict.dictionaryList.Count == 0)
             {
                 (Owner as EditorWindow).HomePage.PeriodIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#B5C1D3");
+                TrashBin.IsEnabled = false;
+                
             }
         }
         private void MakeIndicatorGreen()

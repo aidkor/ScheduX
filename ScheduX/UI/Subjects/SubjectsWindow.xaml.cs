@@ -25,7 +25,7 @@ namespace ScheduX.UI.Subjects
     public partial class SubjectsWindow : Window
     {
         public NewSubjectWindow NewSubjectWindowInstance { get; set; }
-        public SubjectDictionary SchoolSubjectDictionary { get; set; }
+        public SchoolSubjectDictionary SchoolSubjectDictionary { get; set; }
         public SubjectsWindow()
         {
             InitializeComponent();
@@ -147,9 +147,9 @@ namespace ScheduX.UI.Subjects
                 var lastCell = ObjWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);//последнюю ячейку
 
                 string[,] data = new string[lastCell.Row, lastCell.Column];
-                for (int i = 0; i < lastCell.Column; i++)
+                for (int i = 0; i < lastCell.Row; i++)
                 {
-                    for (int j = 0; j < lastCell.Row; j++)
+                    for (int j = 0; j < lastCell.Column; j++)
                     {
                         data[i, j] = ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString();
                     }

@@ -30,8 +30,8 @@ namespace ScheduX.UI.PeriodOfStudy
             if (!IsWrongValue())
             {
                 var OwnerWindowInstance = (PeriodOfStudyWindow)this.Owner;
-                PeriodElement period = new SchoolPeriod(NameTextBox.Text, DatePicker_1.SelectedDate.Value, DatePicker_2.SelectedDate.Value);
-                OwnerWindowInstance.SchoolStudyPeriodDictionary.dictionaryList.Add(period);
+                var period = new SchoolPeriod(NameTextBox.Text, DatePicker_1.SelectedDate.Value, DatePicker_2.SelectedDate.Value);
+                OwnerWindowInstance.Dict.dictionaryList.Add(period);
                 OwnerWindowInstance.PeriodsList.Items.Add(period);
                 ResetControls();
             }
@@ -41,7 +41,7 @@ namespace ScheduX.UI.PeriodOfStudy
             if (!IsWrongValue())
             {
                 var ownerWindowInstance = (PeriodOfStudyWindow)Owner;
-                var period = (SchoolPeriod)ownerWindowInstance.SchoolStudyPeriodDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.PeriodsList.SelectedItem.GetHashCode());
+                var period = (SchoolPeriod)ownerWindowInstance.Dict.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.PeriodsList.SelectedItem.GetHashCode());
 
                 period.Name = NameTextBox.Text;
                 period.Start = DatePicker_1.SelectedDate.Value;

@@ -140,9 +140,17 @@
                         </Grid>
                     </Button>
                     <Menu Grid.Row="2" x:Name="LoadButtonList" Visibility="Collapsed" Background="White" Width="230" VerticalAlignment="Top" MouseEnter="MenuMouseEnterHandler" MouseLeave="MenuMouseLeaveHandler">
-                        <MenuItem  Height="30" Width="230" AllowDrop="True" Click="LessonsItemHandler">
+                        <MenuItem  Height="30" Width="230" Foreground="#3A36F4" FontWeight="Bold" AllowDrop="True" Click="LessonsItemHandler">
                             <MenuItem.Header>
-                                <Label Foreground="#3A36F4" FontWeight="Bold">LESSONS</Label>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="LESSONS" Margin="5,0"/>
+                                    <Ellipse x:Name="LessonsIndicator" Grid.Column="1" Width="16" Fill="#B5C1D3" Margin="135,0"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
                     </Menu>
@@ -156,7 +164,7 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Image Grid.Row="0" Source="..\..\Resourses\Images\EditorWindowImg\work-time.png" Width="130"  Margin="0,10,0,10"/>
-                    <Button  Grid.Row="1" Height="32"  Width="230"  Content="GENERATE SCHEDULE" Background="#354052" BorderBrush="White" FontWeight="Bold" VerticalAlignment="Top" Style="{DynamicResource GenerateButton}"/>
+                    <Button  Grid.Row="1" Height="32"  Width="230"  Content="GENERATE SCHEDULE" Background="#354052" BorderBrush="White" FontWeight="Bold" VerticalAlignment="Top" Style="{DynamicResource GenerateButton}" Click="GenerateButton_Click"/>
                 </Grid>
 
             </WrapPanel>

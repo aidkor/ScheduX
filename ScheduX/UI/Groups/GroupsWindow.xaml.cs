@@ -24,11 +24,11 @@ namespace ScheduX.UI.Classes
     public partial class GroupsWindow : Window
     {
         public NewGroupWindow NewGroupWindowInstance { get; set; }
-        public GroupDictionary SchoolGroupDictionary { get; set; }
+        public SchoolGroupDictionary Dict { get; set; }
         public GroupsWindow()
         {
             InitializeComponent();
-            SchoolGroupDictionary = new SchoolGroupDictionary();
+            Dict = new SchoolGroupDictionary();
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
@@ -76,7 +76,7 @@ namespace ScheduX.UI.Classes
                 foreach (SchoolGroup item in GroupsList.SelectedItems)
                 {
                     var group = new SchoolGroup(item.Name, item.StudentQuantity);
-                    SchoolGroupDictionary.dictionaryList.Add(group);
+                    Dict.dictionaryList.Add(group);
                     GroupsList.Items.Add(group);
                 }
             }
@@ -92,7 +92,7 @@ namespace ScheduX.UI.Classes
                     {
                         while (GroupsList.SelectedItems.Count != 0)
                         {
-                            SchoolGroupDictionary.dictionaryList.RemoveAll(group => group.GetHashCode() == GroupsList.SelectedItems[0].GetHashCode());
+                            Dict.dictionaryList.RemoveAll(group => group.GetHashCode() == GroupsList.SelectedItems[0].GetHashCode());
                             GroupsList.Items.RemoveAt(GroupsList.Items.IndexOf(GroupsList.SelectedItems[0]));
                         }                        
                         EmptyDictionaryChecker();
@@ -123,7 +123,7 @@ namespace ScheduX.UI.Classes
                     int.TryParse(data[i, 1], out int studQuantity);
 
                     var group = new SchoolGroup(data[i, 0], studQuantity);
-                    SchoolGroupDictionary.dictionaryList.Add(group);
+                    Dict.dictionaryList.Add(group);
                     GroupsList.Items.Add(group);
                 }
             }
@@ -144,9 +144,10 @@ namespace ScheduX.UI.Classes
                 var lastCell = ObjWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);
 
                 string[,] data = new string[lastCell.Row, lastCell.Column];
-                for (int i = 0; i < lastCell.Column; i++)
+
+                for (int i = 0; i < lastCell.Row; i++)
                 {
-                    for (int j = 0; j < lastCell.Row; j++)
+                    for (int j = 0; j < lastCell.Column; j++)
                     {
                         data[i, j] = ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString();
                     }
@@ -181,7 +182,7 @@ namespace ScheduX.UI.Classes
         }
         private void EmptyDictionaryChecker()
         {
-            if (SchoolGroupDictionary.dictionaryList.Count == 0)
+            if (Dict.dictionaryList.Count == 0)
             {
                 (Owner as EditorWindow).HomePage.GroupsIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#B5C1D3");
             }

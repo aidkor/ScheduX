@@ -19,28 +19,25 @@
         <!-- Toolbar -->
         <StackPanel x:Name="Toolbar" Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="New"  Width="90" Height="26" Margin="25,26,0,0" Content="NEW" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="New_Click" Style="{DynamicResource RoundedCorners}"/>
-            <Button x:Name="ImportExcel" Width="29" Height="26"  Margin="12,26,0,0" FontWeight="Bold" Background="White" BorderBrush="#3A36F4" Style="{DynamicResource RoundedCorners}">
-                <Image Source="../../Resourses/Images/down-arrow.png" Width="14"/>
-            </Button>
         </StackPanel>
 
         <!-- List of periods-->
         <ListView  x:Name="LessonsList" Grid.Row="2" Margin="25,12,25,15" BorderBrush="#595959" Height="350"  Cursor="Arrow">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="edit" Foreground="#FF343434" Margin="0,0,0,1"  >
+                    <MenuItem Header="edit" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuEditButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/ContextMenuImg/edit.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="copy" Foreground="#FF343434" Margin="0,0,0,1"  >
+                    <MenuItem Header="copy" Foreground="#FF343434" Margin="0,0,0,1" Click="ContextMenuCopyButton_Click">
                         <MenuItem.Icon>
                             <Image Source="../../Resourses/Images/ContextMenuImg/copy.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="delete" Foreground="#FF343434" >
+                    <MenuItem Header="delete" Foreground="#FF343434" Click="ContextMenuDeleteButton_Click">
                         <MenuItem.Icon>
-                            <Image Source="../../Resourses/Images/ContextMenuImg/trash.png" />
+                            <Image Source="../../Resourses/Images/ContextMenuImg/trash.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
@@ -58,10 +55,10 @@
                     </GridView.ColumnHeaderContextMenu>
                     <GridView.Columns>
                         <GridViewColumn Width="100" Header="NAME" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Width="100" Header="SUBJECT" DisplayMemberBinding="{Binding Subject}"/>
-                        <GridViewColumn Width="120" Header="TEACHER" DisplayMemberBinding="{Binding Teacher}"/>
-                        <GridViewColumn Width="150" Header="LESSONS PER WEEK" DisplayMemberBinding="{Binding LessonsPerWeek}"/>
-                        <GridViewColumn Width="150" Header="LESSONS IN GENERAL" DisplayMemberBinding="{Binding LessonsInGeneral}"/>
+                        <GridViewColumn Width="120" Header="SUBJECT" DisplayMemberBinding="{Binding Path=Subject.Name}"/>
+                        <GridViewColumn Width="170" Header="TEACHER" DisplayMemberBinding="{Binding Path=Teacher.FullName}"/>
+                        <GridViewColumn Width="170" Header="AUDIENCE" DisplayMemberBinding="{Binding Path=Audience.FullName}"/>
+                        <GridViewColumn Width="100" Header="GROUP" DisplayMemberBinding="{Binding Path=Group.Name}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

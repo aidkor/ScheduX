@@ -6,80 +6,79 @@ using System.Threading.Tasks;
 
 namespace ScheduX.Resourses.AppLogic
 {
-    public abstract class Dictionary<Element>
+    public abstract class StudyPeriodDictionary 
     {
-        public virtual IDBHandable DataHandler { get; set; }
-        public virtual List<Element> dictionaryList { get; set; }
-        // Add Shx Project Type Dependency 
+        public virtual IDBHandable DataHandler { get; set; }       
     }
-    public abstract class StudyPeriodDictionary : Dictionary<PeriodElement>
-    {                
-       
-    }
-    public abstract class GroupDictionary : Dictionary<GroupElement>
+    public abstract class GroupDictionary 
     {
-
+        public virtual IDBHandable DataHandler { get; set; }        
     }
-    public abstract class TeacherDictionary : Dictionary<TeacherElement>
+    public abstract class TeacherDictionary 
     {
-
+        public virtual IDBHandable DataHandler { get; set; }      
     }
-    public abstract class AudienceDictionary : Dictionary<AudienceElement>
+    public abstract class AudienceDictionary 
     {
-
+        public virtual IDBHandable DataHandler { get; set; }     
     }
-    public abstract class SubjectDictionary : Dictionary<SubjectElement>
+    public abstract class SubjectDictionary 
     {
-
+        public virtual IDBHandable DataHandler { get; set; }     
     }
-    public abstract class LessonDictionary : Dictionary<Lesson>
+    public abstract class LessonDictionary 
     {
-
+        public virtual IDBHandable DataHandler { get; set; }      
     }
     //=============================================
     //=============================================
 
     public class SchoolStudyPeriodDictionary : StudyPeriodDictionary
     {
-      
+        public virtual List<SchoolPeriod> dictionaryList { get; set; }
         public SchoolStudyPeriodDictionary()
         {
-            dictionaryList = new List<PeriodElement>();
+            dictionaryList = new List<SchoolPeriod>();
         }
     }
     public class SchoolGroupDictionary : GroupDictionary
     {
+        public virtual List<SchoolGroup> dictionaryList { get; set; }
         public SchoolGroupDictionary()
         {
-            dictionaryList = new List<GroupElement>();
+            dictionaryList = new List<SchoolGroup>();
         }
     }
     public class SchoolTeacherDictionary : TeacherDictionary
     {
+        public virtual List<SchoolTeacher> dictionaryList { get; set; }
         public SchoolTeacherDictionary()
         {
-            dictionaryList = new List<TeacherElement>();
+            dictionaryList = new List<SchoolTeacher>();
         }
     }
     public class SchoolAudienceDictionary : AudienceDictionary
     {
+        public virtual List<SchoolAudience> dictionaryList { get; set; }
         public SchoolAudienceDictionary()
         {
-            dictionaryList = new List<AudienceElement>();
+            dictionaryList = new List<SchoolAudience>();
         }
     }
     public class SchoolSubjectDictionary : SubjectDictionary
     {
+        public virtual List<SchoolSubject> dictionaryList { get; set; }
         public SchoolSubjectDictionary()
         {
-            dictionaryList = new List<SubjectElement>();
+            dictionaryList = new List<SchoolSubject>();
         }
     }
     public class SchoolLessonDictionary : LessonDictionary
     {
+        public virtual List<SchoolLesson> dictionaryList { get; set; }
         public SchoolLessonDictionary()
         {
-            dictionaryList = new List<Lesson>();
+            dictionaryList = new List<SchoolLesson>();
         }
     }
 

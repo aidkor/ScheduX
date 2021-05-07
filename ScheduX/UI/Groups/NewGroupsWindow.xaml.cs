@@ -89,8 +89,8 @@ namespace ScheduX.UI.Classes
             if (!IsWrongTextBoxValue())
             {
                 var OwnerWindowInstance = (GroupsWindow)this.Owner;
-                GroupElement group = new SchoolGroup(NameTextBox.Text, int.Parse(StudentsQuantityTextBox.Text));
-                OwnerWindowInstance.SchoolGroupDictionary.dictionaryList.Add(group);
+                var group = new SchoolGroup(NameTextBox.Text, int.Parse(StudentsQuantityTextBox.Text));
+                OwnerWindowInstance.Dict.dictionaryList.Add(group);
                 OwnerWindowInstance.GroupsList.Items.Add(group);
                 ((Owner as GroupsWindow).Owner as EditorWindow).HomePage.GroupsIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
                 ResetControls();
@@ -101,7 +101,7 @@ namespace ScheduX.UI.Classes
             if (!IsWrongTextBoxValue())
             {
                 var ownerWindowInstance = (GroupsWindow)this.Owner;
-                var group = (SchoolGroup)ownerWindowInstance.SchoolGroupDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.GroupsList.SelectedItem.GetHashCode());
+                var group = (SchoolGroup)ownerWindowInstance.Dict.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.GroupsList.SelectedItem.GetHashCode());
 
                 group.Name = NameTextBox.Text;
                 group.StudentQuantity = int.Parse(StudentsQuantityTextBox.Text);               

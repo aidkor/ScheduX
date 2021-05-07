@@ -88,8 +88,8 @@ namespace ScheduX.UI.Audiences
             if (!IsWrongTextBoxValue())
             {
                 var OwnerWindowInstance = (AudiencesWindow)this.Owner;
-                AudienceElement audience = new SchoolAudience(NameTextBox.Text, AudienceTypeTextBox.Text, int.Parse(CapacityTextBox.Text));
-                OwnerWindowInstance.SchoolAudienceDictionary.dictionaryList.Add(audience);
+                var audience = new SchoolAudience(NameTextBox.Text, AudienceTypeTextBox.Text, int.Parse(CapacityTextBox.Text));
+                OwnerWindowInstance.Dict.dictionaryList.Add(audience);
                 OwnerWindowInstance.AudiencesList.Items.Add(audience);
                 ((Owner as AudiencesWindow).Owner as EditorWindow).HomePage.AudiencesIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
                 ResetControls();
@@ -100,7 +100,7 @@ namespace ScheduX.UI.Audiences
             if (!IsWrongTextBoxValue())
             {
                 var ownerWindowInstance = (AudiencesWindow)this.Owner;
-                var audience = (SchoolAudience)ownerWindowInstance.SchoolAudienceDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.AudiencesList.SelectedItem.GetHashCode());
+                var audience = (SchoolAudience)ownerWindowInstance.Dict.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.AudiencesList.SelectedItem.GetHashCode());
 
                 audience.Name = NameTextBox.Text;
                 audience.AudienceType = AudienceTypeTextBox.Text;

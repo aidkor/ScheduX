@@ -75,7 +75,7 @@ namespace ScheduX.UI.Teachers
             if (!IsWrongTextBoxValue())
             {
                 var OwnerWindowInstance = (TeachersWindow)this.Owner;
-                TeacherElement teacher = new SchoolTeacher(NameTextBox.Text,PostTextBox.Text,int.Parse(ExperienceTextBox.Text),AddressTextBox.Text,TelephoneTextBox.Text);
+                var teacher = new SchoolTeacher(NameTextBox.Text,PostTextBox.Text,int.Parse(ExperienceTextBox.Text),AddressTextBox.Text,TelephoneTextBox.Text);
                 OwnerWindowInstance.SchoolTeacherDictionary.dictionaryList.Add(teacher);
                 OwnerWindowInstance.TeachersList.Items.Add(teacher);
                 ((Owner as TeachersWindow).Owner as EditorWindow).HomePage.TeachersIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");

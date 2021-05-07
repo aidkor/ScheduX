@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="Resourses\AppLogic\Dictionary.cs" />
     <Compile Include="Resourses\AppLogic\Element.cs" />
+    <Compile Include="Resourses\AppLogic\GA.cs" />
     <Compile Include="Resourses\AppLogic\IDBHandable.cs" />
     <Compile Include="Resourses\AppLogic\ShxFileTools.cs" />
     <Compile Include="UI\Audiences\AudiencesWindow.xaml.cs">
@@ -378,6 +379,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\trash-grey.png" />
+    <Resource Include="Resourses\Images\trash-purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\trash-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Images\down-arrow-white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

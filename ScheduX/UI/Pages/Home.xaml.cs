@@ -20,6 +20,7 @@ using ScheduX.UI.Audiences;
 using ScheduX.UI.Subjects;
 using ScheduX.UI.Lessons;
 using ScheduX.Resourses.AppLogic;
+using inputCursor = System.Windows.Input;
 
 namespace ScheduX.UI.Pages
 {
@@ -112,6 +113,30 @@ namespace ScheduX.UI.Pages
             LessonsWindowInstance = LessonsWindowInstance ?? new LessonsWindow();
             LessonsWindowInstance.Owner = EditorWindowInstance;
             LessonsWindowInstance.Show();
+        }
+
+        private async void GenerateButton_Click(object sender, RoutedEventArgs e)
+        {
+            SetLoadingCursor();
+
+            var list = LessonsWindowInstance.Dict.dictionaryList;           
+            var solver = new Solver();//создаем решатель
+
+            Plan.DaysPerWeek = 5;
+            Plan.HoursPerDay = 6;
+
+            solver.FitnessFunctions.Add(FitnessFunctions.Windows);//будем штрафовать за окна
+            solver.FitnessFunctions.Add(FitnessFunctions.LateLesson);//будем штрафовать за поздние пары
+
+            var res = solver.Solve(list);//находим лучший план
+
+            Plan.WriteInFile(@"C:\Users\Asus\Desktop\Plan.txt", res.ToString());
+        }
+        private async void SetLoadingCursor()
+        {
+            this.Cursor = Cursors.Wait;
+            await Task.Delay(1500);
+            this.Cursor = Cursors.Arrow;
         }
     }
 }
