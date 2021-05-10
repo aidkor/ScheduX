@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using ScheduX.Resourses;
 using ScheduX.Resourses.AppLogic;
 using ScheduX.Resourses.UILogic;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -34,16 +26,12 @@ namespace ScheduX.UI.Audiences
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
+            UITools.RemoveIcon(this);
         }
         private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            for (int i = 0; i < this.OwnedWindows.Count; i++)
-            {
-                this.OwnedWindows[i].Visibility = Visibility.Hidden;
-            }
-            this.Visibility = Visibility.Hidden;
+            UITools.HideChildWindow(this);
         }
         private void New_Click(object sender, RoutedEventArgs e)
         {
@@ -113,14 +101,14 @@ namespace ScheduX.UI.Audiences
             if (e.NewSize.Width <= 100)
             {
                 e.Handled = true;
-                ((GridViewColumnHeader)sender).Column.Width = 100;
+                (sender as GridViewColumnHeader).Column.Width = 100;
             }
         }
         private void ImportExcel_Click(object sender, RoutedEventArgs e)
         {
-            string[,] data = UploadExcelData();
+            string[,] data = ExcelFileTools.UploadExcelData();
             // HACK: Change Length Checker
-            if (data?.GetLength(1) >= FindVisualChildren<GridViewColumnHeader>(this).Count() - 2)
+            if (data?.GetLength(1) >= UITools.FindVisualChildren<GridViewColumnHeader>(this).Count() - 2)
             {
                 for (int i = 0; i < data.GetLength(0); i++)
                 {
@@ -135,64 +123,13 @@ namespace ScheduX.UI.Audiences
             {
                 MessageBox.Show("Wrong Column Data");
             }
-        }
-        private string[,] UploadExcelData()
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Excel File (*.xlsx)|*.xlsx";
-            if (ofd.ShowDialog() == true)
-            {
-                Excel.Application ObjWorkExcel = new Excel.Application();
-                Excel.Workbook ObjWorkBook = ObjWorkExcel.Workbooks.Open(ofd.FileName);
-                Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)ObjWorkBook.Sheets[1]; //получить 1-й лист
-                var lastCell = ObjWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell);//последнюю ячейку
-
-                string[,] data = new string[lastCell.Row, lastCell.Column];
-                for (int i = 0; i < lastCell.Row; i++)
-                {
-                    for (int j = 0; j < lastCell.Column; j++)
-                    {
-                        data[i, j] = ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString();
-                    }
-                }
-
-                MakeIndicatorGreen();
-                ObjWorkBook.Close(false, Type.Missing, Type.Missing);
-                ObjWorkExcel.Quit();
-                GC.Collect();
-                return data;
-            }
-            return null;
-        }
-        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
-                }
-            }
-        }
+        }              
         private void EmptyDictionaryChecker()
         {
             if (Dict.dictionaryList.Count == 0)
             {
-                (Owner as EditorWindow).HomePage.AudiencesIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#B5C1D3");
+                (Owner as EditorWindow).HomePage.AudiencesIndicator.Fill = UITools.GetGreyColor();
             }
-        }
-        private void MakeIndicatorGreen()
-        {
-            (Owner as EditorWindow).HomePage.AudiencesIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
-        }
+        }      
     }
 }

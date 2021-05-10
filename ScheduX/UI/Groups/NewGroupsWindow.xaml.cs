@@ -25,51 +25,24 @@ namespace ScheduX.UI.Classes
         public NewGroupWindow()
         {
             InitializeComponent();
-        }
-        private void ResetControls()
-        {
-            this.Visibility = Visibility.Hidden;
-            foreach (TextBox item in FindVisualChildren<TextBox>(this))
-            {
-                item.Text = null;
-            }
-        }
-        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
-                }
-            }
-        }
+        }    
         private void TextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
-            ((TextBox)sender).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#595959");
+            (sender as TextBox).BorderBrush = UITools.GetDarkGreyColor();
         }
         private bool IsWrongTextBoxValue()
         {
             bool flag = false;
-            foreach (TextBox item in FindVisualChildren<TextBox>(this))
+            foreach (TextBox item in UITools.FindVisualChildren<TextBox>(this))
             {                
                 if (item.Text == "")
                 {
-                    item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                    item.BorderBrush = UITools.GetGreyColor(); 
                     flag = true;
                 }
                 if (!uint.TryParse(item.Text, out uint _) & item.Name != "NameTextBox")
                 {
-                    item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                    item.BorderBrush = UITools.GetGreyColor();
                     flag = true;
                 }
             }
@@ -77,31 +50,31 @@ namespace ScheduX.UI.Classes
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
+            UITools.RemoveIcon(this);
         }
         private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            ResetControls();
+            UITools.ResetControlText<TextBlock>(this);
         }
         public void Add_Click(object sender, RoutedEventArgs e)
         {
             if (!IsWrongTextBoxValue())
             {
-                var OwnerWindowInstance = (GroupsWindow)this.Owner;
+                var OwnerWindowInstance = this.Owner as GroupsWindow;
                 var group = new SchoolGroup(NameTextBox.Text, int.Parse(StudentsQuantityTextBox.Text));
                 OwnerWindowInstance.Dict.dictionaryList.Add(group);
                 OwnerWindowInstance.GroupsList.Items.Add(group);
-                ((Owner as GroupsWindow).Owner as EditorWindow).HomePage.GroupsIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
-                ResetControls();
+                ((Owner as GroupsWindow).Owner as EditorWindow).HomePage.GroupsIndicator.Fill = UITools.GetGreenColor();
+                UITools.ResetControlText<TextBlock>(this);
             }
         }
         public void Done_Click(object sender, RoutedEventArgs e)
         {
             if (!IsWrongTextBoxValue())
             {
-                var ownerWindowInstance = (GroupsWindow)this.Owner;
-                var group = (SchoolGroup)ownerWindowInstance.Dict.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.GroupsList.SelectedItem.GetHashCode());
+                var ownerWindowInstance = this.Owner as GroupsWindow;
+                var group = ownerWindowInstance.Dict.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.GroupsList.SelectedItem.GetHashCode());
 
                 group.Name = NameTextBox.Text;
                 group.StudentQuantity = int.Parse(StudentsQuantityTextBox.Text);               
@@ -110,7 +83,7 @@ namespace ScheduX.UI.Classes
                 ownerWindowInstance.GroupsList.Items.Remove(ownerWindowInstance.GroupsList.SelectedItem);
                 ownerWindowInstance.GroupsList.Items.Insert(index, group);
 
-                ResetControls();
+                UITools.ResetControlText<TextBlock>(this);
             }
         }
     }

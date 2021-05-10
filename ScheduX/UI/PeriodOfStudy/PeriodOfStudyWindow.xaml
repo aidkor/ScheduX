@@ -21,13 +21,13 @@
         <!-- Toolbar -->
         <StackPanel x:Name="Toolbar" Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="Select"  Width="90" Height="26" Margin="25,26,0,0" Content="SELECT" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="Select_Click" Style="{DynamicResource RoundedCorners}"/>
-            <Button x:Name="New" Width="90" Height="26"  Margin="12,26,0,0" Content="NEW" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="New_Click" Style="{DynamicResource RoundedCorners}"/>
-            <Button x:Name="ImportExcel" Width="29" Height="26"  Margin="12,26,0,0" FontWeight="Bold" Background="White" BorderBrush="#3A36F4" Click="ImportExcel_Click" Style="{DynamicResource ImportButtonStyle}"/>
-            <Button x:Name="TrashBin" IsEnabled="False"  Width="29" Height="26"  Margin="12,26,0,0" FontWeight="Bold" Background="White" BorderBrush="#3A36F4" Style="{DynamicResource DeleteButtonStyle}"/>
+            <Button x:Name="New" Width="90" Height="26"  Margin="8,26,0,0" Content="NEW" FontWeight="Bold" Foreground="#3A36F4" Background="White" BorderBrush="#3A36F4" Click="New_Click" Style="{DynamicResource RoundedCorners}"/>
+            <Button x:Name="ImportExcel" Width="29" Height="26"  Margin="8,26,0,0" FontWeight="Bold" Background="White" BorderBrush="#3A36F4" Click="ImportExcel_Click" Style="{DynamicResource ImportButtonStyle}"/>
+            <Button x:Name="TrashBin" IsEnabled="True"  Width="29" Height="26"  Margin="8,26,0,0" FontWeight="Bold" Background="White" BorderBrush="#3A36F4"  Style="{DynamicResource DeleteButtonStyle}"/>
         </StackPanel>
 
         <!-- List of periods-->
-        <ListView  x:Name="PeriodsList" Grid.Row="2" Margin="25,12,25,15" BorderBrush="#595959" Height="350" Cursor="Arrow">
+        <ListView  x:Name="PeriodsList" Grid.Row="2" Margin="25,12,25,15" BorderBrush="#595959" Height="350" Cursor="Arrow" >
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="ContextMenuSelectButton" Header="select" Foreground="#FF343434" Margin="0,1" Click="ContextMenuSelectButton_Click">
@@ -53,7 +53,7 @@
                 </ContextMenu>
             </ListView.ContextMenu>
             
-            <ListView.View>
+            <ListView.View >
                 <GridView>
                     <GridView.ColumnHeaderContextMenu>
                         <ContextMenu>
@@ -76,6 +76,8 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
+            
+          
         </ListView>
     </Grid>
 </Window>

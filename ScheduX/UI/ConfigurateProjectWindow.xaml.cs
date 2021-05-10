@@ -70,7 +70,7 @@ namespace ScheduX.UI
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);            
+            UITools.RemoveIcon(this);            
             LocationTextBox.Text = @"C:\";
         }
         private void ProjectNameTextBox_TextChanged(object sender, TextChangedEventArgs e)

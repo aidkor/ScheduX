@@ -35,11 +35,11 @@ namespace ScheduX.UI.Pages
         public AudiencesWindow AudiencesWindowInstance { get; set; }
         public SubjectsWindow SubjectsWindowInstance { get; set; }
         public LessonsWindow LessonsWindowInstance { get; set; }
-        public EditorWindow EditorWindowInstance { get; set; }
+        public EditorWindow ParentWindowInstance { get; set; }
         public Home(EditorWindow instance)
         {
             InitializeComponent();
-            EditorWindowInstance = instance;
+            ParentWindowInstance = instance;
         }
         #region
         private void ButtonMouseEnterHandler(object sender, MouseEventArgs e)
@@ -81,37 +81,37 @@ namespace ScheduX.UI.Pages
         private void PeriodOfStudyItemHandler(object sender, RoutedEventArgs e)
         {
             PeriodOfStudyWindowInstance = PeriodOfStudyWindowInstance ?? new PeriodOfStudyWindow();
-            PeriodOfStudyWindowInstance.Owner = EditorWindowInstance;
+            PeriodOfStudyWindowInstance.Owner = ParentWindowInstance;
             PeriodOfStudyWindowInstance.Show();
         }    
         private void ClassesItemHandler(object sender, RoutedEventArgs e)
         {
             ClassesWindowInstance = ClassesWindowInstance ?? new GroupsWindow();
-            ClassesWindowInstance.Owner = EditorWindowInstance;
+            ClassesWindowInstance.Owner = ParentWindowInstance;
             ClassesWindowInstance.Show();
         }
         private void TeachersItemHandler(object sender, RoutedEventArgs e)
         {
             TeachersWindowInstance = TeachersWindowInstance ?? new TeachersWindow();
-            TeachersWindowInstance.Owner = EditorWindowInstance;
+            TeachersWindowInstance.Owner = ParentWindowInstance;
             TeachersWindowInstance.Show();
         }
         private void AudiencesItemHandler(object sender, RoutedEventArgs e)
         {
             AudiencesWindowInstance = AudiencesWindowInstance ?? new AudiencesWindow();
-            AudiencesWindowInstance.Owner = EditorWindowInstance;
+            AudiencesWindowInstance.Owner = ParentWindowInstance;
             AudiencesWindowInstance.Show();
         }
         private void SubjectsItemHandler(object sender, RoutedEventArgs e)
         {
             SubjectsWindowInstance = SubjectsWindowInstance ?? new SubjectsWindow();
-            SubjectsWindowInstance.Owner = EditorWindowInstance;
+            SubjectsWindowInstance.Owner = ParentWindowInstance;
             SubjectsWindowInstance.Show();
         }
         private void LessonsItemHandler(object sender, RoutedEventArgs e)
         {
             LessonsWindowInstance = LessonsWindowInstance ?? new LessonsWindow();
-            LessonsWindowInstance.Owner = EditorWindowInstance;
+            LessonsWindowInstance.Owner = ParentWindowInstance;
             LessonsWindowInstance.Show();
         }
 

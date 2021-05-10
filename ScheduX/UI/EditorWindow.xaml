@@ -40,7 +40,7 @@
                     <ColumnDefinition></ColumnDefinition> 
                 </Grid.ColumnDefinitions>
 
-                <Label x:Name="AppVersion" Grid.Column="2" Content="V 1.0.0" Foreground="White" FontSize="10" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="0,0,15,0"/>
+                <Label x:Name="AppVersion" Grid.Column="2" Content="Demo V 1.0.0" Foreground="White" FontSize="10" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="0,0,15,0"/>
             </Grid>
         </Grid>
         
@@ -71,7 +71,6 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="Main" FontSize="11" Margin="18,17,0,8" Foreground="#8A9EB7" FontWeight="Bold"></TextBlock>
@@ -92,23 +91,7 @@
                         </Grid>
                     </Button>
 
-                    <Button x:Name="FileButton" Grid.Row="2" Height="36"  Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
-                                Click="FileButton_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
-                                Style="{DynamicResource ButtonItemStyle}">
-                            <Grid> 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.2*"/>
-                                    <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="8.5*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Grid Grid.Column="0"/>
-                                <Image Grid.Column="1" Source="..\Resourses\Images\EditorWindowImg\document_blue.png"   Width="16" Height="16" Margin="10,0,0,0" />
-                                <ContentPresenter Grid.Column="2" Content="FILE" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            </Grid>
-                        </Button>
-
-                    <Button x:Name="SettingsButton" Grid.Row="3" Height="36"  Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
+                    <Button x:Name="SettingsButton" Grid.Row="2" Height="36"  Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
                                 Click="SettingsButton_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
                                 Style="{DynamicResource ButtonItemStyle}">
                         <Grid>
@@ -124,7 +107,7 @@
                         </Grid>
                     </Button>
                     
-                    <Button x:Name="HelpButton" Grid.Row="4" Height="36"  Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
+                    <Button x:Name="HelpButton" Grid.Row="3" Height="36"  Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
                                 Click="HelpButton_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
                                 Style="{DynamicResource ButtonItemStyle}">
                         <Grid>
@@ -140,10 +123,9 @@
                         </Grid>
                     </Button>
 
-                    <TextBlock Grid.Row="5" Text="Tools" FontSize="11" Margin="18,7,0,8" Foreground="#8A9EB7" FontWeight="Bold"></TextBlock>
-
-                   
-                    <Button x:Name="ScheduleButton" Grid.Row="6" Height="36"  Width="230"   Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
+                    <TextBlock Grid.Row="4" Text="Tools" FontSize="11" Margin="18,7,0,8" Foreground="#8A9EB7" FontWeight="Bold"></TextBlock>
+                    
+                    <Button x:Name="ScheduleButton" Grid.Row="5" Height="36"  Width="230"   Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
                                 Click="ScheduleButton_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
                                 Style="{DynamicResource ButtonItemStyle}">
                         <Grid>

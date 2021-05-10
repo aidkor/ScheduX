@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ScheduX.UI.Pages;
-using ScheduX.UI.PeriodOfStudy;
-using ScheduX.UI.Classes;
-using ScheduX.Resourses.AppLogic;
 using ScheduX.Resourses.UILogic;
 
 namespace ScheduX.UI
@@ -73,7 +63,7 @@ namespace ScheduX.UI
         }      
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
+            UITools.RemoveIcon(this);
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {         

@@ -29,20 +29,21 @@ namespace ScheduX.UI.Subjects
         {
             if (!IsWrongTextBoxValue())
             {
-                var OwnerWindowInstance = (SubjectsWindow)this.Owner;
+                var OwnerWindowInstance = this.Owner as SubjectsWindow;
                 var subject = new SchoolSubject(NameTextBox.Text, int.Parse(ComplexityTextBox.Text));
                 OwnerWindowInstance.SchoolSubjectDictionary.dictionaryList.Add(subject);
                 OwnerWindowInstance.SubjectsList.Items.Add(subject);
-                ((Owner as SubjectsWindow).Owner as EditorWindow).HomePage.SubjectsIndicator.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#A8D66D");
-                ResetControls();
+                ((Owner as SubjectsWindow).Owner as EditorWindow).HomePage.SubjectsIndicator.Fill = UITools.GetGreenColor();
+
+                UITools.ResetControlText<TextBox>(this);
             }
         }
         public void Done_Click(object sender, RoutedEventArgs e)
         {
             if (!IsWrongTextBoxValue())
             {
-                var ownerWindowInstance = (SubjectsWindow)this.Owner;
-                var subject = (SchoolSubject)ownerWindowInstance.SchoolSubjectDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.SubjectsList.SelectedItem.GetHashCode());
+                var ownerWindowInstance = this.Owner as SubjectsWindow;
+                var subject = ownerWindowInstance.SchoolSubjectDictionary.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.SubjectsList.SelectedItem.GetHashCode());
 
                 subject.Name = NameTextBox.Text;
                 subject.Complexity = int.Parse(ComplexityTextBox.Text);                
@@ -51,67 +52,40 @@ namespace ScheduX.UI.Subjects
                 ownerWindowInstance.SubjectsList.Items.Remove(ownerWindowInstance.SubjectsList.SelectedItem);
                 ownerWindowInstance.SubjectsList.Items.Insert(index, subject);
 
-                ResetControls();
+                UITools.ResetControlText<TextBox>(this);
             }
         }
         private bool IsWrongTextBoxValue()
         {
             bool flag = false;
-            foreach (TextBox item in FindVisualChildren<TextBox>(this))
+            foreach (TextBox item in UITools.FindVisualChildren<TextBox>(this))
             {
                 if (item.Text == "")
                 {
-                    item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                    item.BorderBrush = UITools.GetRedColor();
                     flag = true;
                 }
                 if (!uint.TryParse(item.Text, out uint _) & item.Name != "NameTextBox")
                 {
-                    item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                    item.BorderBrush = UITools.GetRedColor();
                     flag = true;
                 }
             }
           
             return flag;
-        }
-        private void ResetControls()
-        {
-            this.Visibility = Visibility.Hidden;
-            foreach (TextBox item in FindVisualChildren<TextBox>(this))
-            {
-                item.Text = null;
-            }
-        }
-        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
-                }
-            }
-        }
+        }      
         private void TextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
-            ((TextBox)sender).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#595959");
+            (sender as TextBox).BorderBrush = UITools.GetDarkGreyColor();
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
+            UITools.RemoveIcon(this);
         }
         private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            ResetControls();
+            UITools.ResetControlText<TextBox>(this);
         }
     }
 }

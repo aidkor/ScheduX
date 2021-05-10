@@ -32,7 +32,7 @@ namespace ScheduX.UI.Lessons
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
+            UITools.RemoveIcon(this);
         }
         private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {

@@ -116,7 +116,7 @@ namespace ScheduX.UI
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
+            UITools.RemoveIcon(this);
         }
     }
 }

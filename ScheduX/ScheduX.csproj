@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="Resourses\AppLogic\Dictionary.cs" />
     <Compile Include="Resourses\AppLogic\Element.cs" />
+    <Compile Include="Resourses\AppLogic\ExcelFileTools.cs" />
     <Compile Include="Resourses\AppLogic\GA.cs" />
     <Compile Include="Resourses\AppLogic\IDBHandable.cs" />
     <Compile Include="Resourses\AppLogic\ShxFileTools.cs" />
@@ -103,7 +104,7 @@
     <Compile Include="UI\PeriodOfStudy\PeriodOfStudyWindow.xaml.cs">
       <DependentUpon>PeriodOfStudyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\UILogic\IconHelper.cs" />
+    <Compile Include="Resourses\UILogic\UITools.cs" />
     <Compile Include="Resourses\AppLogic\ProjectTemplate.cs" />
     <Compile Include="UI\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
@@ -283,6 +284,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resourses\DBLogic\" />
+    <Folder Include="Resourses\UILogic\ViewModels\Commands\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Images\EditorWindowImg\information_blue.png" />

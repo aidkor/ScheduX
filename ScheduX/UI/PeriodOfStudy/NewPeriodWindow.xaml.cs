@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ScheduX.Resourses.UILogic;
 using ScheduX.Resourses.AppLogic;
 
@@ -31,9 +21,10 @@ namespace ScheduX.UI.PeriodOfStudy
             {
                 var OwnerWindowInstance = (PeriodOfStudyWindow)this.Owner;
                 var period = new SchoolPeriod(NameTextBox.Text, DatePicker_1.SelectedDate.Value, DatePicker_2.SelectedDate.Value);
-                OwnerWindowInstance.Dict.dictionaryList.Add(period);
+                OwnerWindowInstance.StudyPeriodDict.dictionaryList.Add(period);
                 OwnerWindowInstance.PeriodsList.Items.Add(period);
-                ResetControls();
+                
+                UITools.ResetControlText<TextBox>(this);
             }
         }
         public void Done_Click(object sender, RoutedEventArgs e)
@@ -41,7 +32,7 @@ namespace ScheduX.UI.PeriodOfStudy
             if (!IsWrongValue())
             {
                 var ownerWindowInstance = (PeriodOfStudyWindow)Owner;
-                var period = (SchoolPeriod)ownerWindowInstance.Dict.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.PeriodsList.SelectedItem.GetHashCode());
+                var period = (SchoolPeriod)ownerWindowInstance.StudyPeriodDict.dictionaryList.Find(item => item.GetHashCode() == ownerWindowInstance.PeriodsList.SelectedItem.GetHashCode());
 
                 period.Name = NameTextBox.Text;
                 period.Start = DatePicker_1.SelectedDate.Value;
@@ -51,7 +42,7 @@ namespace ScheduX.UI.PeriodOfStudy
                 ownerWindowInstance.PeriodsList.Items.Remove(ownerWindowInstance.PeriodsList.SelectedItem);
                 ownerWindowInstance.PeriodsList.Items.Insert(index, period);
 
-                ResetControls();
+                UITools.ResetControlText<TextBox>(this);
             }
         }
         private bool IsWrongValue()
@@ -59,17 +50,17 @@ namespace ScheduX.UI.PeriodOfStudy
             bool flag = false;
             if (NameTextBox.Text == "")
             {
-                ColorInRed(NameTextBox);
+                NameTextBox.BorderBrush = UITools.GetRedColor();
                 flag = true;
             }
             if (DatePicker_1.Text == "")
             {
-                ColorInRed(DatePicker_1);
+                DatePicker_1.BorderBrush = UITools.GetRedColor();
                 flag = true;
             }
             if (DatePicker_2.Text == "")
             {
-                ColorInRed(DatePicker_2);
+                DatePicker_2.BorderBrush = UITools.GetRedColor();
                 flag = true;
             }          
             if ((DatePicker_2.SelectedDate ?? new DateTime()) < (DatePicker_1.SelectedDate ?? new DateTime()))
@@ -78,54 +69,23 @@ namespace ScheduX.UI.PeriodOfStudy
                 flag = true;
             }
             return flag;
-        }
-        private void ResetControls()
-        {
-            this.Visibility = Visibility.Hidden;
-            foreach (TextBox item in FindVisualChildren<TextBox>(this))
-            {
-                item.Text = null;
-            }
-        }
-        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
-                }
-            }
-        }
+        }       
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
+            UITools.RemoveIcon(this);
         }
         private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            ResetControls();
-        }
-        private void ColorInRed(Control control)
-        {
-            control.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
-        }
+            UITools.ResetControlText<TextBox>(this);
+        }       
         private void TextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
-            ((TextBox)sender).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#595959");
+            (sender as TextBox).BorderBrush = UITools.GetDarkGreyColor();
         }
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((DatePicker)sender).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#595959");
+            (sender as DatePicker).BorderBrush = UITools.GetDarkGreyColor();
         }
     }
 }

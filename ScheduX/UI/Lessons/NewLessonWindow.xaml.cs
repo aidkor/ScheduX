@@ -34,8 +34,7 @@ namespace ScheduX.UI.Lessons
         }
       
         private void SubjectTextBox_DropDownOpened(object sender, EventArgs e)
-        {
-            (sender as ComboBox).BorderBrush = new BrushConverter().ConvertFrom("#FFFFFF") as SolidColorBrush;
+        {            
             var ownerEditorWindowInstance = (this.Owner as LessonsWindow).Owner as EditorWindow;
             var data = ownerEditorWindowInstance.HomePage.SubjectsWindowInstance?.SubjectsList.Items;
             if (data != null)
@@ -82,30 +81,18 @@ namespace ScheduX.UI.Lessons
                 }
             }
         }
-        private void ResetControls()
-        {
-            this.Visibility = Visibility.Hidden;
-            foreach (TextBox item in FindVisualChildren<TextBox>(this))
-            {
-                item.Text = null;
-            }
-            foreach (ComboBox item in FindVisualChildren<ComboBox>(this))
-            {
-                item.Text = null;
-            }
-        }
         private bool IsWrongTextBoxValue()
         {
             bool flag = false;
-            foreach (TextBox item in FindVisualChildren<TextBox>(this))
+            foreach (TextBox item in UITools.FindVisualChildren<TextBox>(this))
             {
                 if (item.Text == "")
                 {
-                    item.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFC82929");
+                    item.BorderBrush = UITools.GetRedColor();
                     flag = true;
                 }
             }
-            foreach (ComboBox item in FindVisualChildren<ComboBox>(this))
+            foreach (ComboBox item in UITools.FindVisualChildren<ComboBox>(this))
             {
                 if (item.Items.IsEmpty)
                 {                    
@@ -114,37 +101,18 @@ namespace ScheduX.UI.Lessons
             }
             return flag;
         }
-        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
-        {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
-                }
-            }
-        }
         private void TextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
-            (sender as TextBox).BorderBrush = new BrushConverter().ConvertFrom("#595959") as SolidColorBrush;
+            (sender as TextBox).BorderBrush = UITools.GetDarkGreyColor();
         }
         protected override void OnSourceInitialized(EventArgs e)
         {
-            IconHelper.RemoveIcon(this);
+            UITools.RemoveIcon(this);
         }
         private void OnClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            ResetControls();
+            UITools.ResetControlText<TextBox>(this);
         }
         public void Add_Click(object sender, RoutedEventArgs e)
         {
@@ -154,7 +122,8 @@ namespace ScheduX.UI.Lessons
                 SchoolLesson lesson = new SchoolLesson(NameTextBox.Text, SubjectComboBox.SelectedItem as SchoolSubject, TeacherComboBox.SelectedItem as SchoolTeacher, AudienceComboBox.SelectedItem as SchoolAudience, GroupComboBox.SelectedItem as SchoolGroup);
                 OwnerWindowInstance.Dict.dictionaryList.Add(lesson);
                 OwnerWindowInstance.LessonsList.Items.Add(lesson);
-                ResetControls();
+
+                UITools.ResetControlText<TextBox>(this);
             }
         }
         public void Done_Click(object sender, RoutedEventArgs e)
@@ -174,7 +143,7 @@ namespace ScheduX.UI.Lessons
                 ownerWindowInstance.LessonsList.Items.Remove(ownerWindowInstance.LessonsList.SelectedItem);
                 ownerWindowInstance.LessonsList.Items.Insert(index, lesson);
 
-                ResetControls();
+                UITools.ResetControlText<TextBox>(this);
             }
         }
 
