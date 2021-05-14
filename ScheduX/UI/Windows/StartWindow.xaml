@@ -1,0 +1,17 @@
+﻿<Window x:Class="ScheduX.UI.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:resx="clr-namespace:ScheduX.Properties" 
+        mc:Ignorable="d"
+        Title="StartWindow" Width="730" Height="480" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/ScheduX;component/Resources/Images/appImg.jpg" />
+        </Grid.Background>
+
+        <TextBlock Text="ScheduX" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Viner Hand ITC"  Foreground="White" />
+        <TextBlock Text="2021" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="15 " FontFamily="Viner Hand ITC"  Foreground="White" FontWeight="Bold" Margin="0,0,30,20" />
+    </Grid>
+</Window>

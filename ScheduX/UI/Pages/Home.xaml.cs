@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ScheduX.UI.Pages;
 using ScheduX.UI.PeriodOfStudy;
 using ScheduX.UI.Classes;
 using ScheduX.UI.Teachers;
 using ScheduX.UI.Audiences;
 using ScheduX.UI.Subjects;
 using ScheduX.UI.Lessons;
-using ScheduX.Resourses.AppLogic;
-using inputCursor = System.Windows.Input;
+using ScheduX.App_Logic.OptimAlg;
 
 namespace ScheduX.UI.Pages
 {
@@ -119,7 +107,7 @@ namespace ScheduX.UI.Pages
         {
             SetLoadingCursor();
 
-            var list = LessonsWindowInstance.Dict.dictionaryList;           
+            var list = LessonsWindowInstance.SchoolLessonDict.dictionaryList;           
             var solver = new Solver();//создаем решатель
 
             Plan.DaysPerWeek = 5;

@@ -1,0 +1,151 @@
+﻿<Window x:Class="ScheduX.UI.EditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScheduX"     
+        xmlns:winformsIntegration="http://schemas.microsoft.com/netfx/2007/xaml/presentation"               
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" MinWidth="553" MinHeight="260" Width="1225" Height="707">
+    <Window.Resources>
+        <Style x:Key="ButtonItemStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="_Border"                                
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="_Border" Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <Grid Height="20 "  DockPanel.Dock="Bottom" Background="#FF27A0F7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition> 
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="AppVersion" Grid.Column="2" Content="Demo V 1.0.0" Foreground="White" FontSize="10" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="0,0,15,0"/>
+            </Grid>
+        </Grid>
+        
+        <Grid x:Name="LeftSideBar" DockPanel.Dock="Left" Background="#354052">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1" Background="#354052" BorderThickness="0" Click="OpenCloseLeftSideBarButton">
+                    <Image x:Name="LeftSideBarOpenCloseButtonImg" Grid.Column="1" Source="/ScheduX;component/Resources/Images/menu.png" Width="24" Height="24" Margin="17 0"/>
+                </Button>
+            </Grid>
+
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"> 
+                <Grid  x:Name="LeftSideBarContent" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Main" FontSize="11" Margin="18,17,0,8" Foreground="#8A9EB7" FontWeight="Bold"></TextBlock>
+
+                    <Button x:Name="HomeButton" Grid.Row="1" Height="36"  Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
+                                Click="HomeButton_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                Style="{DynamicResource ButtonItemStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="8.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0"/>
+                            <Image Grid.Column="1" Source="/ScheduX;component/Resources/Images/home_blue.png"   Width="16" Height="16" Margin="10,0,0,0" />
+                            <ContentPresenter Grid.Column="2" Content="HOME" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="SettingsButton" Grid.Row="2" Height="36"  Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
+                                Click="SettingsButton_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                Style="{DynamicResource ButtonItemStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="8.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0"/>
+                            <Image Grid.Column="1" Source="/ScheduX;component/Resources/Images/settings_blue.png"   Width="16" Height="16" Margin="10,0,0,0" />
+                            <ContentPresenter Grid.Column="2" Content="SETTINGS" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    
+                    <Button x:Name="HelpButton" Grid.Row="3" Height="36"  Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
+                                Click="HelpButton_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                Style="{DynamicResource ButtonItemStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="8.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0"/>
+                            <Image Grid.Column="1" Source="/ScheduX;component/Resources/Images/information_blue.png"   Width="16" Height="16" Margin="10,0,0,0" />
+                            <ContentPresenter Grid.Column="2" Content="HELP" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        </Grid>
+                    </Button>
+
+                    <TextBlock Grid.Row="4" Text="Tools" FontSize="11" Margin="18,7,0,8" Foreground="#8A9EB7" FontWeight="Bold"></TextBlock>
+                    
+                    <Button x:Name="ScheduleButton" Grid.Row="5" Height="36"  Width="230"   Background="#354052" Foreground="#7DABE0" FontWeight="Bold"  BorderBrush="Transparent" BorderThickness="4" Padding="-4" 
+                                Click="ScheduleButton_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                Style="{DynamicResource ButtonItemStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="8.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0"/>
+                            <Image Grid.Column="1" Source="/ScheduX;component/Resources/Images/tablegrid_blue.png"   Width="16" Height="16" Margin="10,0,0,0" />
+                            <ContentPresenter Grid.Column="2" Content="SCHEDULE" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid  DockPanel.Dock="Right" Background="#EEF2F5">
+            <Frame x:Name="WorkingSpace" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </DockPanel>
+</Window>

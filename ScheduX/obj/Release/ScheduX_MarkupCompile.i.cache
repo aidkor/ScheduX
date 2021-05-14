@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\Asus\source\repos\ScheduX\ScheduX\App.xaml
-20-796242342
+20697330898
 
-33-1587582583
+36-987574958
 20-929265516
-UI\Audiences\AudiencesWindow.xaml;UI\Audiences\NewAudienceWindow.xaml;UI\Groups\GroupsWindow.xaml;UI\Groups\NewGroupsWindow.xaml;UI\Lessons\LessonsWindow.xaml;UI\Lessons\NewLessonWindow.xaml;UI\Pages\Help.xaml;UI\Pages\Home.xaml;UI\Pages\Schedule.xaml;UI\PeriodOfStudy\NewPeriodWindow.xaml;UI\PeriodOfStudy\PeriodOfStudyWindow.xaml;UI\EditorWindow.xaml;UI\StartWindow.xaml;UI\ConfigurateProjectWindow.xaml;UI\CreateOpenProjectWindow.xaml;Resourses\Styles\ColourfulLightTheme.xaml;UI\Subjects\NewSubjectWindow.xaml;UI\Subjects\SubjectsWindow.xaml;UI\Teachers\NewTeacherWindow.xaml;UI\Teachers\TeachersWindow.xaml;
+UI\Windows\AudiencesWindow.xaml;UI\Windows\NewAudienceWindow.xaml;UI\Windows\GroupsWindow.xaml;UI\Windows\NewGroupsWindow.xaml;UI\Windows\LessonsWindow.xaml;UI\Windows\NewLessonWindow.xaml;UI\Pages\Help.xaml;UI\Pages\Home.xaml;UI\Pages\Schedule.xaml;UI\Windows\NewPeriodWindow.xaml;UI\Windows\PeriodOfStudyWindow.xaml;UI\Windows\EditorWindow.xaml;UI\Windows\StartWindow.xaml;UI\Windows\ConfigurateProjectWindow.xaml;UI\Windows\CreateOpenProjectWindow.xaml;Resources\Styles\ColourfulLightTheme.xaml;UI\Windows\NewSubjectWindow.xaml;UI\Windows\SubjectsWindow.xaml;UI\Windows\NewTeacherWindow.xaml;UI\Windows\TeachersWindow.xaml;
 
-False
+True
 

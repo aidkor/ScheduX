@@ -65,28 +65,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Resourses\AppLogic\Dictionary.cs" />
-    <Compile Include="Resourses\AppLogic\Element.cs" />
-    <Compile Include="Resourses\AppLogic\ExcelFileTools.cs" />
-    <Compile Include="Resourses\AppLogic\GA.cs" />
-    <Compile Include="Resourses\AppLogic\IDBHandable.cs" />
-    <Compile Include="Resourses\AppLogic\ShxFileTools.cs" />
-    <Compile Include="UI\Audiences\AudiencesWindow.xaml.cs">
+    <Compile Include="App_Logic\Dictionary.cs" />
+    <Compile Include="App_Logic\Element.cs" />
+    <Compile Include="App_Logic\ExcelFileTools.cs" />
+    <Compile Include="App_Logic\OptimAlg\GA.cs" />
+    <Compile Include="App_Logic\ColorPalette.cs" />
+    <Compile Include="App_Logic\ElementsModification.cs" />
+    <Compile Include="App_Logic\IconHelper.cs" />
+    <Compile Include="App_Logic\PredefinedColors.cs" />
+    <Compile Include="DB_Logic\IDBHandable.cs" />
+    <Compile Include="App_Logic\ShxFileTools.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\AudiencesWindow.xaml.cs">
       <DependentUpon>AudiencesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Audiences\NewAudienceWindow.xaml.cs">
+    <Compile Include="UI\Windows\NewAudienceWindow.xaml.cs">
       <DependentUpon>NewAudienceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Groups\GroupsWindow.xaml.cs">
+    <Compile Include="UI\Windows\GroupsWindow.xaml.cs">
       <DependentUpon>GroupsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Groups\NewGroupsWindow.xaml.cs">
+    <Compile Include="UI\Windows\NewGroupsWindow.xaml.cs">
       <DependentUpon>NewGroupsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Lessons\LessonsWindow.xaml.cs">
+    <Compile Include="UI\Windows\LessonsWindow.xaml.cs">
       <DependentUpon>LessonsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Lessons\NewLessonWindow.xaml.cs">
+    <Compile Include="UI\Windows\NewLessonWindow.xaml.cs">
       <DependentUpon>NewLessonWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\Help.xaml.cs">
@@ -98,59 +107,58 @@
     <Compile Include="UI\Pages\Schedule.xaml.cs">
       <DependentUpon>Schedule.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\PeriodOfStudy\NewPeriodWindow.xaml.cs">
+    <Compile Include="UI\Windows\NewPeriodWindow.xaml.cs">
       <DependentUpon>NewPeriodWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\PeriodOfStudy\PeriodOfStudyWindow.xaml.cs">
+    <Compile Include="UI\Windows\PeriodOfStudyWindow.xaml.cs">
       <DependentUpon>PeriodOfStudyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\UILogic\UITools.cs" />
-    <Compile Include="Resourses\AppLogic\ProjectTemplate.cs" />
-    <Compile Include="UI\StartWindow.xaml.cs">
+    <Compile Include="App_Logic\ProjectTemplate.cs" />
+    <Compile Include="UI\Windows\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\ConfigurateProjectWindow.xaml.cs">
+    <Compile Include="UI\Windows\ConfigurateProjectWindow.xaml.cs">
       <DependentUpon>ConfigurateProjectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\CreateOpenProjectWindow.xaml.cs">
+    <Compile Include="UI\Windows\CreateOpenProjectWindow.xaml.cs">
       <DependentUpon>CreateOpenProjectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\Styles\ColourfulLightTheme.xaml.cs">
+    <Compile Include="Resources\Styles\ColourfulLightTheme.xaml.cs">
       <DependentUpon>ColourfulLightTheme.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Subjects\NewSubjectWindow.xaml.cs">
+    <Compile Include="UI\Windows\NewSubjectWindow.xaml.cs">
       <DependentUpon>NewSubjectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Subjects\SubjectsWindow.xaml.cs">
+    <Compile Include="UI\Windows\SubjectsWindow.xaml.cs">
       <DependentUpon>SubjectsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Teachers\NewTeacherWindow.xaml.cs">
+    <Compile Include="UI\Windows\NewTeacherWindow.xaml.cs">
       <DependentUpon>NewTeacherWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Teachers\TeachersWindow.xaml.cs">
+    <Compile Include="UI\Windows\TeachersWindow.xaml.cs">
       <DependentUpon>TeachersWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="UI\Audiences\AudiencesWindow.xaml">
+    <Page Include="UI\Windows\AudiencesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Audiences\NewAudienceWindow.xaml">
+    <Page Include="UI\Windows\NewAudienceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Groups\GroupsWindow.xaml">
+    <Page Include="UI\Windows\GroupsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Groups\NewGroupsWindow.xaml">
+    <Page Include="UI\Windows\NewGroupsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Lessons\LessonsWindow.xaml">
+    <Page Include="UI\Windows\LessonsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Lessons\NewLessonWindow.xaml">
+    <Page Include="UI\Windows\NewLessonWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,15 +174,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PeriodOfStudy\NewPeriodWindow.xaml">
+    <Page Include="UI\Windows\NewPeriodWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\PeriodOfStudy\PeriodOfStudyWindow.xaml">
+    <Page Include="UI\Windows\PeriodOfStudyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\EditorWindow.xaml">
+    <Page Include="UI\Windows\EditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -182,39 +190,39 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\EditorWindow.xaml.cs">
+    <Compile Include="UI\Windows\EditorWindow.xaml.cs">
       <DependentUpon>EditorWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UI\StartWindow.xaml">
+    <Page Include="UI\Windows\StartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\ConfigurateProjectWindow.xaml">
+    <Page Include="UI\Windows\ConfigurateProjectWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\CreateOpenProjectWindow.xaml">
+    <Page Include="UI\Windows\CreateOpenProjectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\Styles\ColourfulLightTheme.xaml">
+    <Page Include="Resources\Styles\ColourfulLightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Subjects\NewSubjectWindow.xaml">
+    <Page Include="UI\Windows\NewSubjectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Subjects\SubjectsWindow.xaml">
+    <Page Include="UI\Windows\SubjectsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Teachers\NewTeacherWindow.xaml">
+    <Page Include="UI\Windows\NewTeacherWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Teachers\TeachersWindow.xaml">
+    <Page Include="UI\Windows\TeachersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,11 +230,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -245,104 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\appImg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\paper.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\open-folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\building.png" />
-    <Resource Include="Resourses\Images\kindergarten.png" />
-    <Resource Include="Resourses\Images\school.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\calendar.png" />
-    <Resource Include="Resourses\Images\save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\google-docs.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\file.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\home_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\settings_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\home_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\settings_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resourses\DBLogic\" />
-    <Folder Include="Resourses\UILogic\ViewModels\Commands\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\information_blue.png" />
-    <Resource Include="Resourses\Images\EditorWindowImg\information_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\printing_blue.png" />
-    <Resource Include="Resourses\Images\EditorWindowImg\printing_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\document_blue.png" />
-    <Resource Include="Resourses\Images\EditorWindowImg\document_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\tablegrid_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\menu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\school.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\book-of-black-cover-closed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\hard-work.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\work-time.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\cross-sign.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\ContextMenuImg\copy.png" />
-    <Resource Include="Resourses\Images\ContextMenuImg\edit.png" />
-    <Resource Include="Resourses\Images\ContextMenuImg\select.png" />
-    <Resource Include="Resourses\Images\ContextMenuImg\trash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\ContextMenuImg\paste_active.png" />
-    <Resource Include="Resourses\Images\ContextMenuImg\paste_disable.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\bell.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\purple_bell.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\bell_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\EditorWindowImg\tablegrid_white.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -374,23 +279,51 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\Images\down-arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\minus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\trash-grey.png" />
-    <Resource Include="Resourses\Images\trash-purple.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\trash-white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resourses\Images\down-arrow-white.png" />
+    <Resource Include="Resources\Images\add.png" />
+    <Resource Include="Resources\Images\appImg.jpg" />
+    <Resource Include="Resources\Images\back.png" />
+    <Resource Include="Resources\Images\bell.png" />
+    <Resource Include="Resources\Images\bell_white.png" />
+    <Resource Include="Resources\Images\book-of-black-cover-closed.png" />
+    <Resource Include="Resources\Images\building.png" />
+    <Resource Include="Resources\Images\calendar.png" />
+    <Resource Include="Resources\Images\copy.png" />
+    <Resource Include="Resources\Images\cross-sign.png" />
+    <Resource Include="Resources\Images\document_blue.png" />
+    <Resource Include="Resources\Images\document_white.png" />
+    <Resource Include="Resources\Images\down-arrow-white.png" />
+    <Resource Include="Resources\Images\down-arrow.png" />
+    <Resource Include="Resources\Images\edit.png" />
+    <Resource Include="Resources\Images\file.png" />
+    <Resource Include="Resources\Images\google-docs.png" />
+    <Resource Include="Resources\Images\hard-work.png" />
+    <Resource Include="Resources\Images\home_blue.png" />
+    <Resource Include="Resources\Images\home_white.png" />
+    <Resource Include="Resources\Images\information_blue.png" />
+    <Resource Include="Resources\Images\information_white.png" />
+    <Resource Include="Resources\Images\kindergarten.png" />
+    <Resource Include="Resources\Images\menu.png" />
+    <Resource Include="Resources\Images\minus.png" />
+    <Resource Include="Resources\Images\new-school.png" />
+    <Resource Include="Resources\Images\open-folder.png" />
+    <Resource Include="Resources\Images\paper.png" />
+    <Resource Include="Resources\Images\paste_active.png" />
+    <Resource Include="Resources\Images\paste_disable.png" />
+    <Resource Include="Resources\Images\printing_blue.png" />
+    <Resource Include="Resources\Images\printing_white.png" />
+    <Resource Include="Resources\Images\purple_bell.png" />
+    <Resource Include="Resources\Images\save.png" />
+    <Resource Include="Resources\Images\school.png" />
+    <Resource Include="Resources\Images\select.png" />
+    <Resource Include="Resources\Images\settings_blue.png" />
+    <Resource Include="Resources\Images\settings_white.png" />
+    <Resource Include="Resources\Images\tablegrid_blue.png" />
+    <Resource Include="Resources\Images\tablegrid_white.png" />
+    <Resource Include="Resources\Images\trash-grey.png" />
+    <Resource Include="Resources\Images\trash-purple.png" />
+    <Resource Include="Resources\Images\trash-white.png" />
+    <Resource Include="Resources\Images\trash.png" />
+    <Resource Include="Resources\Images\work-time.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

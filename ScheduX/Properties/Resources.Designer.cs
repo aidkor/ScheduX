@@ -59,5 +59,14 @@ namespace ScheduX.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /ScheduX;component/Resources/Images.
+        /// </summary>
+        public static string ImagesPath {
+            get {
+                return ResourceManager.GetString("ImagesPath", resourceCulture);
+            }
+        }
     }
 }
