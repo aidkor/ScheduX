@@ -103,7 +103,7 @@ namespace ScheduX.UI.Pages
             LessonsWindowInstance.Show();
         }
 
-        private async void GenerateButton_Click(object sender, RoutedEventArgs e)
+        private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
             SetLoadingCursor();
 
@@ -113,7 +113,7 @@ namespace ScheduX.UI.Pages
             Plan.DaysPerWeek = 5;
             Plan.HoursPerDay = 6;
 
-            solver.FitnessFunctions.Add(FitnessFunctions.Windows);//будем штрафовать за окна
+            solver.FitnessFunctions.Add(FitnessFunctions.Windows);//будем штрафовать за окна            
             solver.FitnessFunctions.Add(FitnessFunctions.LateLesson);//будем штрафовать за поздние пары
 
             var res = solver.Solve(list);//находим лучший план

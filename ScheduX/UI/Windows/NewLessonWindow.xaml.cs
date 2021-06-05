@@ -116,12 +116,14 @@ namespace ScheduX.UI.Lessons
             if (!IsWrongTextBoxValue())
             {
                 var OwnerWindowInstance = this.Owner as LessonsWindow;
+                SchoolLesson lesson = null;
                 for (int i = 0; i < int.Parse(LessonsPerWeekTextBox.Text); i++)
                 {
-                    SchoolLesson lesson = new SchoolLesson(NameTextBox.Text, SubjectComboBox.SelectedItem as SchoolSubject, TeacherComboBox.SelectedItem as SchoolTeacher, AudienceComboBox.SelectedItem as SchoolAudience, GroupComboBox.SelectedItem as SchoolGroup);
-                    OwnerWindowInstance.SchoolLessonDict.dictionaryList.Add(lesson);
-                    OwnerWindowInstance.LessonsList.Items.Add(lesson);
+                    lesson = new SchoolLesson(NameTextBox.Text, SubjectComboBox.SelectedItem as SchoolSubject, TeacherComboBox.SelectedItem as SchoolTeacher, AudienceComboBox.SelectedItem as SchoolAudience, GroupComboBox.SelectedItem as SchoolGroup, int.Parse(LessonsPerWeekTextBox.Text));
+                    OwnerWindowInstance.SchoolLessonDict.dictionaryList.Add(lesson);                    
                 }
+                OwnerWindowInstance.LessonsList.Items.Add(lesson);
+
                 ((Owner as LessonsWindow).Owner as EditorWindow).HomePage.LessonsIndicator.Fill = ColorPalette.GetPredefinedColor(PredefinedColors.Green);
                 ElementsModification.ResetControlText<ComboBox>(this);
                 ElementsModification.ResetControlText<TextBox>(this);
@@ -139,6 +141,7 @@ namespace ScheduX.UI.Lessons
                 lesson.Teacher = TeacherComboBox.SelectedItem as SchoolTeacher;
                 lesson.Audience = AudienceComboBox.SelectedItem as SchoolAudience;
                 lesson.Group = GroupComboBox.SelectedItem as SchoolGroup;
+                lesson.LessonsPerWeek = int.Parse(LessonsPerWeekTextBox.Text);
 
                 int index = ownerWindowInstance.LessonsList.Items.IndexOf(ownerWindowInstance.LessonsList.SelectedItem);
                 ownerWindowInstance.LessonsList.Items.Remove(ownerWindowInstance.LessonsList.SelectedItem);

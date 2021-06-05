@@ -53,3 +53,5 @@ C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Release\UI\Windows\NewSubjectWind
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Release\UI\Windows\SubjectsWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Release\UI\Windows\NewTeacherWindow.baml
 C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Release\UI\Windows\TeachersWindow.baml
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Release\UI\Pages\Settings.g.cs
+C:\Users\Asus\source\repos\ScheduX\ScheduX\obj\Release\UI\Pages\Settings.baml

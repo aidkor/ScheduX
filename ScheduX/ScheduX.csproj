@@ -80,6 +80,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Pages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Windows\AudiencesWindow.xaml.cs">
       <DependentUpon>AudiencesWindow.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
     <Compile Include="UI\Windows\TeachersWindow.xaml.cs">
       <DependentUpon>TeachersWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="UI\Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Windows\AudiencesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -324,6 +331,9 @@
     <Resource Include="Resources\Images\trash-white.png" />
     <Resource Include="Resources\Images\trash.png" />
     <Resource Include="Resources\Images\work-time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\magnifier.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

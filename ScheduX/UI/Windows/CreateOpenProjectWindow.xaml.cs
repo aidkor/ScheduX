@@ -40,7 +40,7 @@ namespace ScheduX.UI
         private void LoadShxFiles()
         {
             // UNDONE: Add default folder path
-            string projectsPath = "C:\\Users\\Asus\\Desktop\\Test";
+            string projectsPath = $"{Properties.Settings.Default.ProjectsPath}";
             shxFiles = (Directory.Exists(projectsPath)) ? Directory.GetFiles(projectsPath, "*.*", SearchOption.AllDirectories).Where(s => s.EndsWith(".shx")) : null;            
             if (shxFiles != null)
             {
@@ -55,7 +55,7 @@ namespace ScheduX.UI
             Image img;
             {
                 img = new Image();
-                img.Source = new BitmapImage(new Uri(@"..\Resourses\Images\file.png", UriKind.Relative));
+                img.Source = new BitmapImage(new Uri($@"{Properties.Settings.Default.ImagesPath}/file.png", UriKind.Relative));
                 img.Width = 25;
                 img.Margin = new Thickness(0, 0, 410, 0);
             }

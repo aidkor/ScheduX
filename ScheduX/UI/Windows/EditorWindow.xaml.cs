@@ -17,6 +17,7 @@ namespace ScheduX.UI
     {
         public Home HomePage { get; set; }
         public Help HelpPage { get; set; }
+        public Settings SettingsPage { get; set; }
         public Schedule SchedulePage { get; set; }
         private string shxFilePath { get; set; }    
         public EditorWindow()
@@ -24,6 +25,7 @@ namespace ScheduX.UI
             InitializeComponent();
             HomePage = new Home(this);
             HelpPage = new Help(this);
+            SettingsPage = new Settings(this);
             SetWindowSize();         
             SetStartPage();
         }
@@ -31,6 +33,7 @@ namespace ScheduX.UI
         {
             InitializeComponent();
             HomePage = new Home(this);
+            HelpPage = new Help(this);
             SetWindowSize();
             SetStartPage();
             // Shx Parser Work
@@ -50,7 +53,7 @@ namespace ScheduX.UI
             if (LeftSideBarContent.IsVisible)
             {
                 LeftSideBarContent.Visibility = Visibility.Collapsed;
-                LeftSideBarOpenCloseButtonImg.Source = new BitmapImage(new Uri($@"{Properties.Resources.ImagesPath}/menu.png", UriKind.Relative));
+                LeftSideBarOpenCloseButtonImg.Source = new BitmapImage(new Uri($@"{Properties.Settings.Default.ImagesPath}/menu.png", UriKind.Relative));
                 LeftSideBarOpenCloseButtonImg.Margin = new Thickness(17, 0, 17, 0);
                 LeftSideBarOpenCloseButtonImg.Height = 24;
                 LeftSideBarOpenCloseButtonImg.Width = 24;
@@ -58,7 +61,7 @@ namespace ScheduX.UI
             else
             {
                 LeftSideBarContent.Visibility = Visibility.Visible;
-                LeftSideBarOpenCloseButtonImg.Source = new BitmapImage(new Uri($@"{Properties.Resources.ImagesPath}/back.png", UriKind.Relative));
+                LeftSideBarOpenCloseButtonImg.Source = new BitmapImage(new Uri($@"{Properties.Settings.Default.ImagesPath}/back.png", UriKind.Relative));
                 LeftSideBarOpenCloseButtonImg.Height = 24;
                 LeftSideBarOpenCloseButtonImg.Width = 24;
             }
@@ -73,7 +76,7 @@ namespace ScheduX.UI
         }
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {           
-            WorkingSpace.Content = null;
+            WorkingSpace.Content = SettingsPage;
         }
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {           
@@ -91,7 +94,7 @@ namespace ScheduX.UI
             
             button.Foreground = Brushes.White;
             (content.Children[0] as Grid).Background = ColorPalette.GetPredefinedColor(PredefinedColors.Sky);
-            (content.Children[1] as Image).Source = new BitmapImage(new Uri($@"{Properties.Resources.ImagesPath}\{imgName}_white.png", UriKind.Relative));            
+            (content.Children[1] as Image).Source = new BitmapImage(new Uri($@"{Properties.Settings.Default.ImagesPath}\{imgName}_white.png", UriKind.Relative));            
         }
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -101,7 +104,7 @@ namespace ScheduX.UI
 
             button.Foreground = ColorPalette.GetPredefinedColor(PredefinedColors.Sky);
             (content.Children[0] as Grid).Background = Brushes.Transparent;
-            (content.Children[1] as Image).Source = new BitmapImage(new Uri($@"{Properties.Resources.ImagesPath}\{imgName}_blue.png", UriKind.Relative));
+            (content.Children[1] as Image).Source = new BitmapImage(new Uri($@"{Properties.Settings.Default.ImagesPath}\{imgName}_blue.png", UriKind.Relative));
 
         }     
     

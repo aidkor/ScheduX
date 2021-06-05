@@ -1,7 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ScheduX.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ProjectsPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Asus\ScheduXProjects</Value>
+    </Setting>
+    <Setting Name="ProgramPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Program Files\ScheduX</Value>
+    </Setting>
+    <Setting Name="doc" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Program Files\ScheduX\doc</Value>
+    </Setting>
+    <Setting Name="ImagesPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/ScheduX;component/Resources/Images</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

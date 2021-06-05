@@ -9,11 +9,29 @@
       Title="Help">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <TextBlock Text="Sections" FontWeight="Bold" FontSize="24" FontFamily="Roboto" VerticalAlignment="Bottom" Margin="30,0"/>
+        <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock Text="Sections" FontWeight="Bold" FontSize="24" FontFamily="Roboto" Margin="30,30,0,15"/>
+                <StackPanel Margin="30,10,0,0">
+                    <TextBlock FontSize="16">· Program Interface</TextBlock>
+                    <TextBlock FontSize="16" Margin="50,10,0,0">
+                <Hyperlink Click="StartWindow_Click">· StartWindow</Hyperlink>
+                    </TextBlock>
+                    <TextBlock FontSize="16" Margin="50,10,0,0">
+                <Hyperlink Click="HomePageDocx_Click">· HomePage</Hyperlink>
+                    </TextBlock>
+                    <TextBlock FontSize="16" Margin="50,10,0,0">
+                <Hyperlink Click="SettingsPageDocx_Click">· SettingsPage</Hyperlink>
+                    </TextBlock>
+                    <TextBlock FontSize="16" Margin="50,10,0,0">
+                <Hyperlink Click="SchedulePageDocx_Click">· SchedulePage</Hyperlink>
+                    </TextBlock>
+                    <TextBlock FontSize="16" Margin="0,10,0,0">· Download</TextBlock>
+                    <TextBlock FontSize="16" Margin="50,10,0,0">
+                <Hyperlink Click="GitHubDownload_Click">· GitHub</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

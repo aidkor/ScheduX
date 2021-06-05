@@ -64,8 +64,8 @@ namespace ScheduX.App_Logic.OptimAlg
     }
     class Solver // Решатель (генетический алгоритм)
     {
-        public int MaxIterations = 4;
-        public int PopulationCount = 4;//должно делиться на 4
+        public int MaxIterations = 100;
+        public int PopulationCount = 200;//должно делиться на 4
 
         public List<Func<Plan, int>> FitnessFunctions = new List<Func<Plan, int>>();
         public int Fitness(Plan plan)

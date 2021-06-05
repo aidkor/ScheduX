@@ -22,5 +22,44 @@ namespace ScheduX.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Asus\\ScheduXProjects")]
+        public string ProjectsPath {
+            get {
+                return ((string)(this["ProjectsPath"]));
+            }
+            set {
+                this["ProjectsPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\ScheduX")]
+        public string ProgramPath {
+            get {
+                return ((string)(this["ProgramPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\ScheduX\\doc")]
+        public string doc {
+            get {
+                return ((string)(this["doc"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/ScheduX;component/Resources/Images")]
+        public string ImagesPath {
+            get {
+                return ((string)(this["ImagesPath"]));
+            }
+        }
     }
 }

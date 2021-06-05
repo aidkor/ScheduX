@@ -7,29 +7,34 @@ using ScheduX.DB_Logic;
 
 namespace ScheduX.App_Logic
 {
-    public abstract class StudyPeriodDictionary 
+    public abstract class Dictionary
     {
         public virtual IDBHandable DataHandler { get; set; }       
+
     }
-    public abstract class GroupDictionary 
+    public abstract class StudyPeriodDictionary : Dictionary
     {
-        public virtual IDBHandable DataHandler { get; set; }        
+
     }
-    public abstract class TeacherDictionary 
+    public abstract class GroupDictionary  : Dictionary
     {
-        public virtual IDBHandable DataHandler { get; set; }      
+        
     }
-    public abstract class AudienceDictionary 
+    public abstract class TeacherDictionary : Dictionary
     {
-        public virtual IDBHandable DataHandler { get; set; }     
+       
     }
-    public abstract class SubjectDictionary 
+    public abstract class AudienceDictionary : Dictionary
     {
-        public virtual IDBHandable DataHandler { get; set; }     
+       
     }
-    public abstract class LessonDictionary 
+    public abstract class SubjectDictionary : Dictionary
     {
-        public virtual IDBHandable DataHandler { get; set; }      
+       
+    }
+    public abstract class LessonDictionary : Dictionary
+    {
+        
     }
     //=============================================
     //=============================================
